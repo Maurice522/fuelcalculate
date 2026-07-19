@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import SiteDataScript from "../../components/SiteDataScript.astro";
+
+const params = Astro.url.searchParams;
+const initial = {
+  city: params.get("city") ?? "",
+  distance: params.get("distance") ?? "20",
+  roundtrip: params.get("roundtrip") ?? "",
+  fuels: params.getAll("fuels").length ? params.getAll("fuels") : undefined,
+};
+---
+
+<Layout
+  title="Compare fuel costs — Petrol vs Diesel vs CNG vs E20 vs EV | Fuel Calculate"
+  description="Compare Petrol, Diesel, CNG, E20 and EV running costs for the same trip, side by side, with the exact ₹ and % savings."
+>
+  <SiteDataScript />
+  <Hero
+    eyebrow="Side-by-side"
+    title="Compare fuels for the same trip."
+    lead="Set up two calculators for the same city and distance, pick a different fuel and vehicle in each, and see exactly which one is cheaper — in ₹ and %."
+  />
+  <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
+    <ComparisonTable initial={initial} />
+  </section>
+</Layout>

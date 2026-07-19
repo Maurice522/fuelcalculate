@@ -1,0 +1,66 @@
+[
+  {
+    "id": "petrol",
+    "label": "Petrol",
+    "shortLabel": "Petrol",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "xp95",
+    "label": "XP95 (Premium Petrol)",
+    "shortLabel": "XP95",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "xp100",
+    "label": "XP100 (Premium Petrol)",
+    "shortLabel": "XP100",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "diesel",
+    "label": "Diesel",
+    "shortLabel": "Diesel",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "e20",
+    "label": "E20 (20% Ethanol Blend)",
+    "shortLabel": "E20",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "cng",
+    "label": "CNG",
+    "shortLabel": "CNG",
+    "unit": "kg",
+    "unitLabel": "km/kg",
+    "category": "gas"
+  },
+  {
+    "id": "lpg",
+    "label": "Auto LPG",
+    "shortLabel": "LPG",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "gas"
+  },
+  {
+    "id": "ev",
+    "label": "Electric (EV)",
+    "shortLabel": "EV",
+    "unit": "kWh",
+    "unitLabel": "kWh/100km",
+    "category": "electric"
+  }
+]

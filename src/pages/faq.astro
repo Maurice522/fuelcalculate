@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const faqs = [
+  {
+    q: "Where do the city fuel prices come from?",
+    a: "Prices are refreshed automatically several times a day from public sources. They're indicative — local taxes, dealer commission, and daily revisions mean the pump price can differ slightly. You can always type in your own price instead.",
+  },
+  {
+    q: "Why doesn't every city have CNG or LPG prices?",
+    a: "CNG and Auto LPG distribution networks are patchy across India — not every city has retail infrastructure for them yet, so we only show a price where it's realistically available.",
+  },
+  {
+    q: "What is E20 and why compare it to Petrol?",
+    a: "E20 is petrol blended with 20% ethanol, now widely rolled out at Indian pumps. It's usually priced a little below pure petrol but can give slightly lower mileage in some vehicles — the comparison tool lets you see the real ₹ difference for your own car, not a generic claim.",
+  },
+  {
+    q: "How accurate is the vehicle mileage figure?",
+    a: "Vehicle presets use ARAI-claimed (test-cycle) mileage, which is normally higher than what you'll see in real city traffic. Always feel free to overwrite it with your own observed mileage for a more accurate result.",
+  },
+  {
+    q: "How is the EV running cost calculated?",
+    a: "We use your electricity tariff (₹/kWh) and the vehicle's efficiency (kWh per 100km) — cost per km = (tariff × efficiency) ÷ 100. Tariffs default per state but are fully editable, since actual slab-based domestic rates vary.",
+  },
+  {
+    q: "Can I share my calculation with someone else?",
+    a: "Yes — every input you change updates the page URL, so you can copy and share the link at any point and the other person will see the exact same setup.",
+  },
+];
+---
+
+<Layout
+  title="FAQ | Fuel Calculate"
+  description="Answers to common questions about how Fuel Calculate sources prices, mileage, and EV running costs."
+>
+  <Hero eyebrow="FAQ" title="Common questions." />
+  <section class="mx-auto max-w-[720px] px-md pb-5xl sm:px-lg">
+    <div class="flex flex-col gap-lg">
+      {
+        faqs.map((item) => (
+          <div class="rounded-lg bg-canvas p-lg shadow-level-2">
+            <h2 class="text-display-sm text-ink">{item.q}</h2>
+            <p class="mt-sm text-body-md text-body">{item.a}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

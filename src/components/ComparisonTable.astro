@@ -1,0 +1,154 @@
+---
+import citiesData from "../data/cities.json";
+import fuelTypesData from "../data/fuel-types.json";
+
+interface Props {
+  initial?: Partial<{ city: string; distance: string; roundtrip: string; fuels: string[] }>;
+}
+
+const providedInitial = Astro.props.initial ?? {};
+const initial = {
+  distance: providedInitial.distance ?? "20",
+  roundtrip: providedInitial.roundtrip ?? "",
+  city: providedInitial.city ?? "",
+  fuelA: providedInitial.fuels?.[0] ?? "petrol",
+  fuelB: providedInitial.fuels?.[1] ?? "e20",
+};
+
+const sides = [
+  { key: "a", label: "Calculator A", fuel: initial.fuelA },
+  { key: "b", label: "Calculator B", fuel: initial.fuelB },
+];
+---
+
+<fuel-comparison class="block">
+  <form class="grid gap-lg rounded-lg bg-canvas p-lg shadow-level-3 sm:p-xl">
+    <div class="grid gap-md sm:grid-cols-2">
+      <label class="flex flex-col gap-xxs">
+        <span class="text-body-sm-strong text-ink">City (auto-fills prices)</span>
+        <searchable-select>
+          <select data-field="city">
+            <option value="">Custom prices</option>
+            {
+              citiesData.cities.map((c) => (
+                <option value={c.slug} selected={initial.city === c.slug}>
+                  {c.name}
+                </option>
+              ))
+            }
+          </select>
+        </searchable-select>
+      </label>
+
+      <label class="flex flex-col gap-xxs">
+        <span class="text-body-sm-strong text-ink">Distance — one way (km)</span>
+        <input
+          type="number"
+          min="0"
+          data-field="distance"
+          value={initial.distance}
+          class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
+        />
+      </label>
+    </div>
+
+    <label class="flex items-center gap-xs">
+      <input
+        type="checkbox"
+        data-field="roundtrip"
+        checked={initial.roundtrip === "true" || initial.roundtrip === "1"}
+        class="h-4 w-4 rounded-xs border border-hairline"
+      />
+      <span class="text-body-sm text-ink">Round trip</span>
+    </label>
+
+    <div class="grid gap-lg sm:grid-cols-2">
+      {
+        sides.map((side) => (
+          <div data-side={side.key} class="flex flex-col gap-sm rounded-md border border-hairline p-md">
+            <span class="text-body-sm-strong text-ink">{side.label}</span>
+
+            <label class="flex flex-col gap-xxs">
+              <span class="text-caption text-mute">Fuel type</span>
+              <searchable-select>
+                <select data-field="fuel">
+                  {fuelTypesData.map((f) => (
+                    <option value={f.id} selected={side.fuel === f.id}>
+                      {f.label}
+                    </option>
+                  ))}
+                </select>
+              </searchable-select>
+            </label>
+
+            <label class="flex flex-col gap-xxs">
+              <span class="text-caption text-mute">
+                Price (<span data-out="price-unit-label">₹ per litre</span>)
+              </span>
+              <input
+                type="number"
+                step="0.01"
+                min="0"
+                data-field="price"
+                class="h-9 rounded-sm border border-hairline bg-canvas px-xs text-body-sm text-ink"
+              />
+            </label>
+
+            <label class="flex flex-col gap-xxs">
+              <span class="text-caption text-mute">
+                Vehicle <span class="font-normal">(optional)</span>
+              </span>
+              <searchable-select>
+                <select data-field="vehicle">
+                  <option value="">Manual entry</option>
+                </select>
+              </searchable-select>
+            </label>
+
+            <label class="flex flex-col gap-xxs">
+              <span class="text-caption text-mute">
+                Mileage (<span data-out="mileage-unit-label">km/l</span>)
+              </span>
+              <input
+                type="number"
+                step="0.01"
+                min="0"
+                data-field="mileage"
+                placeholder="Enter your own or pick a vehicle"
+                class="h-9 rounded-sm border border-hairline bg-canvas px-xs text-body-sm text-ink"
+              />
+              <span class="text-caption text-mute" data-out="mileage-note" />
+            </label>
+          </div>
+        ))
+      }
+    </div>
+  </form>
+
+  <div class="mt-lg grid gap-md sm:grid-cols-2">
+    {
+      sides.map((side) => (
+        <div data-result={side.key} class="rounded-lg bg-canvas-soft p-lg shadow-level-1">
+          <p class="text-caption-mono uppercase text-mute" data-out="fuel-label">
+            {side.label}
+          </p>
+          <p class="mt-xxs text-display-md text-ink" data-out="cost">
+            ₹0
+          </p>
+          <p class="text-body-sm text-body" data-out="cost-per-km">
+            ₹0 / km
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-md rounded-lg bg-ink p-lg text-center shadow-level-2">
+    <p class="text-body-sm text-on-primary/70">Difference</p>
+    <p class="mt-xxs text-display-sm text-on-primary" data-out="delta">Pick your fuels and fill in a price to compare.</p>
+  </div>
+</fuel-comparison>
+
+<script>
+  import "../scripts/fuel-comparison-table.ts";
+</script>

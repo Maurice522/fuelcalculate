@@ -1,0 +1,171 @@
+---
+interface Props {
+  cityName?: string;
+}
+const { cityName } = Astro.props;
+---
+
+<div data-find-stations-widget class="w-full rounded-lg border border-hairline bg-canvas-soft p-lg">
+  <div class="flex flex-wrap items-center justify-between gap-sm">
+    <div>
+      <p class="text-body-sm-strong text-ink">Find fuel stations near you</p>
+      <p class="text-caption text-mute" data-stations-map-label>Uses your location, or {cityName ?? "your city"} if you'd rather not share it.</p>
+    </div>
+    <button
+      type="button"
+      data-find-stations
+      data-city={cityName}
+      class="inline-flex h-10 shrink-0 items-center gap-xs rounded-sm bg-ink px-md text-button-sm text-on-primary disabled:opacity-70"
+    >
+      <svg
+        data-find-stations-spinner
+        viewBox="0 0 24 24"
+        class="hidden h-4 w-4 animate-spin"
+        fill="none"
+      >
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25" />
+        <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      </svg>
+      <span data-find-stations-label>Show nearby stations</span>
+    </button>
+  </div>
+
+  <p data-stations-status class="mt-xs hidden text-caption text-mute"></p>
+
+  <div data-stations-map hidden class="relative mt-md overflow-hidden rounded-md border border-hairline shadow-level-1">
+    <div
+      data-stations-map-loader
+      class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-xs bg-canvas-soft"
+    >
+      <svg viewBox="0 0 24 24" class="h-6 w-6 animate-spin text-mute" fill="none">
+        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity="0.25" />
+        <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+      </svg>
+      <span class="text-caption text-mute">Loading map…</span>
+    </div>
+    <iframe
+      data-stations-map-frame
+      title="Map centered near you, showing nearby fuel stations"
+      class="block h-[420px] w-full border-0 opacity-0 transition-opacity duration-300"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+    <div class="flex items-center justify-end border-t border-hairline bg-canvas px-sm py-xs">
+      <a
+        data-stations-map-link
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-caption text-link"
+      >
+        See the full list of nearby stations in Google Maps →
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // A bare coordinate/place center (no keyword) keeps the embed to a plain map —
+  // Google's default tiles already label fuel stations at this zoom. Adding a
+  // "fuel stations near ..." keyword search here would make Google render its full
+  // search-results sidebar inside the iframe, which gets clipped and looks broken at
+  // this width — that fuller experience belongs on the "open in Google Maps" link
+  // instead, where it has a full page to work with.
+  function mapsEmbedSrc(center: string, zoom: number): string {
+    return `https://maps.google.com/maps?q=${encodeURIComponent(center)}&z=${zoom}&output=embed`;
+  }
+
+  function mapsSearchLinkSrc(near: string): string {
+    return `https://www.google.com/maps/search/fuel+stations+near+${encodeURIComponent(near)}`;
+  }
+
+  function showMap(container: HTMLElement, center: string, near: string, zoom: number): void {
+    const frame = container.querySelector<HTMLIFrameElement>("[data-stations-map-frame]");
+    const link = container.querySelector<HTMLAnchorElement>("[data-stations-map-link]");
+    const loader = container.querySelector<HTMLElement>("[data-stations-map-loader]");
+
+    container.hidden = false;
+    if (loader) loader.hidden = false;
+    if (frame) frame.classList.add("opacity-0");
+    if (link) link.href = mapsSearchLinkSrc(near);
+
+    if (frame) {
+      // The iframe's own load event is the only reliable signal we get for when the
+      // embed has finished fetching — cross-origin content means we can't inspect its
+      // internal render state, but "the document loaded" is a close enough proxy to
+      // stop showing our loader instead of leaving it spinning indefinitely.
+      frame.onload = () => {
+        if (loader) loader.hidden = true;
+        frame.classList.remove("opacity-0");
+      };
+      frame.src = mapsEmbedSrc(center, zoom);
+    }
+  }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-find-stations]").forEach((button) => {
+    const widget = button.closest("[data-find-stations-widget]");
+    const container = widget?.querySelector<HTMLElement>("[data-stations-map]");
+    const spinner = button.querySelector<HTMLElement>("[data-find-stations-spinner]");
+    const label = button.querySelector<HTMLElement>("[data-find-stations-label]");
+    const status = widget?.querySelector<HTMLElement>("[data-stations-status]");
+    if (!container) return;
+    const mapContainer = container;
+
+    function setLocating(locating: boolean): void {
+      button.disabled = locating;
+      spinner?.classList.toggle("hidden", !locating);
+      if (label) label.textContent = locating ? "Locating…" : "Show nearby stations";
+    }
+
+    function setStatus(message: string | null): void {
+      if (!status) return;
+      status.textContent = message ?? "";
+      status.hidden = !message;
+    }
+
+    // A city name centers a reasonably tight view; with no location info at all we
+    // fall back to the whole country, so a wide zoom is required — z=15 (street level)
+    // on a country-sized query just drops you on some arbitrary, meaningless village.
+    const cityName = button.dataset.city;
+    const fallback = cityName ?? "India";
+    const fallbackZoom = cityName ? 13 : 5;
+
+    function useFallback(reason: string): void {
+      setStatus(`${reason} — showing the area near ${fallback} instead.`);
+      showMap(mapContainer, fallback, fallback, fallbackZoom);
+    }
+
+    button.addEventListener("click", () => {
+      if (!window.isSecureContext) {
+        useFallback("Your browser blocks location access on a non-secure connection");
+        return;
+      }
+      if (!navigator.geolocation) {
+        useFallback("Your browser doesn't support location access");
+        return;
+      }
+
+      setLocating(true);
+      setStatus(null);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocating(false);
+          const { latitude, longitude } = position.coords;
+          setStatus("Showing fuel stations near your current location.");
+          showMap(mapContainer, `${latitude},${longitude}`, `${latitude},${longitude}`, 15);
+        },
+        (error) => {
+          setLocating(false);
+          const reason =
+            error.code === error.PERMISSION_DENIED
+              ? "Location access is blocked for this site"
+              : error.code === error.TIMEOUT
+                ? "Getting your location took too long"
+                : "Couldn't determine your location";
+          useFallback(reason);
+        },
+        { timeout: 10000 },
+      );
+    });
+  });
+</script>

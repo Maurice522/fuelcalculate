@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+---
+
+<Layout
+  title="How the math works | Fuel Calculate"
+  description="The exact formulas Fuel Calculate uses for trip cost, fuel comparison, and monthly/yearly projections."
+>
+  <Hero eyebrow="Transparent by default" title="How the math works." />
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
+    <div>
+      <h2 class="text-display-sm text-ink">Cost per km</h2>
+      <p class="mt-sm text-body-md text-body">
+        For petrol, diesel, E20, CNG and LPG, cost per km is just price divided by
+        mileage:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerKm = pricePerUnit / mileage</pre>
+      <p class="mt-sm text-body-md text-body">
+        For EV, mileage is expressed as efficiency (kWh per 100km) rather than
+        km-per-unit, since that's the standard way EV efficiency is measured — this
+        avoids an inverted-unit mistake:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerKm = (tariffPerKwh * efficiencyKwhPer100Km) / 100</pre>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Trip cost</h2>
+      <p class="mt-sm text-body-md text-body">
+        Round trip doubles the one-way distance before the cost is applied:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">effectiveDistance = roundTrip ? distanceOneWay * 2 : distanceOneWay
+tripCost = costPerKm * effectiveDistance</pre>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Comparing fuels</h2>
+      <p class="mt-sm text-body-md text-body">
+        Every fuel you select is costed for the same trip distance. One fuel is the
+        baseline (defaults to Petrol); every other fuel shows its ₹ and % difference
+        against it — negative means cheaper:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">deltaVsBaseline = cost[fuel] - cost[baseline]
+percentDiff = (deltaVsBaseline / cost[baseline]) * 100</pre>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Monthly &amp; yearly projection</h2>
+      <p class="mt-sm text-body-md text-body">
+        Built from your daily commute pattern, not a guess at "working days" — you set
+        days-per-month explicitly:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">dailyDistance = distancePerTrip * tripsPerDay * (roundTrip ? 2 : 1)
+dailyCost = costPerKm * dailyDistance
+monthlyCost = dailyCost * daysPerMonth
+yearlyCost = monthlyCost * 12</pre>
+      <p class="mt-sm text-body-md text-body">
+        Yearly is derived from the monthly figure (×12), not a separate ×365 daily
+        calculation — so the two numbers never quietly disagree with each other.
+      </p>
+    </div>
+  </section>
+</Layout>

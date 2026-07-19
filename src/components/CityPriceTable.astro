@@ -1,0 +1,62 @@
+---
+import fuelTypesData from "../data/fuel-types.json";
+import type { CityPrices } from "../lib/prices";
+
+interface Props {
+  cityName: string;
+  prices: CityPrices;
+  source: string;
+  lastUpdated: string;
+}
+
+const { cityName, prices, source, lastUpdated } = Astro.props;
+
+const sourceLabel: Record<string, string> = {
+  crawler: "Auto-updated",
+  manual: "Manually set",
+  seed: "Indicative (seed)",
+  fallback: "National average",
+};
+
+const updatedAgo = (() => {
+  const diffMs = Date.now() - new Date(lastUpdated).getTime();
+  const hours = Math.round(diffMs / (1000 * 60 * 60));
+  if (hours < 1) return "just now";
+  if (hours < 24) return `${hours}h ago`;
+  return `${Math.round(hours / 24)}d ago`;
+})();
+
+const pricesByFuelId = prices as unknown as Record<string, number | null>;
+---
+
+<div class="overflow-hidden rounded-lg bg-canvas shadow-level-2">
+  <div class="flex items-center justify-between border-b border-hairline p-lg">
+    <h2 class="text-display-sm text-ink">Fuel prices in {cityName}</h2>
+    <span class="text-caption text-mute">{sourceLabel[source] ?? source} · {updatedAgo}</span>
+  </div>
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-canvas-soft text-left">
+        <th class="p-sm text-caption-mono uppercase text-mute">Fuel</th>
+        <th class="p-sm text-caption-mono uppercase text-mute">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        fuelTypesData
+          .filter((f) => f.id !== "ev")
+          .map((f) => {
+            const price = pricesByFuelId[f.id];
+            return (
+              <tr class="border-t border-hairline">
+                <td class="p-sm text-body-sm-strong text-ink">{f.label}</td>
+                <td class="p-sm text-body-sm text-body">
+                  {price != null ? `₹${price.toFixed(2)} / ${f.unit}` : "Not available"}
+                </td>
+              </tr>
+            );
+          })
+      }
+    </tbody>
+  </table>
+</div>

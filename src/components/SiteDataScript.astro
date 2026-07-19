@@ -1,0 +1,17 @@
+---
+import citiesData from "../data/cities.json";
+import vehiclesData from "../data/vehicles.json";
+import fuelTypesData from "../data/fuel-types.json";
+import evTariffData from "../data/ev-tariff-defaults.json";
+
+// Embedded once per page as a JSON island so every calculator/comparison/projection
+// custom element on the page can read it without a client-side fetch round trip.
+const payload = {
+  cities: citiesData.cities,
+  vehicles: vehiclesData.vehicles,
+  fuelTypes: fuelTypesData,
+  evTariffs: evTariffData,
+};
+---
+
+<script type="application/json" id="site-data" is:inline set:html={JSON.stringify(payload)} />

@@ -1,0 +1,12 @@
+{
+  "note": "National-average indicative prices (INR), used only when a requested city has no seed entry and KV has no crawled data. Always overridable by the user.",
+  "lastUpdated": "2026-07-01T00:00:00Z",
+  "prices": {
+    "petrol": 100.50,
+    "diesel": 92.0,
+    "e20": 97.80,
+    "cng": 75.50,
+    "lpg": 68.0,
+    "ev": null
+  }
+}

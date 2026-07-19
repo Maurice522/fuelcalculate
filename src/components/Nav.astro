@@ -1,0 +1,46 @@
+---
+const links = [
+  { href: "/", label: "Calculator" },
+  { href: "/compare", label: "Compare fuels" },
+  { href: "/#monthly-budget", label: "Monthly budget" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/faq", label: "FAQ" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/90 backdrop-blur">
+  <div class="mx-auto flex h-full max-w-[1400px] items-center justify-between gap-md px-md sm:px-lg">
+    <a href="/" class="flex items-center gap-xs text-body-sm-strong text-ink">
+      <img src="/favicon-96x96.png" alt="" width="24" height="24" class="h-6 w-6 rounded-xs" />
+      Fuel<span class="text-link">Calculate</span>
+    </a>
+
+    <nav class="hidden items-center gap-xs md:flex">
+      {
+        links.map((link) => {
+          const active = currentPath === link.href;
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "rounded-full px-sm py-xs text-body-sm transition-colors",
+                active ? "text-ink" : "text-body hover:text-ink",
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <a
+      href="/compare"
+      class="rounded-sm bg-ink px-sm text-body-sm-strong text-on-primary"
+      style="height: 28px; display:inline-flex; align-items:center;"
+    >
+      Compare fuels
+    </a>
+  </div>
+</header>

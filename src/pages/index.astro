@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import FuelCalculatorForm from "../components/FuelCalculatorForm.astro";
+import MonthlyProjection from "../components/MonthlyProjection.astro";
+import SiteDataScript from "../components/SiteDataScript.astro";
+import FindStationsLink from "../components/FindStationsLink.astro";
+
+const params = Astro.url.searchParams;
+const initial = {
+  fuel: params.get("fuel") ?? "petrol",
+  city: params.get("city") ?? "",
+  price: params.get("price") ?? "",
+  vehicle: params.get("vehicle") ?? "",
+  mileage: params.get("mileage") ?? "",
+  distance: params.get("distance") ?? "20",
+  roundtrip: params.get("roundtrip") ?? "",
+};
+---
+
+<Layout>
+  <SiteDataScript />
+
+  <Hero
+    eyebrow="Petrol · Diesel · CNG · E20 · EV"
+    title="Know exactly what your trip costs."
+    lead="Pick a city or type your own price, choose your car or bike, and watch your trip cost update instantly — then compare it against every other fuel."
+  />
+
+  <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
+    <FuelCalculatorForm initial={initial} />
+  </section>
+
+  <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+    <div class="mx-auto max-w-[880px] text-center">
+      <h2 class="text-display-lg">Compare fuels side by side.</h2>
+      <p class="mx-auto mt-md max-w-[560px] text-body-lg text-body">
+        See Petrol, Diesel, CNG, E20 and EV running costs for the same trip, with the
+        exact ₹ and % difference against your baseline.
+      </p>
+      <a
+        href="/compare"
+        class="mt-lg inline-flex h-12 items-center rounded-sm bg-ink px-lg text-button-lg text-on-primary"
+      >
+        Open the comparison tool
+      </a>
+    </div>
+  </section>
+
+  <section id="monthly-budget" class="scroll-mt-16 px-md py-4xl sm:px-lg">
+    <div class="mx-auto max-w-[880px] text-center">
+      <h2 class="text-display-lg">Plan your monthly fuel budget.</h2>
+      <p class="mx-auto mt-md max-w-[560px] text-body-lg text-body">
+        Enter your daily commute and get a straight answer: what it costs you every
+        month and every year.
+      </p>
+    </div>
+    <div class="mx-auto mt-xl max-w-[720px]">
+      <MonthlyProjection />
+    </div>
+  </section>
+
+  <section class="border-t border-hairline px-md py-4xl sm:px-lg">
+    <div class="mx-auto max-w-[720px]">
+      <FindStationsLink cityName={initial.city || undefined} />
+    </div>
+  </section>
+</Layout>

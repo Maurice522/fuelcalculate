@@ -1,0 +1,3848 @@
+{
+  "note": "Petrol/Diesel/CNG car figures sourced from ARAI-claimed mileage dataset (500-variant Indian market expansion, deduped to unique make/model/fuel combos). Bikes are a separate curated 2025 Indian lineup (petrol/CNG figures are manufacturer/ARAI-claimed). EV bikes are only included where the source listed a battery kWh alongside its km/charge range, so a real kWh/100km efficiency could be derived (kWh/range*100) — EV bikes with only a km/charge range and no stated battery size were left out rather than loading a range figure into a slot the cost calculator treats as consumption efficiency. Source list's E20 ethanol-compatibility flag was dropped since nearly all current-generation FI motorcycles are already E20-compliant and it isn't a distinguishing mileage input. Real-world mileage varies with driving style, load, and traffic — always editable via manual override.",
+  "vehicles": [
+    {
+      "slug": "aprilia-rs-457",
+      "name": "Aprilia RS 457",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "aprilia-tuono-457",
+      "name": "Aprilia Tuono 457",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ather-450x-2-9kwh",
+      "name": "Ather 450X 2.9kWh",
+      "type": "bike",
+      "segment": "electric-scooter",
+      "fuelType": "ev",
+      "mileage": 2.61,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ather-450x-3-7kwh",
+      "name": "Ather 450X 3.7kWh",
+      "type": "bike",
+      "segment": "electric-scooter",
+      "fuelType": "ev",
+      "mileage": 2.47,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "bajaj-avenger-cruise-220",
+      "name": "Bajaj Avenger Cruise 220",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-avenger-street-160",
+      "name": "Bajaj Avenger Street 160",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-ct-110x",
+      "name": "Bajaj CT 110X",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 70,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-dominar-250",
+      "name": "Bajaj Dominar 250",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-dominar-400",
+      "name": "Bajaj Dominar 400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-freedom-125",
+      "name": "Bajaj Freedom 125",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-freedom-125-cng",
+      "name": "Bajaj Freedom 125 CNG",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "cng",
+      "mileage": 102,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "bajaj-platina-100-es",
+      "name": "Bajaj Platina 100 ES",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 72,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-platina-110-abs",
+      "name": "Bajaj Platina 110 ABS",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 70,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-125-neon",
+      "name": "Bajaj Pulsar 125 Neon",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 50,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-150-single-disc",
+      "name": "Bajaj Pulsar 150 Single Disc",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-150-twin-disc",
+      "name": "Bajaj Pulsar 150 Twin Disc",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-180f",
+      "name": "Bajaj Pulsar 180F",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-220f-bs6",
+      "name": "Bajaj Pulsar 220F BS6",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-f250",
+      "name": "Bajaj Pulsar F250",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-n150",
+      "name": "Bajaj Pulsar N150",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-n160",
+      "name": "Bajaj Pulsar N160",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 51.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-n250",
+      "name": "Bajaj Pulsar N250",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-ns125",
+      "name": "Bajaj Pulsar NS125",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 50,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-ns160",
+      "name": "Bajaj Pulsar NS160",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-ns200",
+      "name": "Bajaj Pulsar NS200",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-ns400z",
+      "name": "Bajaj Pulsar NS400Z",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-p150",
+      "name": "Bajaj Pulsar P150",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bajaj-pulsar-rs200",
+      "name": "Bajaj Pulsar RS200",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "benelli-imperial-400",
+      "name": "Benelli Imperial 400",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 33.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "benelli-trk-251",
+      "name": "Benelli TRK 251",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 31.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "benelli-trk-502",
+      "name": "Benelli TRK 502",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bmw-f-450-gs-tourer",
+      "name": "BMW F 450 GS Tourer",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bmw-g-310-gs",
+      "name": "BMW G 310 GS",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bmw-g-310-r",
+      "name": "BMW G 310 R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bmw-g-310-rr",
+      "name": "BMW G 310 RR",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bsa-gold-star-650-classic",
+      "name": "BSA Gold Star 650 Classic",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "bsa-scrambler-650",
+      "name": "BSA Scrambler 650",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-basalt-1-2l-na-mt",
+      "name": "Citroen Basalt 1.2L NA MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-basalt-1-2l-turbo-at",
+      "name": "Citroen Basalt 1.2L Turbo AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-basalt-1-2l-turbo-mt",
+      "name": "Citroen Basalt 1.2L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-c3-1-2l-na-mt",
+      "name": "Citroen C3 1.2L NA MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-c3-1-2l-turbo-at",
+      "name": "Citroen C3 1.2L Turbo AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-c3-1-2l-turbo-mt",
+      "name": "Citroen C3 1.2L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-c3-aircross-at",
+      "name": "Citroen C3 Aircross AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "citroen-c3-aircross-mt",
+      "name": "Citroen C3 Aircross MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-glamour-xtec",
+      "name": "Hero Glamour XTEC",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 55,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-hf-deluxe",
+      "name": "Hero HF Deluxe",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-hf-deluxe-flex-fuel",
+      "name": "Hero HF Deluxe Flex-Fuel",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 60,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-karizma-xmr-210",
+      "name": "Hero Karizma XMR 210",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-karizma-xmr-250",
+      "name": "Hero Karizma XMR 250",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-mavrick-440",
+      "name": "Hero Mavrick 440",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-passion-xtec",
+      "name": "Hero Passion XTEC",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 60,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-splendor-plus",
+      "name": "Hero Splendor Plus",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 70,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-splendor-plus-flex-fuel",
+      "name": "Hero Splendor Plus Flex-Fuel",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 62,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-splendor-plus-xtec",
+      "name": "Hero Splendor Plus XTEC",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 73,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-super-splendor-new",
+      "name": "Hero Super Splendor New",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 55,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xpulse-200-4v",
+      "name": "Hero XPulse 200 4V",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xpulse-200t-4v",
+      "name": "Hero XPulse 200T 4V",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xtreme-125r",
+      "name": "Hero Xtreme 125R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 66,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xtreme-160r-4v",
+      "name": "Hero Xtreme 160R 4V",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xtreme-200s-4v",
+      "name": "Hero Xtreme 200S 4V",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hero-xtreme-250r",
+      "name": "Hero Xtreme 250R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-africa-twin-crf1100l",
+      "name": "Honda Africa Twin CRF1100L",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-amaze-cvt",
+      "name": "Honda Amaze CVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-amaze-mt",
+      "name": "Honda Amaze MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cb200x",
+      "name": "Honda CB200X",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cb300f",
+      "name": "Honda CB300F",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cb300r",
+      "name": "Honda CB300R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cb350-legacy-edition",
+      "name": "Honda CB350 Legacy Edition",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cb350rs",
+      "name": "Honda CB350RS",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-cbr1000rr-r-fireblade-sp",
+      "name": "Honda CBR1000RR-R Fireblade SP",
+      "type": "bike",
+      "segment": "superbike",
+      "fuelType": "petrol",
+      "mileage": 12,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-city-1-5l-cvt",
+      "name": "Honda City 1.5L CVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-city-1-5l-mt",
+      "name": "Honda City 1.5L MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 17.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-city-e-hev-hybrid",
+      "name": "Honda City e:HEV Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27.13,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-elevate-cvt",
+      "name": "Honda Elevate CVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 16.92,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-elevate-mt",
+      "name": "Honda Elevate MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 15.31,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-hness-cb350",
+      "name": "Honda Hness CB350",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-hornet-2-0",
+      "name": "Honda Hornet 2.0",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-nx500",
+      "name": "Honda NX500",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 26.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-shine-100",
+      "name": "Honda Shine 100",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-shine-125",
+      "name": "Honda Shine 125",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 55,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-sp-125",
+      "name": "Honda SP 125",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 63,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-sp-160",
+      "name": "Honda SP 160",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-unicorn-160",
+      "name": "Honda Unicorn 160",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 50,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "honda-xl750-transalp",
+      "name": "Honda XL750 Transalp",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "husqvarna-svartpilen-401",
+      "name": "Husqvarna Svartpilen 401",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "husqvarna-vitpilen-250-new",
+      "name": "Husqvarna Vitpilen 250 New",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 37,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-alcazar-1-5l-diesel-at",
+      "name": "Hyundai Alcazar 1.5L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 18.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-alcazar-1-5l-diesel-mt",
+      "name": "Hyundai Alcazar 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 20.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-alcazar-1-5l-turbo-dct",
+      "name": "Hyundai Alcazar 1.5L Turbo DCT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-alcazar-1-5l-turbo-mt",
+      "name": "Hyundai Alcazar 1.5L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-aura-amt",
+      "name": "Hyundai Aura AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-aura-cng",
+      "name": "Hyundai Aura CNG",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "cng",
+      "mileage": 28,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "hyundai-aura-mt",
+      "name": "Hyundai Aura MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-creta-1-5l-crdi-at",
+      "name": "Hyundai Creta 1.5L CRDi AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 19.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-creta-1-5l-crdi-mt",
+      "name": "Hyundai Creta 1.5L CRDi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 21.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-creta-1-5l-mpi-ivt",
+      "name": "Hyundai Creta 1.5L MPi IVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-creta-1-5l-mpi-mt",
+      "name": "Hyundai Creta 1.5L MPi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-creta-1-5l-turbo-gdi-dct",
+      "name": "Hyundai Creta 1.5L Turbo GDi DCT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-exter-amt",
+      "name": "Hyundai Exter AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-exter-cng",
+      "name": "Hyundai Exter CNG",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "cng",
+      "mileage": 27.1,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "hyundai-exter-mt",
+      "name": "Hyundai Exter MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-grand-i10-nios-amt",
+      "name": "Hyundai Grand i10 Nios AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 20.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-grand-i10-nios-cng",
+      "name": "Hyundai Grand i10 Nios CNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 27.3,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "hyundai-grand-i10-nios-mt",
+      "name": "Hyundai Grand i10 Nios MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 20.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-i20-1-2l-ivt-cvt",
+      "name": "Hyundai i20 1.2L IVT (CVT)",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-i20-1-2l-mt",
+      "name": "Hyundai i20 1.2L MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 16,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-i20-n-line-1-0l-turbo-dct",
+      "name": "Hyundai i20 N Line 1.0L Turbo DCT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 20.25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-i20-n-line-1-0l-turbo-mt",
+      "name": "Hyundai i20 N Line 1.0L Turbo MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-tucson-2-0l-diesel-at",
+      "name": "Hyundai Tucson 2.0L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 18,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-tucson-2-0l-petrol-at",
+      "name": "Hyundai Tucson 2.0L Petrol AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 13,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-venue-1-0l-turbo-dct",
+      "name": "Hyundai Venue 1.0L Turbo DCT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-venue-1-0l-turbo-mt",
+      "name": "Hyundai Venue 1.0L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-venue-1-2l-mt",
+      "name": "Hyundai Venue 1.2L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-venue-1-5l-crdi-mt",
+      "name": "Hyundai Venue 1.5L CRDi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 24.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-verna-1-5l-mpi-ivt",
+      "name": "Hyundai Verna 1.5L MPi IVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-verna-1-5l-mpi-mt",
+      "name": "Hyundai Verna 1.5L MPi MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-verna-1-5l-turbo-dct",
+      "name": "Hyundai Verna 1.5L Turbo DCT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "hyundai-verna-1-5l-turbo-mt",
+      "name": "Hyundai Verna 1.5L Turbo MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jawa-350-standard",
+      "name": "Jawa 350 Standard",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jawa-42-bobber",
+      "name": "Jawa 42 Bobber",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 30.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jawa-42-version-2-1",
+      "name": "Jawa 42 Version 2.1",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jawa-perak",
+      "name": "Jawa Perak",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jeep-compass-2-0l-diesel-at",
+      "name": "Jeep Compass 2.0L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jeep-compass-2-0l-diesel-mt",
+      "name": "Jeep Compass 2.0L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 17.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jeep-meridian-2-0l-diesel-at",
+      "name": "Jeep Meridian 2.0L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "jeep-meridian-2-0l-diesel-mt",
+      "name": "Jeep Meridian 2.0L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 16.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-eliminator-500",
+      "name": "Kawasaki Eliminator 500",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-kx250-dirt",
+      "name": "Kawasaki KX250 Dirt",
+      "type": "bike",
+      "segment": "offroad",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-300-bs6",
+      "name": "Kawasaki Ninja 300 BS6",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-400",
+      "name": "Kawasaki Ninja 400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-500",
+      "name": "Kawasaki Ninja 500",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 24.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-zx-10r",
+      "name": "Kawasaki Ninja ZX-10R",
+      "type": "bike",
+      "segment": "superbike",
+      "fuelType": "petrol",
+      "mileage": 12,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-zx-4r",
+      "name": "Kawasaki Ninja ZX-4R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-zx-4rr",
+      "name": "Kawasaki Ninja ZX-4RR",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 23.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-ninja-zx-6r",
+      "name": "Kawasaki Ninja ZX-6R",
+      "type": "bike",
+      "segment": "superbike",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-w175-eco",
+      "name": "Kawasaki W175 Eco",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-z400",
+      "name": "Kawasaki Z400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kawasaki-z900-bs6",
+      "name": "Kawasaki Z900 BS6",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "keeway-k-light-250v-v-twin",
+      "name": "Keeway K-Light 250V V-Twin",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "keeway-sr125",
+      "name": "Keeway SR125",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "keeway-sr250-retro",
+      "name": "Keeway SR250 Retro",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-diesel-at",
+      "name": "Kia Carens 1.5L Diesel AT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "diesel",
+      "mileage": 18.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-diesel-imt",
+      "name": "Kia Carens 1.5L Diesel iMT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "diesel",
+      "mileage": 21,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-diesel-mt",
+      "name": "Kia Carens 1.5L Diesel MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "diesel",
+      "mileage": 21.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-na-mt",
+      "name": "Kia Carens 1.5L NA MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 15.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-turbo-dct",
+      "name": "Kia Carens 1.5L Turbo DCT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 16.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-carens-1-5l-turbo-imt",
+      "name": "Kia Carens 1.5L Turbo iMT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 16.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-diesel-at",
+      "name": "Kia Seltos 1.5L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 19.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-diesel-imt",
+      "name": "Kia Seltos 1.5L Diesel iMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 20.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-diesel-mt",
+      "name": "Kia Seltos 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 20.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-mpi-ivt",
+      "name": "Kia Seltos 1.5L MPi IVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-mpi-mt",
+      "name": "Kia Seltos 1.5L MPi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-turbo-dct",
+      "name": "Kia Seltos 1.5L Turbo DCT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.9,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-seltos-1-5l-turbo-imt",
+      "name": "Kia Seltos 1.5L Turbo iMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-0l-turbo-dct",
+      "name": "Kia Sonet 1.0L Turbo DCT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-0l-turbo-imt",
+      "name": "Kia Sonet 1.0L Turbo iMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-2l-mt",
+      "name": "Kia Sonet 1.2L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.83,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-5l-diesel-at",
+      "name": "Kia Sonet 1.5L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 18.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-5l-diesel-imt",
+      "name": "Kia Sonet 1.5L Diesel iMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 22.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "kia-sonet-1-5l-diesel-mt",
+      "name": "Kia Sonet 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 24.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-125-duke-gen-3",
+      "name": "KTM 125 Duke Gen 3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-200-duke-gen-3",
+      "name": "KTM 200 Duke Gen 3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-250-adventure",
+      "name": "KTM 250 Adventure",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 31.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-250-duke-gen-3",
+      "name": "KTM 250 Duke Gen 3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30.08,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-390-adventure-sw",
+      "name": "KTM 390 Adventure SW",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-390-adventure-x",
+      "name": "KTM 390 Adventure X",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-390-duke-gen-3",
+      "name": "KTM 390 Duke Gen 3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-890-duke-r",
+      "name": "KTM 890 Duke R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-rc-125",
+      "name": "KTM RC 125",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 41,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-rc-200",
+      "name": "KTM RC 200",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ktm-rc-390",
+      "name": "KTM RC 390",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-bolero-1-5l-mt",
+      "name": "Mahindra Bolero 1.5L MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "diesel",
+      "mileage": 16,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-bolero-neo-1-5l-mt",
+      "name": "Mahindra Bolero Neo 1.5L MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "diesel",
+      "mileage": 17.29,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-classic-2-2l-mt",
+      "name": "Mahindra Scorpio Classic 2.2L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.44,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-n-2-0l-petrol-at",
+      "name": "Mahindra Scorpio-N 2.0L Petrol AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-n-2-0l-petrol-mt",
+      "name": "Mahindra Scorpio-N 2.0L Petrol MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-n-2-2l-diesel-at",
+      "name": "Mahindra Scorpio-N 2.2L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-n-2-2l-diesel-mt",
+      "name": "Mahindra Scorpio-N 2.2L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-scorpio-n-4wd-diesel-at",
+      "name": "Mahindra Scorpio-N 4WD Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 13.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-1-5l-diesel-rwd-mt",
+      "name": "Mahindra Thar 1.5L Diesel RWD MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-2-0l-petrol-4wd-at",
+      "name": "Mahindra Thar 2.0L Petrol 4WD AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 13,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-2-0l-petrol-4wd-mt",
+      "name": "Mahindra Thar 2.0L Petrol 4WD MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-2-0l-petrol-rwd-at",
+      "name": "Mahindra Thar 2.0L Petrol RWD AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-2-2l-diesel-4wd-at",
+      "name": "Mahindra Thar 2.2L Diesel 4WD AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 13.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-2-2l-diesel-4wd-mt",
+      "name": "Mahindra Thar 2.2L Diesel 4WD MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-roxx-2-0l-petrol-at",
+      "name": "Mahindra Thar Roxx 2.0L Petrol AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-roxx-2-0l-petrol-mt",
+      "name": "Mahindra Thar Roxx 2.0L Petrol MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-roxx-2-2l-diesel-at",
+      "name": "Mahindra Thar Roxx 2.2L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-thar-roxx-2-2l-diesel-mt",
+      "name": "Mahindra Thar Roxx 2.2L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-2l-tcmpi-at",
+      "name": "Mahindra XUV3XO 1.2L TCMPi AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.96,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-2l-tcmpi-mt",
+      "name": "Mahindra XUV3XO 1.2L TCMPi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.89,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-2l-tgdi-at",
+      "name": "Mahindra XUV3XO 1.2L TGDi AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-2l-tgdi-mt",
+      "name": "Mahindra XUV3XO 1.2L TGDi MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-5l-diesel-amt",
+      "name": "Mahindra XUV3XO 1.5L Diesel AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 21.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv3xo-1-5l-diesel-mt",
+      "name": "Mahindra XUV3XO 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 20.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv400-ev",
+      "name": "Mahindra XUV400 EV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 15.8,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "mahindra-xuv700-2-0l-petrol-at",
+      "name": "Mahindra XUV700 2.0L Petrol AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv700-2-0l-petrol-mt",
+      "name": "Mahindra XUV700 2.0L Petrol MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 13,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv700-2-2l-diesel-at",
+      "name": "Mahindra XUV700 2.2L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv700-2-2l-diesel-mt",
+      "name": "Mahindra XUV700 2.2L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 16.57,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mahindra-xuv700-awd-diesel-at",
+      "name": "Mahindra XUV700 AWD Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-alto-k10-amt",
+      "name": "Maruti Alto K10 AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.9,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-alto-k10-icng",
+      "name": "Maruti Alto K10 iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 33.85,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-alto-k10-mt",
+      "name": "Maruti Alto K10 MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.39,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-baleno-amt",
+      "name": "Maruti Baleno AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.94,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-baleno-icng",
+      "name": "Maruti Baleno iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 30.61,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-baleno-mt",
+      "name": "Maruti Baleno MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-brezza-at",
+      "name": "Maruti Brezza AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.89,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-brezza-icng",
+      "name": "Maruti Brezza iCNG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 25.51,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-brezza-mt",
+      "name": "Maruti Brezza MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-celerio-amt",
+      "name": "Maruti Celerio AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 26.68,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-celerio-icng",
+      "name": "Maruti Celerio iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 35.2,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-celerio-mt",
+      "name": "Maruti Celerio MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 25.24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-ciaz-at",
+      "name": "Maruti Ciaz AT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.04,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-ciaz-mt",
+      "name": "Maruti Ciaz MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-dzire-amt",
+      "name": "Maruti Dzire AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25.71,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-dzire-icng",
+      "name": "Maruti Dzire iCNG",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "cng",
+      "mileage": 34,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-dzire-mt",
+      "name": "Maruti Dzire MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24.79,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-eeco-5-str-mt",
+      "name": "Maruti Eeco 5-Str MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 19.71,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-eeco-7-str-mt",
+      "name": "Maruti Eeco 7-Str MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 19.71,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-eeco-cng",
+      "name": "Maruti Eeco CNG",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "cng",
+      "mileage": 26.78,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-ertiga-at",
+      "name": "Maruti Ertiga AT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-ertiga-icng",
+      "name": "Maruti Ertiga iCNG",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "cng",
+      "mileage": 26.11,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-ertiga-mt",
+      "name": "Maruti Ertiga MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.51,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-fronx-1-0l-turbo-at",
+      "name": "Maruti Fronx 1.0L Turbo AT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 20.01,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-fronx-1-0l-turbo-mt",
+      "name": "Maruti Fronx 1.0L Turbo MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 21.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-fronx-1-2l-amt",
+      "name": "Maruti Fronx 1.2L AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.89,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-fronx-1-2l-mt",
+      "name": "Maruti Fronx 1.2L MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 21.79,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-fronx-icng",
+      "name": "Maruti Fronx iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 28.51,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-grand-vitara-awd-mt",
+      "name": "Maruti Grand Vitara AWD MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-grand-vitara-icng",
+      "name": "Maruti Grand Vitara iCNG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 26.6,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-grand-vitara-intelligent-hybrid-e-cvt",
+      "name": "Maruti Grand Vitara Intelligent Hybrid e-CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27.97,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-grand-vitara-smart-hybrid-at",
+      "name": "Maruti Grand Vitara Smart Hybrid AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20.58,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-grand-vitara-smart-hybrid-mt",
+      "name": "Maruti Grand Vitara Smart Hybrid MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21.11,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-inviato-alpha-e-cvt",
+      "name": "Maruti Inviato Alpha+ e-CVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23.24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-jimny-at",
+      "name": "Maruti Jimny AT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 16.39,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-jimny-mt",
+      "name": "Maruti Jimny MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 16.94,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-s-presso-amt",
+      "name": "Maruti S-Presso AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 25.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-s-presso-icng",
+      "name": "Maruti S-Presso iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 32.73,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-s-presso-mt",
+      "name": "Maruti S-Presso MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.12,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-swift-1-2l-z-series-amt",
+      "name": "Maruti Swift 1.2L Z-Series AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 25.75,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-swift-1-2l-z-series-mt",
+      "name": "Maruti Swift 1.2L Z-Series MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-swift-icng",
+      "name": "Maruti Swift iCNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 32.85,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-wagon-r-1-0l-amt",
+      "name": "Maruti Wagon R 1.0L AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 25.19,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-wagon-r-1-0l-cng",
+      "name": "Maruti Wagon R 1.0L CNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 34.05,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-wagon-r-1-0l-mt",
+      "name": "Maruti Wagon R 1.0L MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-wagon-r-1-2l-amt",
+      "name": "Maruti Wagon R 1.2L AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 24.43,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-wagon-r-1-2l-mt",
+      "name": "Maruti Wagon R 1.2L MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 23.56,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-xl6-at",
+      "name": "Maruti XL6 AT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.27,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "maruti-xl6-icng",
+      "name": "Maruti XL6 iCNG",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "cng",
+      "mileage": 26.32,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "maruti-xl6-mt",
+      "name": "Maruti XL6 MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.97,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-astor-1-3l-turbo-at",
+      "name": "MG Astor 1.3L Turbo AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 14.34,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-astor-1-5l-cvt",
+      "name": "MG Astor 1.5L CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 14.85,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-astor-1-5l-mt",
+      "name": "MG Astor 1.5L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 15.43,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-comet-ev",
+      "name": "MG Comet EV",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "ev",
+      "mileage": 12.8,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "mg-gloster-2-0l-turbo-at",
+      "name": "MG Gloster 2.0L Turbo AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 13.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-gloster-2-0l-twin-turbo-4wd-at",
+      "name": "MG Gloster 2.0L Twin-Turbo 4WD AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 12.04,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-hector-1-5l-turbo-cvt",
+      "name": "MG Hector 1.5L Turbo CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-hector-1-5l-turbo-mt",
+      "name": "MG Hector 1.5L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 13.79,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-hector-2-0l-diesel-mt",
+      "name": "MG Hector 2.0L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.58,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "mg-hector-plus-diesel-mt",
+      "name": "MG Hector Plus Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 15.58,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "nissan-magnite-1-0l-na-amt",
+      "name": "Nissan Magnite 1.0L NA AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "nissan-magnite-1-0l-na-mt",
+      "name": "Nissan Magnite 1.0L NA MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "nissan-magnite-1-0l-turbo-cvt",
+      "name": "Nissan Magnite 1.0L Turbo CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "nissan-magnite-1-0l-turbo-mt",
+      "name": "Nissan Magnite 1.0L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "ola-roadster-3-5kwh",
+      "name": "Ola Roadster 3.5kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 2.32,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-4-5kwh",
+      "name": "Ola Roadster 4.5kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 2.37,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-6kwh",
+      "name": "Ola Roadster 6kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 2.42,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-pro-16kwh",
+      "name": "Ola Roadster Pro 16kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 2.76,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-pro-8kwh",
+      "name": "Ola Roadster Pro 8kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 2.5,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-x-2-5kwh",
+      "name": "Ola Roadster X 2.5kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 1.25,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-x-3-5kwh",
+      "name": "Ola Roadster X 3.5kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 1.39,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "ola-roadster-x-4-5kwh",
+      "name": "Ola Roadster X 4.5kWh",
+      "type": "bike",
+      "segment": "electric-motorcycle",
+      "fuelType": "ev",
+      "mileage": 1.41,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "qj-motor-src-250",
+      "name": "QJ Motor SRC 250",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "qj-motor-src-500",
+      "name": "QJ Motor SRC 500",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "qj-motor-srk-400",
+      "name": "QJ Motor SRK 400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kiger-1-0l-na-amt",
+      "name": "Renault Kiger 1.0L NA AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kiger-1-0l-na-mt",
+      "name": "Renault Kiger 1.0L NA MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.17,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kiger-1-0l-turbo-cvt",
+      "name": "Renault Kiger 1.0L Turbo CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.71,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kiger-1-0l-turbo-mt",
+      "name": "Renault Kiger 1.0L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kwid-1-0l-amt",
+      "name": "Renault Kwid 1.0L AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-kwid-1-0l-mt",
+      "name": "Renault Kwid 1.0L MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 21.46,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-triber-amt",
+      "name": "Renault Triber AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "renault-triber-mt",
+      "name": "Renault Triber MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-bear-650",
+      "name": "Royal Enfield Bear 650",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-bullet-350-j-series",
+      "name": "Royal Enfield Bullet 350 J-Series",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-bullet-350-kickstart",
+      "name": "Royal Enfield Bullet 350 Kickstart",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 37,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-bullet-650-twin",
+      "name": "Royal Enfield Bullet 650 Twin",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-classic-350-chrome",
+      "name": "Royal Enfield Classic 350 Chrome",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-classic-350-heritage",
+      "name": "Royal Enfield Classic 350 Heritage",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-classic-350-signals",
+      "name": "Royal Enfield Classic 350 Signals",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-classic-650-twin",
+      "name": "Royal Enfield Classic 650 Twin",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-continental-gt-650-cast",
+      "name": "Royal Enfield Continental GT 650 Cast",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-guerrilla-450",
+      "name": "Royal Enfield Guerrilla 450",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 29.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-himalayan-450",
+      "name": "Royal Enfield Himalayan 450",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-hunter-350-metro",
+      "name": "Royal Enfield Hunter 350 Metro",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-hunter-350-retro",
+      "name": "Royal Enfield Hunter 350 Retro",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 36.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-interceptor-650-neo",
+      "name": "Royal Enfield Interceptor 650 Neo",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-meteor-350-fireball",
+      "name": "Royal Enfield Meteor 350 Fireball",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-meteor-350-stellar",
+      "name": "Royal Enfield Meteor 350 Stellar",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-meteor-350-supernova",
+      "name": "Royal Enfield Meteor 350 Supernova",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-scram-411",
+      "name": "Royal Enfield Scram 411",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-shotgun-650-custom",
+      "name": "Royal Enfield Shotgun 650 Custom",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "royal-enfield-super-meteor-650",
+      "name": "Royal Enfield Super Meteor 650",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kodiaq-2-0l-tsi-dsg-4x4",
+      "name": "Skoda Kodiaq 2.0L TSI DSG 4x4",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.78,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kushaq-1-0l-tsi-at",
+      "name": "Skoda Kushaq 1.0L TSI AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.09,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kushaq-1-0l-tsi-mt",
+      "name": "Skoda Kushaq 1.0L TSI MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.76,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kushaq-1-5l-tsi-dsg",
+      "name": "Skoda Kushaq 1.5L TSI DSG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kushaq-1-5l-tsi-mt",
+      "name": "Skoda Kushaq 1.5L TSI MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kylaq-1-0l-tsi-at",
+      "name": "Skoda Kylaq 1.0L TSI AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-kylaq-1-0l-tsi-mt",
+      "name": "Skoda Kylaq 1.0L TSI MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.9,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-slavia-1-0l-tsi-at",
+      "name": "Skoda Slavia 1.0L TSI AT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.73,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-slavia-1-0l-tsi-mt",
+      "name": "Skoda Slavia 1.0L TSI MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.32,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-slavia-1-5l-tsi-dsg",
+      "name": "Skoda Slavia 1.5L TSI DSG",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.36,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "skoda-slavia-1-5l-tsi-mt",
+      "name": "Skoda Slavia 1.5L TSI MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-gixxer-150-standard",
+      "name": "Suzuki Gixxer 150 Standard",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-gixxer-250-naked",
+      "name": "Suzuki Gixxer 250 Naked",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-gixxer-sf-150",
+      "name": "Suzuki Gixxer SF 150",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-gixxer-sf-250",
+      "name": "Suzuki Gixxer SF 250",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-gixxer-sf-250-flex-fuel",
+      "name": "Suzuki Gixxer SF 250 Flex-Fuel",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-hayabusa-gen-3",
+      "name": "Suzuki Hayabusa Gen 3",
+      "type": "bike",
+      "segment": "superbike",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-katana",
+      "name": "Suzuki Katana",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 15,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "suzuki-v-strom-sx-250",
+      "name": "Suzuki V-Strom SX 250",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-altroz-1-2l-dca-at",
+      "name": "Tata Altroz 1.2L DCA (AT)",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 18.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-altroz-1-2l-na-mt",
+      "name": "Tata Altroz 1.2L NA MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 19.33,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-altroz-1-2l-turbo-mt",
+      "name": "Tata Altroz 1.2L Turbo MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 18.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-altroz-1-5l-crdi-mt",
+      "name": "Tata Altroz 1.5L CRDi MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "diesel",
+      "mileage": 23.64,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-altroz-icng-mt",
+      "name": "Tata Altroz iCNG MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 26.2,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-altroz-racer-1-2l-turbo-mt",
+      "name": "Tata Altroz Racer 1.2L Turbo MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 17.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-curvv-1-2l-gdi-turbo-dca",
+      "name": "Tata Curvv 1.2L GDi Turbo DCA",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 16.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-curvv-1-2l-turbo-mt",
+      "name": "Tata Curvv 1.2L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-curvv-1-5l-diesel-dca",
+      "name": "Tata Curvv 1.5L Diesel DCA",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 21.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-curvv-1-5l-diesel-mt",
+      "name": "Tata Curvv 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 22.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-harrier-2-0l-diesel-at",
+      "name": "Tata Harrier 2.0L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-harrier-2-0l-diesel-mt",
+      "name": "Tata Harrier 2.0L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 16.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-1-2l-turbo-amt",
+      "name": "Tata Nexon 1.2L Turbo AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.18,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-1-2l-turbo-dca",
+      "name": "Tata Nexon 1.2L Turbo DCA",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.01,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-1-2l-turbo-mt",
+      "name": "Tata Nexon 1.2L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17.44,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-1-5l-diesel-amt",
+      "name": "Tata Nexon 1.5L Diesel AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 23.23,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-1-5l-diesel-mt",
+      "name": "Tata Nexon 1.5L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 24.08,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-nexon-ev",
+      "name": "Tata Nexon EV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 14.5,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "tata-nexon-icng-mt",
+      "name": "Tata Nexon iCNG MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 24,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-punch-1-2l-na-amt",
+      "name": "Tata Punch 1.2L NA AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-punch-1-2l-na-mt",
+      "name": "Tata Punch 1.2L NA MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20.09,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-punch-icng-amt",
+      "name": "Tata Punch iCNG AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 27.5,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-punch-icng-mt",
+      "name": "Tata Punch iCNG MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 26.99,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-safari-2-0l-diesel-at",
+      "name": "Tata Safari 2.0L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-safari-2-0l-diesel-mt",
+      "name": "Tata Safari 2.0L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 16.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-tiago-amt",
+      "name": "Tata Tiago AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 19.43,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-tiago-ev",
+      "name": "Tata Tiago EV",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "ev",
+      "mileage": 13,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "tata-tiago-icng-amt",
+      "name": "Tata Tiago iCNG AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 28.06,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-tiago-icng-mt",
+      "name": "Tata Tiago iCNG MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 26.49,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-tiago-mt",
+      "name": "Tata Tiago MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 19.01,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-tigor-amt",
+      "name": "Tata Tigor AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tata-tigor-icng-amt",
+      "name": "Tata Tigor iCNG AMT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "cng",
+      "mileage": 28.06,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-tigor-icng-mt",
+      "name": "Tata Tigor iCNG MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "cng",
+      "mileage": 26.49,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "tata-tigor-mt",
+      "name": "Tata Tigor MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-fortuner-2-7l-petrol-at",
+      "name": "Toyota Fortuner 2.7L Petrol AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 10.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-fortuner-2-7l-petrol-mt",
+      "name": "Toyota Fortuner 2.7L Petrol MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 10,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-fortuner-2-8l-diesel-at",
+      "name": "Toyota Fortuner 2.8L Diesel AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.2,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-fortuner-2-8l-diesel-mt",
+      "name": "Toyota Fortuner 2.8L Diesel MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 14.4,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-glanza-amt",
+      "name": "Toyota Glanza AMT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.94,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-glanza-cng",
+      "name": "Toyota Glanza CNG",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "cng",
+      "mileage": 30.61,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "toyota-glanza-mt",
+      "name": "Toyota Glanza MT",
+      "type": "car",
+      "segment": "hatchback",
+      "fuelType": "petrol",
+      "mileage": 22.35,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-hilux-2-8l-at",
+      "name": "Toyota Hilux 2.8L AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 12.6,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-hilux-2-8l-mt",
+      "name": "Toyota Hilux 2.8L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "diesel",
+      "mileage": 13.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-innova-crysta-2-4l-mt",
+      "name": "Toyota Innova Crysta 2.4L MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "diesel",
+      "mileage": 12.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-innova-hycross-2-0l-na-cvt",
+      "name": "Toyota Innova Hycross 2.0L NA CVT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 16.13,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-innova-hycross-hybrid-e-cvt",
+      "name": "Toyota Innova Hycross Hybrid e-CVT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 23.24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-rumion-at",
+      "name": "Toyota Rumion AT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.11,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-rumion-cng",
+      "name": "Toyota Rumion CNG",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "cng",
+      "mileage": 26.11,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "toyota-rumion-mt",
+      "name": "Toyota Rumion MT",
+      "type": "car",
+      "segment": "mpv",
+      "fuelType": "petrol",
+      "mileage": 20.51,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-hyryder-awd-mt",
+      "name": "Toyota Urban Cruiser Hyryder AWD MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-hyryder-cng",
+      "name": "Toyota Urban Cruiser Hyryder CNG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 26.6,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "toyota-urban-cruiser-hyryder-hybrid-e-cvt",
+      "name": "Toyota Urban Cruiser Hyryder Hybrid e-CVT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27.97,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-hyryder-neodrive-at",
+      "name": "Toyota Urban Cruiser Hyryder NeoDrive AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20.58,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-hyryder-neodrive-mt",
+      "name": "Toyota Urban Cruiser Hyryder NeoDrive MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21.11,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-taisor-1-0l-turbo-at",
+      "name": "Toyota Urban Cruiser Taisor 1.0L Turbo AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-taisor-1-0l-turbo-mt",
+      "name": "Toyota Urban Cruiser Taisor 1.0L Turbo MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-taisor-1-2l-amt",
+      "name": "Toyota Urban Cruiser Taisor 1.2L AMT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22.8,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-taisor-1-2l-mt",
+      "name": "Toyota Urban Cruiser Taisor 1.2L MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "toyota-urban-cruiser-taisor-cng",
+      "name": "Toyota Urban Cruiser Taisor CNG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "cng",
+      "mileage": 28.5,
+      "mileageUnit": "km/kg"
+    },
+    {
+      "slug": "toyota-vellfire-hybrid-e-cvt",
+      "name": "Toyota Vellfire Hybrid e-CVT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.28,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "triumph-bonneville-t100",
+      "name": "Triumph Bonneville T100",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "triumph-scrambler-400-x",
+      "name": "Triumph Scrambler 400 X",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "triumph-speed-400",
+      "name": "Triumph Speed 400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "triumph-speed-t4",
+      "name": "Triumph Speed T4",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 31.5,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "triumph-trident-660",
+      "name": "Triumph Trident 660",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 21.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rr-310",
+      "name": "TVS Apache RR 310",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rtr-160-2v",
+      "name": "TVS Apache RTR 160 2V",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 61,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rtr-160-4v-special-edition",
+      "name": "TVS Apache RTR 160 4V Special Edition",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rtr-180-2v",
+      "name": "TVS Apache RTR 180 2V",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rtr-200-4v-fi",
+      "name": "TVS Apache RTR 200 4V FI",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-apache-rtr-310",
+      "name": "TVS Apache RTR 310",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-iqube-st-3-4kwh",
+      "name": "TVS iQube ST 3.4kWh",
+      "type": "bike",
+      "segment": "electric-scooter",
+      "fuelType": "ev",
+      "mileage": 2.27,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "tvs-iqube-st-5-1kwh",
+      "name": "TVS iQube ST 5.1kWh",
+      "type": "bike",
+      "segment": "electric-scooter",
+      "fuelType": "ev",
+      "mileage": 2.41,
+      "mileageUnit": "kWh/100km"
+    },
+    {
+      "slug": "tvs-radeon",
+      "name": "TVS Radeon",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-raider-125-single-disc",
+      "name": "TVS Raider 125 Single Disc",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 56.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-raider-125-smartxonnect",
+      "name": "TVS Raider 125 SmartXonnect",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 56.7,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-ronin-ds",
+      "name": "TVS Ronin DS",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-ronin-td",
+      "name": "TVS Ronin TD",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-sport",
+      "name": "TVS Sport",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 70,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "tvs-star-city-plus",
+      "name": "TVS Star City Plus",
+      "type": "bike",
+      "segment": "commuter",
+      "fuelType": "petrol",
+      "mileage": 68,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-taigun-1-0l-tsi-at",
+      "name": "Volkswagen Taigun 1.0L TSI AT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.15,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-taigun-1-0l-tsi-mt",
+      "name": "Volkswagen Taigun 1.0L TSI MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.87,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-taigun-1-5l-tsi-dsg",
+      "name": "Volkswagen Taigun 1.5L TSI DSG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19.05,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-taigun-1-5l-tsi-mt",
+      "name": "Volkswagen Taigun 1.5L TSI MT",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-tiguan-2-0l-tsi-dsg",
+      "name": "Volkswagen Tiguan 2.0L TSI DSG",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 12.65,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-virtus-1-0l-tsi-at",
+      "name": "Volkswagen Virtus 1.0L TSI AT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-virtus-1-0l-tsi-mt",
+      "name": "Volkswagen Virtus 1.0L TSI MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20.08,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-virtus-1-5l-tsi-dsg",
+      "name": "Volkswagen Virtus 1.5L TSI DSG",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19.62,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "volkswagen-virtus-1-5l-tsi-mt",
+      "name": "Volkswagen Virtus 1.5L TSI MT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18.88,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-fz-blue-flex",
+      "name": "Yamaha FZ Blue Flex",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 44,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-fz-fi-v3",
+      "name": "Yamaha FZ FI V3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 49.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-fz-x",
+      "name": "Yamaha FZ-X",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-fzs-fi-v3",
+      "name": "Yamaha FZS FI V3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 49.3,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-fzs-fi-v4",
+      "name": "Yamaha FZS FI V4",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-mt-03",
+      "name": "Yamaha MT-03",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-mt-15-v2",
+      "name": "Yamaha MT 15 V2",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 47,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-r15-v4-standard",
+      "name": "Yamaha R15 V4 Standard",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-r15m",
+      "name": "Yamaha R15M",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-r15s-v3",
+      "name": "Yamaha R15S V3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yamaha-yzf-r3",
+      "name": "Yamaha YZF-R3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yezdi-adventure",
+      "name": "Yezdi Adventure",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 33.1,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yezdi-roadster",
+      "name": "Yezdi Roadster",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "km/l"
+    },
+    {
+      "slug": "yezdi-scrambler",
+      "name": "Yezdi Scrambler",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "km/l"
+    }
+  ]
+}

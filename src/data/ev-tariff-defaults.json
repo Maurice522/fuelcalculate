@@ -1,0 +1,28 @@
+{
+  "note": "Indicative residential electricity tariffs (INR/kWh) by state, used as an editable default for EV cost-per-km. Actual slab-based tariffs vary by consumption and discom.",
+  "defaultTariffPerKwh": 7.5,
+  "tariffByState": {
+    "Maharashtra": 8.2,
+    "Delhi": 6.5,
+    "Karnataka": 7.8,
+    "Tamil Nadu": 6.4,
+    "Telangana": 7.2,
+    "West Bengal": 8.0,
+    "Gujarat": 7.0,
+    "Rajasthan": 7.6,
+    "Uttar Pradesh": 6.8,
+    "Kerala": 7.4,
+    "Punjab": 6.0,
+    "Haryana": 6.9,
+    "Madhya Pradesh": 7.1,
+    "Bihar": 7.3,
+    "Chandigarh": 5.8,
+    "Andhra Pradesh": 7.5
+  },
+  "efficiencyPresetsKwhPer100Km": {
+    "electric-scooter": 3.2,
+    "electric-hatchback": 14.5,
+    "electric-sedan": 16.0,
+    "electric-suv": 18.5
+  }
+}

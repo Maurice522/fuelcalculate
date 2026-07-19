@@ -1,0 +1,20 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-07-19",
+	"compatibility_flags": ["global_fetch_strictly_public"],
+	"name": "fuelcalculate",
+	"main": "./src/worker.ts",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"kv_namespaces": [
+		{ "binding": "FUEL_PRICES", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }
+	],
+	"triggers": {
+		"crons": ["0 */4 * * *"]
+	}
+}

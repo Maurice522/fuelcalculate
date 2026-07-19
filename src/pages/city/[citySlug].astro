@@ -1,0 +1,80 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import CityPriceTable from "../../components/CityPriceTable.astro";
+import FuelCalculatorForm from "../../components/FuelCalculatorForm.astro";
+import SiteDataScript from "../../components/SiteDataScript.astro";
+import FindStationsLink from "../../components/FindStationsLink.astro";
+import { resolveCityPrices, findCity } from "../../lib/prices";
+import { env } from "cloudflare:workers";
+
+export const prerender = false;
+
+const { citySlug } = Astro.params;
+const city = citySlug ? findCity(citySlug) : null;
+
+if (!city) {
+  Astro.response.status = 404;
+}
+
+const resolved = city ? await resolveCityPrices(env, city.slug) : null;
+---
+
+<Layout
+  title={city ? `${city.name} fuel prices — Petrol, Diesel, CNG, E20 | Fuel Calculate` : "City not found | Fuel Calculate"}
+  description={city ? `Today's petrol, diesel, CNG and E20 price in ${city.name}, plus a trip cost calculator pre-filled for ${city.name}.` : undefined}
+>
+  <SiteDataScript />
+  {
+    !city || !resolved ? (
+      <section class="mx-auto max-w-[640px] px-md py-5xl text-center sm:px-lg">
+        <h1 class="text-display-lg">City not found.</h1>
+        <p class="mt-md text-body-lg text-body">
+          We don't have a seeded price entry for that city yet. Try the calculator with a custom price instead.
+        </p>
+        <a href="/" class="mt-lg inline-flex h-12 items-center rounded-sm bg-ink px-lg text-button-lg text-on-primary">
+          Go to the calculator
+        </a>
+      </section>
+    ) : (
+      <Fragment>
+        <Hero
+          eyebrow={city.state}
+          title={`Fuel prices in ${city.name}`}
+          lead="Updated automatically from public sources several times a day. Always confirm at the pump before you fill up."
+        />
+        <section class="mx-auto max-w-[720px] px-md pb-2xl sm:px-lg">
+          <CityPriceTable
+            cityName={city.name}
+            prices={resolved.prices}
+            source={resolved.source}
+            lastUpdated={resolved.lastUpdated}
+          />
+        </section>
+        <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+          <div class="mx-auto max-w-[720px]">
+            <h2 class="text-center text-display-md">Calculate your trip cost in {city.name}</h2>
+            <div class="mt-lg">
+              <FuelCalculatorForm
+                initial={{
+                  fuel: "petrol",
+                  city: city.slug,
+                  distance: "20",
+                  roundtrip: "",
+                  price: "",
+                  mileage: "",
+                  vehicle: "",
+                }}
+              />
+            </div>
+          </div>
+        </section>
+        <section class="border-t border-hairline px-md py-4xl sm:px-lg">
+          <div class="mx-auto max-w-[720px]">
+            <FindStationsLink cityName={city.name} />
+          </div>
+        </section>
+      </Fragment>
+    )
+  }
+</Layout>

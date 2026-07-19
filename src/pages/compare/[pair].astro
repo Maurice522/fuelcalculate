@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import SiteDataScript from "../../components/SiteDataScript.astro";
+import fuelTypesData from "../../data/fuel-types.json";
+import { COMPARE_PAIRS } from "../../data/comparePairs";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return COMPARE_PAIRS.map((pair) => ({ params: { pair: pair.slug }, props: { pair } }));
+}
+
+const { pair } = Astro.props;
+const labelFor = (id: string) => fuelTypesData.find((f) => f.id === id)?.label ?? id;
+const [a, b] = pair.fuels;
+const title = `${labelFor(a)} vs ${labelFor(b)} running cost`;
+---
+
+<Layout
+  title={`${title} — Fuel Calculate`}
+  description={`Compare ${labelFor(a)} and ${labelFor(b)} running cost for the same trip: cost per km, trip cost, and the exact ₹ and % savings.`}
+>
+  <SiteDataScript />
+  <Hero
+    eyebrow="Fuel comparison"
+    title={`${title}.`}
+    lead={`See exactly how much cheaper (or more expensive) ${labelFor(b)} is than ${labelFor(a)} for your own distance and vehicle — not a generic national average.`}
+  />
+  <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
+    <ComparisonTable initial={{ fuels: [...pair.fuels] }} />
+  </section>
+</Layout>
