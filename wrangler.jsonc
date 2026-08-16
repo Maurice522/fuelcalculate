@@ -6,13 +6,18 @@
 	"main": "./src/worker.ts",
 	"assets": {
 		"directory": "./dist",
-		"binding": "ASSETS"
+		"binding": "ASSETS",
+		// The homepage ("/") is the one page that needs to run per-request (see
+		// src/middleware.ts's one-time geo-based country redirect) rather than being
+		// served as a static file straight from the assets binding — every other route
+		// stays a fast static asset.
+		"run_worker_first": ["/"]
 	},
 	"observability": {
 		"enabled": true
 	},
 	"kv_namespaces": [
-		{ "binding": "FUEL_PRICES", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }
+		{ "binding": "FUEL_PRICES", "id": "3ef91f174e16481bb3346ebabce403f2" }
 	],
 	"triggers": {
 		"crons": ["0 */4 * * *"]

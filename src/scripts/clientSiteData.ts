@@ -30,7 +30,25 @@ export interface EvTariffData {
   efficiencyPresetsKwhPer100Km: Record<string, number>;
 }
 
+import type { CountryCode } from "../lib/countries";
+
+/** Mirrors CountryConfig from src/lib/countries.ts — duplicated here (rather than
+ * imported wholesale) because this file ships to the browser and that module is also
+ * used server-side; keeping the client-facing shape separate avoids ever accidentally
+ * bundling server-only code into the client script. The `code` type import above is
+ * type-only (erased at build time), so it carries no such risk. */
+export interface ClientCountryConfig {
+  code: CountryCode;
+  name: string;
+  pathPrefix: string;
+  flagEmoji: string;
+  currency: { code: string; symbol: string; locale: string };
+  distanceUnit: "km" | "mi";
+  volumeUnit: "litre" | "gallon";
+}
+
 export interface SiteData {
+  country: ClientCountryConfig;
   cities: CityRecord[];
   vehicles: VehicleRecord[];
   fuelTypes: FuelTypeRecord[];
@@ -67,10 +85,10 @@ export function fetchCityPrices(citySlug: string): Promise<CityPriceApiResponse>
   return pending;
 }
 
-export function formatInr(value: number): string {
-  return new Intl.NumberFormat("en-IN", {
+export function formatCurrency(value: number, country: Pick<ClientCountryConfig, "currency">): string {
+  return new Intl.NumberFormat(country.currency.locale, {
     style: "currency",
-    currency: "INR",
+    currency: country.currency.code,
     maximumFractionDigits: 2,
   }).format(value);
 }

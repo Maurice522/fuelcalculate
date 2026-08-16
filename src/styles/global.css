@@ -75,6 +75,88 @@
   --radius-pill: 100px;
 }
 
+/* ---- Dark theme — every color utility (bg-ink, text-mute, border-hairline, ...) compiles
+   to `var(--color-*)`, never a literal hex, so redefining the same custom property names
+   here is enough to retheme the whole site with no `dark:` variant classes anywhere.
+   Two triggers: the visitor's OS preference (media query, default when no explicit choice
+   is stored), and an explicit `data-theme` attribute set by the toggle in Nav.astro /
+   the FOUC-prevention script in Layout.astro, which always wins over the OS preference. ---- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-ink: #f2f2f2;
+    --color-primary: #f2f2f2;
+    --color-on-primary: #171717;
+    --color-body: #b8b8b8;
+    --color-mute: #a3a3a3;
+    --color-hairline: #2e2e2e;
+    --color-hairline-strong: #4a4a4a;
+    --color-canvas: #0a0a0a;
+    --color-canvas-soft: #141414;
+    --color-canvas-soft-2: #1c1c1c;
+
+    --color-link: #3b9eff;
+    --color-link-deep: #2f7fe0;
+    --color-link-bg-soft: #0f2a4d;
+
+    --color-success: #3b9eff;
+    --color-error: #ff4d4d;
+    --color-error-soft: #4a1414;
+    --color-error-deep: #ff6b6b;
+    --color-good: #34d16f;
+    --color-good-soft: #103a20;
+    --color-good-deep: #4ade80;
+    --color-warning: #ffb84d;
+    --color-warning-soft: #4a3410;
+    --color-warning-deep: #ffbf69;
+
+    --color-violet: #a855f7;
+    --color-violet-soft: #2e1f47;
+    --color-violet-deep: #c084fc;
+    --color-cyan: #6ee7d5;
+    --color-cyan-soft: #113d34;
+    --color-cyan-deep: #5eead4;
+    --color-highlight-pink: #ff4da8;
+    --color-highlight-magenta: #f472b6;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-ink: #f2f2f2;
+  --color-primary: #f2f2f2;
+  --color-on-primary: #171717;
+  --color-body: #b8b8b8;
+  --color-mute: #a3a3a3;
+  --color-hairline: #2e2e2e;
+  --color-hairline-strong: #4a4a4a;
+  --color-canvas: #0a0a0a;
+  --color-canvas-soft: #141414;
+  --color-canvas-soft-2: #1c1c1c;
+
+  --color-link: #3b9eff;
+  --color-link-deep: #2f7fe0;
+  --color-link-bg-soft: #0f2a4d;
+
+  --color-success: #3b9eff;
+  --color-error: #ff4d4d;
+  --color-error-soft: #4a1414;
+  --color-error-deep: #ff6b6b;
+  --color-good: #34d16f;
+  --color-good-soft: #103a20;
+  --color-good-deep: #4ade80;
+  --color-warning: #ffb84d;
+  --color-warning-soft: #4a3410;
+  --color-warning-deep: #ffbf69;
+
+  --color-violet: #a855f7;
+  --color-violet-soft: #2e1f47;
+  --color-violet-deep: #c084fc;
+  --color-cyan: #6ee7d5;
+  --color-cyan-soft: #113d34;
+  --color-cyan-deep: #5eead4;
+  --color-highlight-pink: #ff4da8;
+  --color-highlight-magenta: #f472b6;
+}
+
 /* ---- Typography scale — each bundles family + size + weight + line-height + tracking
    as one class, per DESIGN.md's "600-weight ceiling / aggressive negative tracking is
    part of the voice" rule. Never combine these with font-bold or a different text-* size. ---- */
@@ -209,6 +291,49 @@
     radial-gradient(at 55% 45%, var(--color-gradient-ship-start) 0px, transparent 55%),
     radial-gradient(at 65% 92%, var(--color-gradient-ship-end) 0px, transparent 45%);
   filter: blur(70px) saturate(1.3);
+}
+
+/* ---- Checkbox — replaces the bare native control (which renders as a tiny,
+   inconsistent square across browsers) with one that matches this system's rounded/
+   hairline/shadow language. Built on appearance:none + a drawn checkmark rather than
+   an accent-color tint, so it looks identical in every browser and in dark mode. ---- */
+.checkbox-input {
+  -webkit-appearance: none;
+  appearance: none;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border-radius: var(--radius-xs);
+  border: 1.5px solid var(--color-hairline-strong);
+  background-color: var(--color-canvas);
+  cursor: pointer;
+  position: relative;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+.checkbox-input:hover {
+  border-color: var(--color-ink);
+}
+.checkbox-input:checked {
+  background-color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+.checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--color-on-primary);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkbox-input:focus-visible {
+  outline: 2px solid var(--color-link);
+  outline-offset: 2px;
 }
 
 html,

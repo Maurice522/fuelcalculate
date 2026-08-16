@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const title = "Page Not Found | Fuel Calculate";
+const description = "This page doesn't exist. Head back to the fuel calculator or compare fuel costs instead.";
+---
+
+<Layout title={title} description={description}>
+  <Hero eyebrow="404" title="This page doesn't exist.">
+    <div class="mt-lg flex flex-wrap items-center justify-center gap-sm">
+      <a
+        href="/"
+        class="inline-flex h-11 items-center rounded-sm bg-ink px-lg text-button-md text-on-primary"
+      >
+        Go to the calculator
+      </a>
+      <a
+        href="/compare"
+        class="inline-flex h-11 items-center rounded-sm border border-hairline px-lg text-button-md text-ink"
+      >
+        Compare fuels
+      </a>
+    </div>
+  </Hero>
+</Layout>

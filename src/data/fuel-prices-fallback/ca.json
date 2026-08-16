@@ -1,0 +1,9 @@
+{
+  "note": "Unverified estimate — there is no live province-level price crawler for Canada (see the vehicles/ca.json note for the same caveat on vehicle data), so this is the only price source for Canadian calculations: a single flat national-average indicative price (CAD), not updated automatically. Always overridable by the user.",
+  "lastUpdated": "2026-07-01T00:00:00Z",
+  "prices": {
+    "petrol": 1.55,
+    "diesel": 1.65,
+    "ev": null
+  }
+}

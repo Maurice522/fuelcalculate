@@ -1,0 +1,26 @@
+[
+  {
+    "id": "petrol",
+    "label": "Regular Gasoline",
+    "shortLabel": "Gas",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "diesel",
+    "label": "Diesel",
+    "shortLabel": "Diesel",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "ev",
+    "label": "Electric (EV)",
+    "shortLabel": "EV",
+    "unit": "kWh",
+    "unitLabel": "kWh/100km",
+    "category": "electric"
+  }
+]

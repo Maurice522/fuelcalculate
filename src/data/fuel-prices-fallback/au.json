@@ -1,0 +1,10 @@
+{
+  "note": "Unverified estimate — there is no live per-state price crawler for Australia (see the vehicles/au.json note for the same caveat on vehicle data), so this is the only price source for Australian calculations: a single flat national-average indicative price (AUD), not updated automatically. Always overridable by the user.",
+  "lastUpdated": "2026-07-01T00:00:00Z",
+  "prices": {
+    "petrol": 1.85,
+    "diesel": 1.90,
+    "lpg": 0.95,
+    "ev": null
+  }
+}

@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const title = "Contact Us | Fuel Calculate";
+const description =
+  "Get in touch with Fuel Calculate — questions, feedback, or a mileage or fuel-price figure that looks off.";
+---
+
+<Layout title={title} description={description}>
+  <Hero
+    eyebrow="Get in touch"
+    title="Contact us."
+    lead="Found a mileage or price figure that looks off, have feedback, or a general question? Send us a message below."
+  />
+
+  <section class="mx-auto max-w-[640px] px-md pb-5xl sm:px-lg">
+    <div class="rounded-lg bg-canvas p-lg shadow-level-2 sm:p-xl">
+      <form data-contact-form class="flex flex-col gap-md">
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Your name <span class="font-normal text-mute">(optional)</span></span>
+          <input
+            type="text"
+            name="name"
+            data-field="name"
+            class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
+          />
+        </label>
+
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Subject</span>
+          <input
+            type="text"
+            name="subject"
+            data-field="subject"
+            required
+            placeholder="e.g. Mileage figure looks off for Maruti Swift"
+            class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
+          />
+        </label>
+
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Message</span>
+          <textarea
+            name="message"
+            data-field="message"
+            required
+            rows="5"
+            class="rounded-sm border border-hairline bg-canvas px-sm py-xs text-body-sm text-ink"
+          ></textarea>
+        </label>
+
+        <button
+          type="submit"
+          class="h-11 rounded-sm bg-ink text-button-md text-on-primary"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <p class="mt-lg text-center text-body-sm text-body">
+      See also our <a href="/privacy-policy" class="text-link underline">Privacy Policy</a>
+      and <a href="/terms" class="text-link underline">Terms &amp; Conditions</a>.
+    </p>
+  </section>
+
+  <div
+    data-contact-popup
+    hidden
+    class="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 px-md"
+  >
+    <div class="w-full max-w-[360px] rounded-lg bg-canvas p-xl text-center shadow-level-2">
+      <h2 class="text-display-sm text-ink">Thank you for contacting us.</h2>
+      <button
+        type="button"
+        data-contact-popup-close
+        class="mt-lg inline-flex h-11 w-full items-center justify-center rounded-sm bg-ink text-button-md text-on-primary"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script is:inline>
+    const form = document.querySelector("[data-contact-form]");
+    const popup = document.querySelector("[data-contact-popup]");
+    const popupClose = document.querySelector("[data-contact-popup-close]");
+
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      popup.hidden = false;
+    });
+
+    popupClose?.addEventListener("click", () => {
+      popup.hidden = true;
+      form.reset();
+    });
+  </script>
+</Layout>

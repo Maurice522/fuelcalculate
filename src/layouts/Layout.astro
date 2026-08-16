@@ -2,16 +2,85 @@
 import "../styles/global.css";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { SUPPORTED_COUNTRIES, getCountryFromPathname, type CountryCode } from "../lib/countries";
+import { COMPARE_PAIRS_BY_COUNTRY } from "../data/comparePairs";
 
 interface Props {
   title?: string;
   description?: string;
+  /** Path (relative to site root) or absolute URL to the social-share image. */
+  ogImage?: string;
+  ogType?: "website" | "article";
+  /** Each item becomes its own <script type="application/ld+json"> block — pass an
+   * array (e.g. a WebApplication schema alongside a separate FAQPage schema) or a
+   * single object. */
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
-  title = "Fuel Calculate — Petrol, Diesel, CNG, E20 & EV cost calculator",
-  description = "Calculate your trip and monthly fuel cost, compare Petrol, Diesel, CNG, E20 and EV running costs by city, and see how much you'd save switching.",
+  title = "Fuel Calculator — Trip Cost, Petrol, Diesel, CNG, E20 & EV Calculator | Fuel Calculate",
+  description = "Free fuel calculator for cars and bikes. Work out your trip fuel cost in km, compare Petrol vs E20, Diesel, CNG and EV running costs by city, and plan a monthly fuel budget.",
+  ogImage = "/web-app-manifest-512x512.png",
+  ogType = "website",
+  structuredData,
 } = Astro.props;
+
+// Canonical excludes query strings — a calculator prefilled via ?fuel=petrol&price=105
+// is the same page/content as the bare URL, just pre-filled, so query variants
+// shouldn't be treated as distinct pages for indexing.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+// Google's logo rich result / Knowledge Panel / Search Console "Logos" report all key
+// off Organization.logo specifically — favicon and og:image alone don't feed it. Emitted
+// on every page (not just the homepage) so it's picked up regardless of Google's crawl
+// entry point.
+const organizationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Fuel Calculate",
+  url: Astro.site?.toString(),
+  logo: new URL("/web-app-manifest-512x512.png", Astro.site).toString(),
+};
+
+const structuredDataBlocks = [
+  organizationStructuredData,
+  ...(structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : []),
+];
+
+// hreflang alternates — only for routes that actually exist in the same shape across
+// every country (home, /compare, /faq, /how-it-works, and /compare/[pair] where that
+// pair exists for the target country). Global single-URL pages (about, contact, legal,
+// India-only city pages) get none — self-canonical only, since there's no equivalent
+// URL to point to in another country.
+const currentCountry = getCountryFromPathname(Astro.url.pathname);
+const restPath = currentCountry.pathPrefix
+  ? Astro.url.pathname.slice(currentCountry.pathPrefix.length) || "/"
+  : Astro.url.pathname;
+
+const isSharedRoute =
+  restPath === "/" ||
+  restPath === "/compare" ||
+  restPath === "/compare/" ||
+  restPath === "/faq" ||
+  restPath === "/faq/" ||
+  restPath === "/how-it-works" ||
+  restPath === "/how-it-works/";
+const comparePairMatch = restPath.match(/^\/compare\/([a-z0-9-]+)\/?$/);
+
+type HreflangAlternate = { countryCode: CountryCode; hreflang: string; url: string };
+
+const hreflangAlternates: HreflangAlternate[] =
+  isSharedRoute || comparePairMatch
+    ? SUPPORTED_COUNTRIES.filter(
+        (c) => !comparePairMatch || COMPARE_PAIRS_BY_COUNTRY[c.code].some((p) => p.slug === comparePairMatch[1])
+      ).map((c) => ({
+        countryCode: c.code,
+        hreflang: c.currency.locale,
+        url: new URL(`${c.pathPrefix}${restPath}`, Astro.site).toString(),
+      }))
+    : [];
+const xDefaultUrl = hreflangAlternates.find((a) => a.countryCode === "IN")?.url;
 ---
 
 <!doctype html>
@@ -19,6 +88,26 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async is:inline src="https://www.googletagmanager.com/gtag/js?id=G-GG9C898LH6"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-GG9C898LH6");
+    </script>
+
+    <!-- Google AdSense -->
+    <script
+      async
+      is:inline
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7283129222281584"
+      crossorigin="anonymous"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
@@ -28,8 +117,53 @@ const {
     <meta name="apple-mobile-web-app-title" content="Fuel Cal" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    {
+      hreflangAlternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.url} />
+      ))
+    }
+    {xDefaultUrl && <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Fuel Calculate" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content="Fuel Calculate — fuel cost calculator" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    {
+      structuredDataBlocks.map((block) => (
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(block)} />
+      ))
+    }
+
+    <script is:inline>
+      // Blocking, runs before first paint — reads the same "fuelcalculate:theme" key
+      // ThemeToggle.astro writes to, and sets data-theme before any CSS has a chance
+      // to paint the wrong (default light) colors. Absent value = defer to the
+      // visitor's OS-level prefers-color-scheme, handled purely in CSS.
+      try {
+        var stored = localStorage.getItem("fuelcalculate:theme");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.setAttribute("data-theme", stored);
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body class="flex min-h-full flex-col bg-canvas-soft text-ink">
     <Nav />

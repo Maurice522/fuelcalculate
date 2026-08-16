@@ -1,0 +1,12 @@
+[
+  { "slug": "toronto", "name": "Toronto", "region": "Ontario" },
+  { "slug": "montreal", "name": "Montreal", "region": "Quebec" },
+  { "slug": "vancouver", "name": "Vancouver", "region": "British Columbia" },
+  { "slug": "calgary", "name": "Calgary", "region": "Alberta" },
+  { "slug": "edmonton", "name": "Edmonton", "region": "Alberta" },
+  { "slug": "ottawa", "name": "Ottawa", "region": "Ontario" },
+  { "slug": "winnipeg", "name": "Winnipeg", "region": "Manitoba" },
+  { "slug": "quebec-city", "name": "Quebec City", "region": "Quebec" },
+  { "slug": "hamilton", "name": "Hamilton", "region": "Ontario" },
+  { "slug": "halifax", "name": "Halifax", "region": "Nova Scotia" }
+]

@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+// 500.astro is always server-rendered (never prerendered) — it's invoked by Astro's
+// own error handling when a request that's actually going through the Worker throws.
+export const prerender = false;
+
+const title = "Something Went Wrong | Fuel Calculate";
+const description = "Something went wrong on our end. Please try again in a moment.";
+---
+
+<Layout title={title} description={description}>
+  <Hero eyebrow="500" title="Something went wrong on our end.">
+    <p class="mx-auto mt-md max-w-[480px] text-body-md text-body">
+      That's on us, not you — please try again in a moment.
+    </p>
+    <div class="mt-lg flex flex-wrap items-center justify-center gap-sm">
+      <a
+        href="/"
+        class="inline-flex h-11 items-center rounded-sm bg-ink px-lg text-button-md text-on-primary"
+      >
+        Go to the calculator
+      </a>
+      <a
+        href="/contact"
+        class="inline-flex h-11 items-center rounded-sm border border-hairline px-lg text-button-md text-ink"
+      >
+        Report the problem
+      </a>
+    </div>
+  </Hero>
+</Layout>

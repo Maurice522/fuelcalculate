@@ -1,29 +1,43 @@
 ---
+import { getCountryFromPathname } from "../lib/countries";
+import { COMPARE_PAIRS_BY_COUNTRY } from "../data/comparePairs";
+
+const country = getCountryFromPathname(Astro.url.pathname);
+const prefix = country.pathPrefix;
+const pairs = COMPARE_PAIRS_BY_COUNTRY[country.code].slice(0, 4);
+
+function pairLabel(fuels: [string, string]): string {
+  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  return `${cap(fuels[0])} vs ${fuels[1].toUpperCase() === fuels[1] ? fuels[1] : cap(fuels[1])}`;
+}
+
 const columns = [
   {
     heading: "Calculator",
     links: [
-      { href: "/", label: "Trip cost calculator" },
-      { href: "/compare", label: "Compare fuels" },
+      { href: `${prefix}/`, label: "Trip cost calculator" },
+      { href: `${prefix}/compare`, label: "Compare fuels" },
     ],
   },
   {
     heading: "Compare",
-    links: [
-      { href: "/compare/petrol-vs-cng", label: "Petrol vs CNG" },
-      { href: "/compare/petrol-vs-e20", label: "Petrol vs E20" },
-      { href: "/compare/petrol-vs-ev", label: "Petrol vs EV" },
-      { href: "/compare/petrol-vs-diesel", label: "Petrol vs Diesel" },
-    ],
+    links: pairs.map((p) => ({ href: `${prefix}/compare/${p.slug}`, label: pairLabel(p.fuels) })),
   },
   {
     heading: "Resources",
     links: [
-      { href: "/how-it-works", label: "How the math works" },
-      { href: "/faq", label: "FAQ" },
+      { href: `${prefix}/how-it-works`, label: "How the math works" },
+      { href: `${prefix}/faq`, label: "FAQ" },
+      { href: "/about", label: "About us" },
+      { href: "/contact", label: "Contact us" },
     ],
   },
 ];
+
+const disclaimer =
+  country.code === "IN"
+    ? "City fuel prices are refreshed automatically from public sources and are indicative — always confirm at the pump. Vehicle mileage figures are ARAI-claimed averages; real-world mileage varies."
+    : `Fuel prices for ${country.name} are an indicative national average, not a live feed — always confirm at the pump. Vehicle mileage figures are representative estimates; real-world mileage varies.`;
 ---
 
 <footer class="border-t border-hairline bg-canvas px-md py-4xl sm:px-lg">
@@ -47,16 +61,18 @@ const columns = [
     <div>
       <p class="text-caption-mono uppercase text-mute">Fuel Calculate</p>
       <p class="mt-sm text-body-sm text-body">
-        City fuel prices are refreshed automatically from public sources and are
-        indicative — always confirm at the pump. Vehicle mileage figures are
-        ARAI-claimed averages; real-world mileage varies.
+        {disclaimer}
       </p>
     </div>
   </div>
 
-  <div class="mx-auto mt-3xl max-w-[1400px] border-t border-hairline pt-lg">
+  <div class="mx-auto mt-3xl flex max-w-[1400px] flex-wrap items-center justify-between gap-sm border-t border-hairline pt-lg">
     <p class="text-caption text-mute">
       © {new Date().getFullYear()} Fuel Calculate — fuelcalculate.com
     </p>
+    <div class="flex flex-wrap items-center gap-md">
+      <a href="/privacy-policy" class="text-caption text-mute hover:text-ink">Privacy Policy</a>
+      <a href="/terms" class="text-caption text-mute hover:text-ink">Terms &amp; Conditions</a>
+    </div>
   </div>
 </footer>

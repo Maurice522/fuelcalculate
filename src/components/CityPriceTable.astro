@@ -1,6 +1,9 @@
 ---
-import fuelTypesData from "../data/fuel-types.json";
+import fuelTypesData from "../data/fuel-types/in.json";
 import type { CityPrices } from "../lib/prices";
+import { getCountry } from "../lib/countries";
+
+const currencySymbol = getCountry("IN").currency.symbol;
 
 interface Props {
   cityName: string;
@@ -51,7 +54,7 @@ const pricesByFuelId = prices as unknown as Record<string, number | null>;
               <tr class="border-t border-hairline">
                 <td class="p-sm text-body-sm-strong text-ink">{f.label}</td>
                 <td class="p-sm text-body-sm text-body">
-                  {price != null ? `₹${price.toFixed(2)} / ${f.unit}` : "Not available"}
+                  {price != null ? `${currencySymbol}${price.toFixed(2)} / ${f.unit}` : "Not available"}
                 </td>
               </tr>
             );

@@ -5,6 +5,13 @@ import FuelCalculatorForm from "../components/FuelCalculatorForm.astro";
 import MonthlyProjection from "../components/MonthlyProjection.astro";
 import SiteDataScript from "../components/SiteDataScript.astro";
 import FindStationsLink from "../components/FindStationsLink.astro";
+import { FAQS_BY_COUNTRY } from "../data/faqs";
+
+// Unlike every other page in this project, "/" needs to run per-request (not as a
+// static file) so src/middleware.ts's one-time geo-based country redirect can execute —
+// see wrangler.jsonc's `run_worker_first: ["/"]`, which is what actually routes this
+// one path to the Worker instead of straight to the static assets binding.
+export const prerender = false;
 
 const params = Astro.url.searchParams;
 const initial = {
@@ -16,15 +23,51 @@ const initial = {
   distance: params.get("distance") ?? "20",
   roundtrip: params.get("roundtrip") ?? "",
 };
+
+const title = "Fuel Calculator — Trip Cost, Petrol vs E20, Diesel & EV Calculator | Fuel Calculate";
+const description =
+  "Free fuel calculator for cars and bikes. Work out your trip fuel cost in km, compare petrol vs E20, diesel, CNG and EV prices by city, and plan a monthly fuel budget instantly.";
+
+const webAppStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Fuel Calculate",
+  alternateName: "Fuel Calculator",
+  url: "https://fuelcalculate.com/",
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any (web-based)",
+  description,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+  featureList: [
+    "Trip fuel cost calculator for car and bike",
+    "Petrol vs E20 fuel efficiency comparison",
+    "Diesel, CNG and EV running cost calculator",
+    "Fuel compare tool for two vehicles side by side",
+    "Monthly and yearly fuel budget projection",
+    "Live city fuel prices across India",
+  ],
+};
+
+const faqs = FAQS_BY_COUNTRY.IN;
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 ---
 
-<Layout>
+<Layout title={title} description={description} structuredData={[webAppStructuredData, faqStructuredData]}>
   <SiteDataScript />
 
   <Hero
     eyebrow="Petrol · Diesel · CNG · E20 · EV"
-    title="Know exactly what your trip costs."
-    lead="Pick a city or type your own price, choose your car or bike, and watch your trip cost update instantly — then compare it against every other fuel."
+    title="Fuel Calculator — know exactly what your trip costs."
+    lead="A free fuel calculator for cars and bikes. Pick a city or type your own price, choose your vehicle, and watch your trip fuel cost update instantly — then compare petrol vs E20, diesel, CNG and EV."
   />
 
   <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
@@ -63,6 +106,120 @@ const initial = {
   <section class="border-t border-hairline px-md py-4xl sm:px-lg">
     <div class="mx-auto max-w-[720px]">
       <FindStationsLink cityName={initial.city || undefined} />
+    </div>
+  </section>
+
+  <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+    <div class="mx-auto flex max-w-[720px] flex-col gap-2xl">
+      <div>
+        <h2 class="text-display-md">A fuel calculator built for real trips, not rough guesses</h2>
+        <p class="mt-md text-body-md text-body">
+          Most petrol price calculators stop at price divided by mileage. This fuel
+          calculator goes further: pick your city so today's local pump price fills in
+          automatically, choose your exact car or bike from a database of hundreds of
+          models, or type in your own mileage, and get a trip fuel cost that reflects
+          your actual vehicle instead of a national average. Whether you're planning a
+          single weekend drive or checking what your daily commute really costs, it
+          works as a quick trip fuel calculator for one-off journeys and just as well
+          as an everyday fuel calculator — cost tracked accurately, trip after trip.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-display-sm">Built for cars and bikes, measured in km</h3>
+        <p class="mt-sm text-body-md text-body">
+          This is a fuel calculator for car owners and a fuel calculator for bike
+          riders alike. The vehicle list spans everything from seventy km per litre
+          commuter bikes to full-size SUVs, and every result is worked out in km per
+          litre, or kWh per 100 km for EVs — the unit most drivers actually think in.
+          Enter your one-way distance, tick round trip if you need it, and the
+          calculator handles the rest: fuel calculator km math worked out to two
+          decimal places, not a rounded-off estimate.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-display-sm">Petrol, diesel, CNG, E20 and EV — all in one place</h3>
+        <p class="mt-sm text-body-md text-body">
+          Most fuel calculators only handle petrol. This one covers diesel too, so if
+          you drive a diesel hatchback, a diesel SUV, or anything closer to a truck
+          fuel calculator use case, you get the same city-price auto-fill and per-km
+          breakdown a dedicated diesel fuel calculator should give you. If your exact
+          model isn't in the list, enter your own manufacturer-quoted or observed
+          mileage manually and the math works exactly the same way.
+        </p>
+        <p class="mt-sm text-body-md text-body">
+          Then there's E20. As E20 rolls out at pumps across India, whether it
+          actually costs less to run per kilometre is a real question, not a
+          hypothetical one. This tool is built to answer it directly: an E20 fuel
+          calculator that estimates E20 mileage from your vehicle's petrol figure
+          using the roughly six percent efficiency drop commonly cited by ARAI and
+          SIAM, so comparing petrol vs E20 gives you a genuine per-km number instead
+          of a guess. It behaves like a dedicated E20 fuel efficiency calculator for
+          that one question, built into the same tool as everything else.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-display-sm">A fuel compare tool, not just a single-fuel calculator</h3>
+        <p class="mt-sm text-body-md text-body">
+          Beyond one fuel at a time, the <a href="/compare" class="text-link underline">comparison tool</a> runs
+          two calculators side by side — same distance, same vehicle, different fuel —
+          and shows the exact rupee and percentage difference. Use it as a
+          straightforward fuel compare tool for petrol vs diesel, as a car fuel
+          compare between two different vehicles' running costs, or specifically to
+          compare petrol vs E20 for your own car. Every result is colour-coded, green
+          for cheaper, red for pricier, so the answer to any fuel compare cars, bikes,
+          or prices question is obvious at a glance rather than something you have to
+          work out by hand.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-display-sm">More than a one-time trip fuel calculator</h3>
+        <p class="mt-sm text-body-md text-body">
+          You don't need an AAA fuel calculator membership or a dedicated app to get a
+          real fuel cost estimate — this one is free, works in any browser, and
+          remembers your last inputs so it's just as fast the second time you use it.
+          Beyond a single trip, the monthly projection tool turns your daily commute
+          into a real monthly and yearly fuel budget, based on how many days you
+          actually drive rather than a flat thirty-day assumption. Whether you're
+          comparing two vehicles before buying, checking whether switching to E20 is
+          worth it, or simply want to know what your commute really costs every month,
+          it's built to answer with a real number, not a rough guess.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-hairline px-md py-4xl sm:px-lg">
+    <div class="mx-auto max-w-[960px]">
+      <h2 class="text-center text-display-lg">Fuel calculator FAQs.</h2>
+      <p class="mx-auto mt-md max-w-[640px] text-center text-body-lg text-body">
+        Straight answers to the fuel cost, E20, comparison and monthly budget
+        questions people ask most.
+      </p>
+      <div class="mt-xl flex flex-col gap-sm">
+        {
+          faqs.map((item) => (
+            <details class="group rounded-lg bg-canvas p-lg shadow-level-2">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-md text-body-md-strong text-ink [&::-webkit-details-marker]:hidden">
+                {item.q}
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 shrink-0 text-mute transition-transform duration-200 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <p class="mt-sm hidden text-body-sm text-body group-open:block">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
     </div>
   </section>
 </Layout>

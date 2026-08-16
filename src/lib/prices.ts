@@ -1,5 +1,5 @@
 import citiesData from "../data/cities.json";
-import fallbackData from "../data/fuel-prices-fallback.json";
+import fallbackData from "../data/fuel-prices-fallback/in.json";
 import type { CityPriceRecord } from "./priceCrawler";
 
 export interface CityPrices {

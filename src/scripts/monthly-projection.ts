@@ -4,10 +4,11 @@ import { resolveMileageForFuel } from "../lib/vehicleMileage";
 import {
   getSiteData,
   fetchCityPrices,
-  formatInr,
+  formatCurrency,
   type CityRecord,
   type VehicleRecord,
   type FuelTypeRecord,
+  type ClientCountryConfig,
 } from "./clientSiteData";
 
 const FIELD_NAMES = [
@@ -24,6 +25,7 @@ const FIELD_NAMES = [
 type FieldName = (typeof FIELD_NAMES)[number];
 
 export class MonthlyProjectionElement extends HTMLElement {
+  private country!: ClientCountryConfig;
   private cities: CityRecord[] = [];
   private vehicles: VehicleRecord[] = [];
   private fuelTypes: FuelTypeRecord[] = [];
@@ -32,6 +34,7 @@ export class MonthlyProjectionElement extends HTMLElement {
 
   connectedCallback(): void {
     const data = getSiteData();
+    this.country = data.country;
     this.cities = data.cities;
     this.vehicles = data.vehicles;
     this.fuelTypes = data.fuelTypes;
@@ -104,7 +107,7 @@ export class MonthlyProjectionElement extends HTMLElement {
     const vehicle = this.vehicles.find((v) => v.slug === vehicleSlug);
     if (!vehicle) return;
 
-    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.currentFuel());
+    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.currentFuel(), this.country.code);
     if (!resolution) {
       const fuelLabel = this.fuelTypes.find((f) => f.id === this.currentFuel())?.label ?? this.currentFuel();
       if (note) note.textContent = `No ${fuelLabel} mileage on file for ${vehicle.name} — enter it manually.`;
@@ -149,8 +152,13 @@ export class MonthlyProjectionElement extends HTMLElement {
     const meta = this.fuelTypes.find((f) => f.id === fuel);
     const mileageLabel = this.out("mileage-unit-label");
     const priceLabel = this.out("price-unit-label");
-    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? "km/l";
-    if (priceLabel) priceLabel.textContent = fuel === "ev" ? "₹ per kWh" : `₹ per ${meta?.unit ?? "litre"}`;
+    const distanceUnit = this.country.distanceUnit;
+    const volumeUnit = this.country.volumeUnit;
+    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? `${distanceUnit}/${volumeUnit === "gallon" ? "gal" : "l"}`;
+    if (priceLabel) {
+      const symbol = this.country.currency.symbol;
+      priceLabel.textContent = fuel === "ev" ? `${symbol} per kWh` : `${symbol} per ${meta?.unit ?? volumeUnit}`;
+    }
   }
 
   private recalculate(): void {
@@ -173,11 +181,12 @@ export class MonthlyProjectionElement extends HTMLElement {
       daysPerMonth,
     });
 
-    this.setText("daily-cost", formatInr(result.dailyCost));
-    this.setText("daily-distance", `${result.dailyDistance} km`);
-    this.setText("monthly-cost", formatInr(result.monthlyCost));
-    this.setText("monthly-distance", `${result.monthlyDistance} km`);
-    this.setText("yearly-cost", formatInr(result.yearlyCost));
+    const distanceUnit = this.country.distanceUnit;
+    this.setText("daily-cost", formatCurrency(result.dailyCost, this.country));
+    this.setText("daily-distance", `${result.dailyDistance} ${distanceUnit}`);
+    this.setText("monthly-cost", formatCurrency(result.monthlyCost, this.country));
+    this.setText("monthly-distance", `${result.monthlyDistance} ${distanceUnit}`);
+    this.setText("yearly-cost", formatCurrency(result.yearlyCost, this.country));
   }
 
   private setText(name: string, value: string): void {

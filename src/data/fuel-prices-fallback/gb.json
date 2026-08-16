@@ -1,0 +1,10 @@
+{
+  "note": "Unverified estimate — there is no live price crawler for the UK (see the vehicles/gb.json note for the same caveat on vehicle data), so this is the only price source for UK calculations: a single flat national-average indicative price (GBP), not updated automatically. Always overridable by the user.",
+  "lastUpdated": "2026-07-01T00:00:00Z",
+  "prices": {
+    "petrol": 1.48,
+    "diesel": 1.55,
+    "lpg": 0.80,
+    "ev": null
+  }
+}

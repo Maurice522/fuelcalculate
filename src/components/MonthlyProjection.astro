@@ -1,6 +1,24 @@
 ---
 import citiesData from "../data/cities.json";
-import fuelTypesData from "../data/fuel-types.json";
+import fuelTypesIn from "../data/fuel-types/in.json";
+import { getCountry, type CountryConfig } from "../lib/countries";
+
+interface FuelTypeOption {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  /** Defaults to India — the only country with live per-city prices/a city picker. */
+  country?: CountryConfig;
+  fuelTypes?: FuelTypeOption[];
+}
+
+const { country = getCountry("IN"), fuelTypes = fuelTypesIn } = Astro.props;
+const cities = country.code === "IN" ? citiesData.cities : [];
+const volumeLabel = country.volumeUnit === "gallon" ? "gallon" : "litre";
+const mileageUnitLabel = `${country.distanceUnit}/${country.volumeUnit === "gallon" ? "gal" : "l"}`;
+const symbol = country.currency.symbol;
 
 // Note: the parent page must include <SiteDataScript /> once.
 ---
@@ -11,24 +29,28 @@ import fuelTypesData from "../data/fuel-types.json";
       <span class="text-body-sm-strong text-ink">Fuel type</span>
       <searchable-select>
         <select data-field="fuel">
-          {fuelTypesData.map((f) => <option value={f.id}>{f.label}</option>)}
+          {fuelTypes.map((f) => <option value={f.id}>{f.label}</option>)}
         </select>
       </searchable-select>
     </label>
 
-    <label class="flex flex-col gap-xxs">
-      <span class="text-body-sm-strong text-ink">City (auto-fills price)</span>
-      <searchable-select>
-        <select data-field="city">
-          <option value="">Custom price</option>
-          {citiesData.cities.map((c) => <option value={c.slug}>{c.name}</option>)}
-        </select>
-      </searchable-select>
-    </label>
+    {
+      cities.length > 0 && (
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">City (auto-fills price)</span>
+          <searchable-select>
+            <select data-field="city">
+              <option value="">Custom price</option>
+              {cities.map((c) => <option value={c.slug}>{c.name}</option>)}
+            </select>
+          </searchable-select>
+        </label>
+      )
+    }
 
     <label class="flex flex-col gap-xxs">
       <span class="text-body-sm-strong text-ink">
-        Price (<span data-out="price-unit-label">₹ per litre</span>)
+        Price (<span data-out="price-unit-label">{symbol} per {volumeLabel}</span>)
       </span>
       <input
         type="number"
@@ -52,7 +74,7 @@ import fuelTypesData from "../data/fuel-types.json";
 
     <label class="flex flex-col gap-xxs">
       <span class="text-body-sm-strong text-ink">
-        Mileage (<span data-out="mileage-unit-label">km/l</span>)
+        Mileage (<span data-out="mileage-unit-label">{mileageUnitLabel}</span>)
       </span>
       <input
         type="number"
@@ -66,7 +88,7 @@ import fuelTypesData from "../data/fuel-types.json";
     </label>
 
     <label class="flex flex-col gap-xxs">
-      <span class="text-body-sm-strong text-ink">Distance per trip (km)</span>
+      <span class="text-body-sm-strong text-ink">Distance per trip ({country.distanceUnit})</span>
       <input
         type="number"
         min="0"
@@ -100,7 +122,7 @@ import fuelTypesData from "../data/fuel-types.json";
     </label>
 
     <label class="flex items-center gap-xs sm:col-span-2">
-      <input type="checkbox" data-field="roundtrip" class="h-4 w-4 rounded-xs border border-hairline" />
+      <input type="checkbox" data-field="roundtrip" class="checkbox-input" />
       <span class="text-body-sm text-ink">Each trip is a round trip</span>
     </label>
   </form>
@@ -108,17 +130,17 @@ import fuelTypesData from "../data/fuel-types.json";
   <div class="mt-lg grid gap-md sm:grid-cols-3">
     <div class="rounded-lg bg-canvas-soft p-lg shadow-level-1">
       <p class="text-caption-mono uppercase text-mute">Per day</p>
-      <p class="mt-xxs text-display-sm text-ink" data-out="daily-cost">₹0</p>
-      <p class="text-body-sm text-body" data-out="daily-distance">0 km</p>
+      <p class="mt-xxs text-display-sm text-ink" data-out="daily-cost">{symbol}0</p>
+      <p class="text-body-sm text-body" data-out="daily-distance">0 {country.distanceUnit}</p>
     </div>
     <div class="rounded-lg bg-canvas-soft p-lg shadow-level-1">
       <p class="text-caption-mono uppercase text-mute">Per month</p>
-      <p class="mt-xxs text-display-sm text-ink" data-out="monthly-cost">₹0</p>
-      <p class="text-body-sm text-body" data-out="monthly-distance">0 km</p>
+      <p class="mt-xxs text-display-sm text-ink" data-out="monthly-cost">{symbol}0</p>
+      <p class="text-body-sm text-body" data-out="monthly-distance">0 {country.distanceUnit}</p>
     </div>
     <div class="rounded-lg bg-ink p-lg shadow-level-2">
       <p class="text-caption-mono uppercase text-on-primary/70">Per year</p>
-      <p class="mt-xxs text-display-sm text-on-primary" data-out="yearly-cost">₹0</p>
+      <p class="mt-xxs text-display-sm text-on-primary" data-out="yearly-cost">{symbol}0</p>
     </div>
   </div>
 </monthly-projection>

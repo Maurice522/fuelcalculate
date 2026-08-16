@@ -1,0 +1,34 @@
+[
+  {
+    "id": "petrol",
+    "label": "Petrol (E10)",
+    "shortLabel": "Petrol",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "diesel",
+    "label": "Diesel",
+    "shortLabel": "Diesel",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "ice"
+  },
+  {
+    "id": "lpg",
+    "label": "Autogas (LPG)",
+    "shortLabel": "LPG",
+    "unit": "litre",
+    "unitLabel": "km/l",
+    "category": "gas"
+  },
+  {
+    "id": "ev",
+    "label": "Electric (EV)",
+    "shortLabel": "EV",
+    "unit": "kWh",
+    "unitLabel": "kWh/100km",
+    "category": "electric"
+  }
+]

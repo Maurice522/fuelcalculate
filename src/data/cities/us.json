@@ -1,0 +1,12 @@
+[
+  { "slug": "new-york", "name": "New York", "region": "New York" },
+  { "slug": "los-angeles", "name": "Los Angeles", "region": "California" },
+  { "slug": "chicago", "name": "Chicago", "region": "Illinois" },
+  { "slug": "houston", "name": "Houston", "region": "Texas" },
+  { "slug": "phoenix", "name": "Phoenix", "region": "Arizona" },
+  { "slug": "philadelphia", "name": "Philadelphia", "region": "Pennsylvania" },
+  { "slug": "seattle", "name": "Seattle", "region": "Washington" },
+  { "slug": "denver", "name": "Denver", "region": "Colorado" },
+  { "slug": "atlanta", "name": "Atlanta", "region": "Georgia" },
+  { "slug": "boston", "name": "Boston", "region": "Massachusetts" }
+]

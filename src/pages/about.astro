@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const title = "About Us | Fuel Calculate";
+const description =
+  "About Fuel Calculate: a free fuel calculator for trip cost, fuel comparison, and monthly budgets across India, the US, UK, Canada and Australia — and how honest we are about where the numbers come from.";
+---
+
+<Layout title={title} description={description}>
+  <Hero eyebrow="About us" title="A fuel calculator built to give you a real number." />
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
+    <div>
+      <h2 class="text-display-sm text-ink">What Fuel Calculate is</h2>
+      <p class="mt-sm text-body-md text-body">
+        Fuel Calculate is a free fuel calculator for working out what a trip actually
+        costs — for a car or a bike, on petrol, diesel, CNG, E20 or EV. Pick a city so
+        today's local price fills in automatically (India only, for now), choose your
+        vehicle from a database of hundreds of models or enter your own mileage, and
+        get a real per-km cost instead of a rounded-off guess. Beyond a single trip,
+        the comparison tool weighs two fuels or vehicles side by side, and the
+        monthly projection tool turns a daily commute into a real monthly and yearly
+        budget.
+      </p>
+      <p class="mt-sm text-body-md text-body">
+        The site now covers five markets — <a href="/" class="text-link underline">India</a>,
+        <a href="/us/" class="text-link underline">the United States</a>,
+        <a href="/gb/" class="text-link underline">the United Kingdom</a>,
+        <a href="/ca/" class="text-link underline">Canada</a>, and
+        <a href="/au/" class="text-link underline">Australia</a> — each with its own
+        currency, units, and fuel types, so the numbers make sense wherever you are.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Why it exists</h2>
+      <p class="mt-sm text-body-md text-body">
+        Most fuel cost calculators stop at a single national-average figure. That's
+        rarely the number you actually need — your car's real mileage, your city's
+        real pump price, and your actual trip distance all matter more than an
+        average. Fuel Calculate was built to use your specific numbers wherever
+        possible, and to be upfront whenever it can't: every mileage figure is
+        editable, because the tool's own presets are a starting point, not the final
+        word.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Where the numbers come from</h2>
+      <p class="mt-sm text-body-md text-body">
+        We'd rather tell you exactly how reliable a figure is than let you assume.
+        India's vehicle mileage figures are ARAI-claimed (official test-cycle) data,
+        and city fuel prices are refreshed automatically from public sources several
+        times a day. The US vehicle list was compiled from real manufacturer/EPA
+        figures. The UK, Canada and Australia vehicle lists and fuel prices, by
+        contrast, are our own representative estimates while we work on sourcing real
+        data for those markets — each is clearly labelled as such in the site's data
+        and on the <a href="/faq" class="text-link underline">FAQ page</a>. Nothing on
+        this site is a substitute for checking your own vehicle's documented mileage
+        or the price at the pump before you rely on a number for anything that
+        matters financially.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Who runs it</h2>
+      <p class="mt-sm text-body-md text-body">
+        Fuel Calculate is built and maintained independently, not by a large company
+        or a funded startup — which is also why we're direct about which data is
+        solid and which is still an estimate, rather than presenting everything with
+        false confidence. Questions, corrections, or found a mileage figure that's
+        off? <a href="/contact" class="text-link underline">Get in touch</a> — see our
+        <a href="/privacy-policy" class="text-link underline">Privacy Policy</a> and
+        <a href="/terms" class="text-link underline">Terms &amp; Conditions</a> for
+        how the site handles your data and what using it means.
+      </p>
+    </div>
+  </section>
+</Layout>

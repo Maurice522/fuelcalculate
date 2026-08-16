@@ -1,0 +1,6 @@
+{
+  "note": "Unverified estimate — a single flat UK-average residential electricity tariff (GBP/kWh), not broken out by region. Always overridable by the user.",
+  "defaultTariffPerKwh": 0.28,
+  "tariffByState": {},
+  "efficiencyPresetsKwhPer100Km": {}
+}

@@ -18,11 +18,27 @@ if (!city) {
 }
 
 const resolved = city ? await resolveCityPrices(env, city.slug) : null;
+
+// Real, computed-live price gaps for this city — not a templated claim, since it's
+// derived from resolved.prices at request time and will differ city to city (and
+// update whenever prices do). Only rendered when both sides of a gap actually exist.
+function pctCheaper(petrol: number | null, other: number | null): number | null {
+  if (petrol == null || other == null || petrol <= 0) return null;
+  return Math.round(((petrol - other) / petrol) * 100);
+}
+
+const priceGaps = resolved
+  ? {
+      diesel: pctCheaper(resolved.prices.petrol, resolved.prices.diesel),
+      cng: pctCheaper(resolved.prices.petrol, resolved.prices.cng),
+      lpg: pctCheaper(resolved.prices.petrol, resolved.prices.lpg),
+    }
+  : null;
 ---
 
 <Layout
-  title={city ? `${city.name} fuel prices — Petrol, Diesel, CNG, E20 | Fuel Calculate` : "City not found | Fuel Calculate"}
-  description={city ? `Today's petrol, diesel, CNG and E20 price in ${city.name}, plus a trip cost calculator pre-filled for ${city.name}.` : undefined}
+  title={city ? `Fuel Calculator for ${city.name} — Petrol, Diesel, CNG, E20 Prices | Fuel Calculate` : "City not found | Fuel Calculate"}
+  description={city ? `Today's petrol, diesel, CNG and E20 price in ${city.name}, plus a free fuel calculator pre-filled with ${city.name}'s prices for your trip cost.` : undefined}
 >
   <SiteDataScript />
   {
@@ -72,6 +88,38 @@ const resolved = city ? await resolveCityPrices(env, city.slug) : null;
         <section class="border-t border-hairline px-md py-4xl sm:px-lg">
           <div class="mx-auto max-w-[720px]">
             <FindStationsLink cityName={city.name} />
+          </div>
+        </section>
+
+        <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+          <div class="mx-auto flex max-w-[720px] flex-col gap-md">
+            <p class="text-body-md text-body">
+              Fuel prices in India are set city by city, largely because state VAT rates
+              differ — so {city.name}'s petrol, diesel{
+                resolved!.prices.cng != null ? ", CNG" : ""
+              } and E20 prices won't match a neighbouring state's, even on the same day.
+              That's why this page tracks {city.name} specifically rather than showing a
+              single national average.
+            </p>
+            {
+              (priceGaps!.diesel != null || priceGaps!.cng != null || priceGaps!.lpg != null) && (
+                <p class="text-body-md text-body">
+                  Right now in {city.name}
+                  {priceGaps!.diesel != null && (
+                    <>, diesel is about {Math.abs(priceGaps!.diesel)}% {priceGaps!.diesel > 0 ? "cheaper" : "more expensive"} than petrol per litre</>
+                  )}
+                  {priceGaps!.cng != null && (
+                    <>, CNG is about {Math.abs(priceGaps!.cng)}% {priceGaps!.cng > 0 ? "cheaper" : "more expensive"} than petrol per unit</>
+                  )}
+                  {priceGaps!.lpg != null && (
+                    <>, and LPG is about {Math.abs(priceGaps!.lpg)}% {priceGaps!.lpg > 0 ? "cheaper" : "more expensive"} than petrol per litre</>
+                  )}
+                  . That gap changes as prices move, so the calculator above always uses
+                  today's {city.name} price rather than a fixed figure — enter your own
+                  vehicle's mileage for the most accurate trip cost.
+                </p>
+              )
+            }
           </div>
         </section>
       </Fragment>

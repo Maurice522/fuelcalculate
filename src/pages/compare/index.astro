@@ -14,16 +14,30 @@ const initial = {
 ---
 
 <Layout
-  title="Compare fuel costs — Petrol vs Diesel vs CNG vs E20 vs EV | Fuel Calculate"
-  description="Compare Petrol, Diesel, CNG, E20 and EV running costs for the same trip, side by side, with the exact ₹ and % savings."
+  title="Fuel Compare — Petrol vs Diesel, CNG, E20 & EV Cost Calculator | Fuel Calculate"
+  description="Free fuel compare tool: compare petrol, diesel, CNG, E20 and EV running costs side by side. A car fuel compare and fuel compare prices calculator with the exact ₹ and % savings."
 >
   <SiteDataScript />
   <Hero
     eyebrow="Side-by-side"
-    title="Compare fuels for the same trip."
+    title="Fuel compare — see which fuel wins for your trip."
     lead="Set up two calculators for the same city and distance, pick a different fuel and vehicle in each, and see exactly which one is cheaper — in ₹ and %."
   />
   <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
     <ComparisonTable initial={initial} />
+  </section>
+  <section class="border-t border-hairline bg-canvas-soft px-md py-3xl sm:px-lg">
+    <div class="mx-auto max-w-[720px]">
+      <p class="text-body-md text-body">
+        This fuel compare tool is built for real decisions, not generic averages: run
+        a car fuel compare between two vehicles you're deciding between, check fuel
+        compare prices for petrol against CNG or diesel in your own city, or compare
+        petrol vs E20 to see whether the switch is actually worth it for your mileage.
+        Popular comparisons like <a href="/compare/petrol-vs-diesel" class="text-link underline">petrol vs diesel</a>,
+        <a href="/compare/petrol-vs-cng" class="text-link underline">petrol vs CNG</a>, and
+        <a href="/compare/petrol-vs-e20" class="text-link underline">petrol vs E20</a> each
+        have their own dedicated page too.
+      </p>
+    </div>
   </section>
 </Layout>

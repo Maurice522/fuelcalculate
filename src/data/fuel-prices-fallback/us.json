@@ -1,0 +1,9 @@
+{
+  "note": "Unverified estimate — there is no live per-state price crawler for the US (see the vehicles/us.json note for the same caveat on vehicle data), so this is the only price source for US calculations: a single flat national-average indicative price (USD), not updated automatically. Always overridable by the user.",
+  "lastUpdated": "2026-07-01T00:00:00Z",
+  "prices": {
+    "petrol": 3.35,
+    "diesel": 3.85,
+    "ev": null
+  }
+}

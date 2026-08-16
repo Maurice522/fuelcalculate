@@ -1,9 +1,15 @@
 ---
 import citiesData from "../data/cities.json";
-import fuelTypesData from "../data/fuel-types.json";
+import fuelTypesIn from "../data/fuel-types/in.json";
+import { getCountry, type CountryConfig } from "../lib/countries";
 
 // Note: the parent page must include <SiteDataScript /> once — this widget reads
 // from the shared #site-data JSON island rather than embedding its own copy.
+
+interface FuelTypeOption {
+  id: string;
+  label: string;
+}
 
 interface Props {
   initial?: Partial<{
@@ -15,6 +21,9 @@ interface Props {
     mileage: string;
     vehicle: string;
   }>;
+  /** Defaults to India — the only country with live per-city prices/a city picker. */
+  country?: CountryConfig;
+  fuelTypes?: FuelTypeOption[];
 }
 
 const {
@@ -26,7 +35,14 @@ const {
     price: "",
     mileage: "",
   },
+  country = getCountry("IN"),
+  fuelTypes = fuelTypesIn,
 } = Astro.props;
+
+const cities = country.code === "IN" ? citiesData.cities : [];
+const volumeLabel = country.volumeUnit === "gallon" ? "gallon" : "litre";
+const mileageUnitLabel = `${country.distanceUnit}/${country.volumeUnit === "gallon" ? "gal" : "l"}`;
+const symbol = country.currency.symbol;
 ---
 
 <fuel-calculator class="block">
@@ -36,7 +52,7 @@ const {
       <searchable-select>
         <select name="fuel" data-field="fuel">
           {
-            fuelTypesData.map((f) => (
+            fuelTypes.map((f) => (
               <option value={f.id} selected={initial.fuel === f.id}>
                 {f.label}
               </option>
@@ -46,25 +62,27 @@ const {
       </searchable-select>
     </label>
 
-    <label class="flex flex-col gap-xxs sm:col-span-1">
-      <span class="text-body-sm-strong text-ink">City (auto-fills price)</span>
-      <searchable-select>
-        <select name="city" data-field="city">
-          <option value="">Custom price</option>
-          {
-            citiesData.cities.map((c) => (
-              <option value={c.slug} selected={initial.city === c.slug}>
-                {c.name}
-              </option>
-            ))
-          }
-        </select>
-      </searchable-select>
-    </label>
+    {
+      cities.length > 0 && (
+        <label class="flex flex-col gap-xxs sm:col-span-1">
+          <span class="text-body-sm-strong text-ink">City (auto-fills price)</span>
+          <searchable-select>
+            <select name="city" data-field="city">
+              <option value="">Custom price</option>
+              {cities.map((c) => (
+                <option value={c.slug} selected={initial.city === c.slug}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </searchable-select>
+        </label>
+      )
+    }
 
     <label class="flex flex-col gap-xxs sm:col-span-1">
       <span class="text-body-sm-strong text-ink">
-        Price (<span data-out="price-unit-label">₹ per litre</span>)
+        Price (<span data-out="price-unit-label">{symbol} per {volumeLabel}</span>)
       </span>
       <input
         type="number"
@@ -91,7 +109,7 @@ const {
 
     <label class="flex flex-col gap-xxs sm:col-span-1">
       <span class="text-body-sm-strong text-ink">
-        Mileage (<span data-out="mileage-unit-label">km/l</span>)
+        Mileage (<span data-out="mileage-unit-label">{mileageUnitLabel}</span>)
       </span>
       <input
         type="number"
@@ -107,7 +125,7 @@ const {
     </label>
 
     <label class="flex flex-col gap-xxs sm:col-span-1">
-      <span class="text-body-sm-strong text-ink">Distance — one way (km)</span>
+      <span class="text-body-sm-strong text-ink">Distance — one way ({country.distanceUnit})</span>
       <input
         type="number"
         step="1"
@@ -125,7 +143,7 @@ const {
         name="roundtrip"
         data-field="roundtrip"
         checked={initial.roundtrip === "true" || initial.roundtrip === "1"}
-        class="h-4 w-4 rounded-xs border border-hairline"
+        class="checkbox-input"
       />
       <span class="text-body-sm text-ink">Round trip</span>
     </label>
@@ -139,9 +157,9 @@ const {
   </form>
 
   <div class="mt-lg rounded-lg bg-canvas-soft p-lg shadow-level-1">
-    <p class="text-caption text-mute" data-out="distance-used">0 km</p>
-    <p class="mt-xxs text-display-md text-ink" data-out="cost">₹0</p>
-    <p class="text-body-sm text-body" data-out="cost-per-km">₹0 / km</p>
+    <p class="text-caption text-mute" data-out="distance-used">0 {country.distanceUnit}</p>
+    <p class="mt-xxs text-display-md text-ink" data-out="cost">{symbol}0</p>
+    <p class="text-body-sm text-body" data-out="cost-per-km">{symbol}0 / {country.distanceUnit}</p>
   </div>
 </fuel-calculator>
 

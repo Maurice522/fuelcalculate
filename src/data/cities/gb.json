@@ -1,0 +1,12 @@
+[
+  { "slug": "london", "name": "London", "region": "England" },
+  { "slug": "birmingham", "name": "Birmingham", "region": "England" },
+  { "slug": "manchester", "name": "Manchester", "region": "England" },
+  { "slug": "glasgow", "name": "Glasgow", "region": "Scotland" },
+  { "slug": "liverpool", "name": "Liverpool", "region": "England" },
+  { "slug": "leeds", "name": "Leeds", "region": "England" },
+  { "slug": "edinburgh", "name": "Edinburgh", "region": "Scotland" },
+  { "slug": "bristol", "name": "Bristol", "region": "England" },
+  { "slug": "cardiff", "name": "Cardiff", "region": "Wales" },
+  { "slug": "belfast", "name": "Belfast", "region": "Northern Ireland" }
+]

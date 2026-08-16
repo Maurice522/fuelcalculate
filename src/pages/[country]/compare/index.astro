@@ -1,0 +1,58 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import ComparisonTable from "../../../components/ComparisonTable.astro";
+import SiteDataScript from "../../../components/SiteDataScript.astro";
+import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
+
+import fuelTypesUs from "../../../data/fuel-types/us.json";
+import fuelTypesGb from "../../../data/fuel-types/gb.json";
+import fuelTypesCa from "../../../data/fuel-types/ca.json";
+import fuelTypesAu from "../../../data/fuel-types/au.json";
+
+export const prerender = true;
+
+// getStaticPaths must not reference an outer-scope const — the Cloudflare adapter's
+// prerender step runs it in isolation and doesn't reliably see module-level bindings
+// declared above it, so the filter is inlined fresh here and again below.
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").map((c) => ({
+    params: { country: c.pathPrefix.slice(1) },
+  }));
+}
+
+const OTHER_COUNTRIES = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN");
+
+const fuelTypesByCountry: Record<Exclude<CountryCode, "IN">, { id: string; label: string }[]> = {
+  US: fuelTypesUs,
+  GB: fuelTypesGb,
+  CA: fuelTypesCa,
+  AU: fuelTypesAu,
+};
+
+const country = OTHER_COUNTRIES.find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+const fuelTypes = fuelTypesByCountry[country.code as Exclude<CountryCode, "IN">];
+
+const params = Astro.url.searchParams;
+const initial = {
+  city: "",
+  distance: params.get("distance") ?? "20",
+  roundtrip: params.get("roundtrip") ?? "",
+  fuels: params.getAll("fuels").length ? params.getAll("fuels") : undefined,
+};
+---
+
+<Layout
+  title={`Fuel Compare — ${country.name} Fuel Cost Calculator | Fuel Calculate`}
+  description={`Free fuel compare tool for ${country.name}: compare petrol, diesel and EV running costs side by side, with the exact ${country.currency.symbol} and % savings.`}
+>
+  <SiteDataScript countryCode={country.code} />
+  <Hero
+    eyebrow="Side-by-side"
+    title={`Fuel compare — see which fuel wins in ${country.name}.`}
+    lead="Set up two calculators for the same distance, pick a different fuel and vehicle in each, and see exactly which one is cheaper."
+  />
+  <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
+    <ComparisonTable initial={initial} country={country} fuelTypes={fuelTypes} />
+  </section>
+</Layout>

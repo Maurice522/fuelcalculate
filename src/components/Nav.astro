@@ -1,25 +1,39 @@
 ---
-const links = [
-  { href: "/", label: "Calculator" },
-  { href: "/compare", label: "Compare fuels" },
-  { href: "/#monthly-budget", label: "Monthly budget" },
-  { href: "/how-it-works", label: "How it works" },
-  { href: "/faq", label: "FAQ" },
-];
+import { getCountryFromPathname, SUPPORTED_COUNTRIES } from "../lib/countries";
+import ThemeToggle from "./ThemeToggle.astro";
+import CountrySwitcher from "./CountrySwitcher.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
 const currentPath = Astro.url.pathname;
+const country = getCountryFromPathname(currentPath);
+const prefix = country.pathPrefix;
+
+const links = [
+  { href: `${prefix}/`, label: "Calculator" },
+  { href: `${prefix}/compare`, label: "Compare fuels" },
+  { href: `${prefix}/#monthly-budget`, label: "Monthly budget" },
+];
+
+// Kept separate from `links` (rather than merged in) so the primary nav doesn't get
+// crowded — rendered as a visually secondary group, but still reachable from every
+// page with zero scrolling, unlike the footer equivalents further down the page.
+const companyLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+];
 ---
 
-<header class="sticky top-0 z-50 h-16 border-b border-hairline bg-canvas/90 backdrop-blur">
-  <div class="mx-auto flex h-full max-w-[1400px] items-center justify-between gap-md px-md sm:px-lg">
-    <a href="/" class="flex items-center gap-xs text-body-sm-strong text-ink">
+<header class="sticky top-0 z-50 border-b border-hairline bg-canvas/90 backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-[1400px] items-center justify-between gap-md px-md sm:px-lg">
+    <a href={`${prefix}/`} class="flex shrink-0 items-center gap-xs text-body-sm-strong text-ink">
       <img src="/favicon-96x96.png" alt="" width="24" height="24" class="h-6 w-6 rounded-xs" />
       Fuel<span class="text-link">Calculate</span>
     </a>
 
-    <nav class="hidden items-center gap-xs md:flex">
+    <nav class="hidden items-center gap-xs xl:flex">
       {
         links.map((link) => {
-          const active = currentPath === link.href;
+          const active = currentPath === link.href || (link.href === `${prefix}/` && currentPath === prefix);
           return (
             <a
               href={link.href}
@@ -35,12 +49,89 @@ const currentPath = Astro.url.pathname;
       }
     </nav>
 
+    <div class="hidden items-center gap-md xl:flex">
+      <nav class="flex items-center gap-sm border-r border-hairline pr-md">
+        {companyLinks.map((link) => (
+          <a href={link.href} class="text-caption text-mute hover:text-ink">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+      <div class="flex items-center gap-xs">
+        <LanguageSwitcher />
+        <CountrySwitcher countries={SUPPORTED_COUNTRIES} current={country} />
+        <ThemeToggle />
+        <a
+          href={`${prefix}/compare`}
+          class="inline-flex rounded-sm bg-ink px-sm text-body-sm-strong text-on-primary"
+          style="height: 28px; align-items:center;"
+        >
+          Compare fuels
+        </a>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-xxs xl:hidden">
+      <ThemeToggle />
+      <button
+        type="button"
+        data-mobile-menu-toggle
+        aria-label="Menu"
+        aria-expanded="false"
+        class="inline-flex h-9 w-9 items-center justify-center rounded-full text-ink hover:bg-canvas-soft-2"
+      >
+        <svg data-menu-icon-open viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" />
+        </svg>
+        <svg data-menu-icon-close viewBox="0 0 24 24" class="hidden h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div data-mobile-menu hidden class="border-t border-hairline bg-canvas px-md py-md xl:hidden">
+    <nav class="flex flex-col gap-xxs">
+      {
+        links.map((link) => {
+          const active = currentPath === link.href || (link.href === `${prefix}/` && currentPath === prefix);
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "rounded-sm px-sm py-sm text-body-md transition-colors",
+                active ? "bg-canvas-soft-2 text-ink" : "text-body hover:bg-canvas-soft-2 hover:text-ink",
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="mt-md flex flex-wrap items-center gap-sm border-t border-hairline pt-md">
+      {companyLinks.map((link) => (
+        <a href={link.href} class="text-body-sm text-body hover:text-ink">
+          {link.label}
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-md flex flex-wrap items-center gap-xs border-t border-hairline pt-md">
+      <LanguageSwitcher />
+      <CountrySwitcher countries={SUPPORTED_COUNTRIES} current={country} />
+    </div>
+
     <a
-      href="/compare"
-      class="rounded-sm bg-ink px-sm text-body-sm-strong text-on-primary"
-      style="height: 28px; display:inline-flex; align-items:center;"
+      href={`${prefix}/compare`}
+      class="mt-md flex h-11 items-center justify-center rounded-sm bg-ink text-button-md text-on-primary"
     >
       Compare fuels
     </a>
   </div>
 </header>
+
+<script>
+  import "../scripts/mobile-nav.ts";
+</script>

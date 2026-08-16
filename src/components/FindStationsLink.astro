@@ -1,8 +1,10 @@
 ---
 interface Props {
   cityName?: string;
+  /** Fallback location name when no city is set — defaults to India, the primary market. */
+  countryName?: string;
 }
-const { cityName } = Astro.props;
+const { cityName, countryName = "India" } = Astro.props;
 ---
 
 <div data-find-stations-widget class="w-full rounded-lg border border-hairline bg-canvas-soft p-lg">
@@ -15,6 +17,7 @@ const { cityName } = Astro.props;
       type="button"
       data-find-stations
       data-city={cityName}
+      data-country={countryName}
       class="inline-flex h-10 shrink-0 items-center gap-xs rounded-sm bg-ink px-md text-button-sm text-on-primary disabled:opacity-70"
     >
       <svg
@@ -127,7 +130,7 @@ const { cityName } = Astro.props;
     // fall back to the whole country, so a wide zoom is required — z=15 (street level)
     // on a country-sized query just drops you on some arbitrary, meaningless village.
     const cityName = button.dataset.city;
-    const fallback = cityName ?? "India";
+    const fallback = cityName ?? button.dataset.country ?? "India";
     const fallbackZoom = cityName ? 13 : 5;
 
     function useFallback(reason: string): void {

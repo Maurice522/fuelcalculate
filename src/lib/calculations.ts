@@ -1,10 +1,15 @@
-export type FuelId = "petrol" | "xp95" | "xp100" | "diesel" | "e20" | "cng" | "lpg" | "ev";
+/**
+ * A fuel type id, scoped per-country (see `src/lib/countries.ts`) — e.g. India has
+ * petrol/xp95/xp100/diesel/e20/cng/lpg/ev, the US has petrol/diesel/ev. The one id every
+ * country shares is "ev", since `costPerKm` special-cases it below.
+ */
+export type FuelId = string;
 
 export interface TripInput {
   fuelId: FuelId;
-  /** ₹ per litre/kg for ICE & gas fuels; ₹ per kWh (electricity tariff) for EV. */
+  /** currency per litre/gallon/kg for ICE & gas fuels; currency per kWh (electricity tariff) for EV. */
   pricePerUnit: number;
-  /** km per litre/kg for ICE & gas fuels; kWh per 100km (efficiency) for EV. */
+  /** distance-unit per litre/gallon/kg for ICE & gas fuels; kWh per 100 distance-units (efficiency) for EV. */
   mileage: number;
   distanceOneWay: number;
   roundTrip: boolean;
@@ -43,8 +48,9 @@ export function effectiveDistance(distanceOneWay: number, roundTrip: boolean): n
 }
 
 /**
- * EV mileage is expressed as kWh/100km (standard EV efficiency unit) rather than
- * km/kWh, to avoid an inverted-unit mistake when reusing the ICE cost formula.
+ * EV mileage is expressed as kWh per 100 distance-units (kWh/100km or kWh/100mi,
+ * depending on the country) rather than distance-units/kWh, to avoid an inverted-unit
+ * mistake when reusing the ICE cost formula.
  */
 export function costPerKm(fuelId: FuelId, pricePerUnit: number, mileage: number): number {
   if (mileage <= 0) return 0;

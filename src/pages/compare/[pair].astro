@@ -3,32 +3,71 @@ import Layout from "../../layouts/Layout.astro";
 import Hero from "../../components/Hero.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import SiteDataScript from "../../components/SiteDataScript.astro";
-import fuelTypesData from "../../data/fuel-types.json";
-import { COMPARE_PAIRS } from "../../data/comparePairs";
+import fuelTypesData from "../../data/fuel-types/in.json";
+import { COMPARE_PAIRS_BY_COUNTRY } from "../../data/comparePairs";
+import { COMPARE_PAIR_CONTENT } from "../../data/comparePairContent";
+import { getCountry } from "../../lib/countries";
 
 export const prerender = true;
 
 export function getStaticPaths() {
-  return COMPARE_PAIRS.map((pair) => ({ params: { pair: pair.slug }, props: { pair } }));
+  return COMPARE_PAIRS_BY_COUNTRY.IN.map((pair) => ({ params: { pair: pair.slug }, props: { pair } }));
 }
 
 const { pair } = Astro.props;
 const labelFor = (id: string) => fuelTypesData.find((f) => f.id === id)?.label ?? id;
 const [a, b] = pair.fuels;
 const title = `${labelFor(a)} vs ${labelFor(b)} running cost`;
+const currencySymbol = getCountry("IN").currency.symbol;
+
+// The petrol-vs-E20 pair gets its own targeted copy — it's the one comparison people
+// specifically search for by name ("e20 fuel calculator", "compare petrol vs e20").
+const isPetrolVsE20 = pair.slug === "petrol-vs-e20";
+
+const contentKey = `${a}_${b}`;
+const paragraphs = COMPARE_PAIR_CONTENT[contentKey]?.({
+  aLabel: labelFor(a),
+  bLabel: labelFor(b),
+  symbol: currencySymbol,
+  distanceUnit: "km",
+}) ?? [];
 ---
 
 <Layout
-  title={`${title} — Fuel Calculate`}
-  description={`Compare ${labelFor(a)} and ${labelFor(b)} running cost for the same trip: cost per km, trip cost, and the exact ₹ and % savings.`}
+  title={
+    isPetrolVsE20
+      ? "E20 Fuel Calculator — Compare Petrol vs E20 Running Cost | Fuel Calculate"
+      : `${labelFor(a)} vs ${labelFor(b)} Calculator — Compare Running Cost | Fuel Calculate`
+  }
+  description={
+    isPetrolVsE20
+      ? "E20 fuel efficiency calculator: compare petrol vs E20 running cost for your own car or bike, with the exact ₹ and % difference — not a generic national estimate."
+      : `Compare ${labelFor(a)} and ${labelFor(b)} running cost with this free fuel calculator: cost per km, trip cost, and the exact ${currencySymbol} and % savings.`
+  }
 >
   <SiteDataScript />
   <Hero
-    eyebrow="Fuel comparison"
-    title={`${title}.`}
-    lead={`See exactly how much cheaper (or more expensive) ${labelFor(b)} is than ${labelFor(a)} for your own distance and vehicle — not a generic national average.`}
+    eyebrow={isPetrolVsE20 ? "E20 fuel calculator" : "Fuel comparison"}
+    title={isPetrolVsE20 ? "Compare petrol vs E20 running cost." : `${title}.`}
+    lead={
+      isPetrolVsE20
+        ? "Is switching to E20 actually worth it? This E20 fuel efficiency calculator estimates your E20 mileage from your vehicle's petrol figure and shows the real per-km cost difference — not a generic claim."
+        : `See exactly how much cheaper (or more expensive) ${labelFor(b)} is than ${labelFor(a)} for your own distance and vehicle — not a generic national average.`
+    }
   />
   <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
     <ComparisonTable initial={{ fuels: [...pair.fuels] }} />
   </section>
+
+  {
+    paragraphs.length > 0 && (
+      <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+        <div class="mx-auto flex max-w-[720px] flex-col gap-md">
+          {paragraphs.map((p) => (
+            <p class="text-body-md text-body">{p}</p>
+          ))}
+        </div>
+      </section>
+    )
+  }
 </Layout>

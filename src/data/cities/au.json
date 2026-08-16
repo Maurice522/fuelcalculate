@@ -1,0 +1,12 @@
+[
+  { "slug": "sydney", "name": "Sydney", "region": "New South Wales" },
+  { "slug": "melbourne", "name": "Melbourne", "region": "Victoria" },
+  { "slug": "brisbane", "name": "Brisbane", "region": "Queensland" },
+  { "slug": "perth", "name": "Perth", "region": "Western Australia" },
+  { "slug": "adelaide", "name": "Adelaide", "region": "South Australia" },
+  { "slug": "gold-coast", "name": "Gold Coast", "region": "Queensland" },
+  { "slug": "canberra", "name": "Canberra", "region": "Australian Capital Territory" },
+  { "slug": "newcastle", "name": "Newcastle", "region": "New South Wales" },
+  { "slug": "hobart", "name": "Hobart", "region": "Tasmania" },
+  { "slug": "darwin", "name": "Darwin", "region": "Northern Territory" }
+]

@@ -1,0 +1,20 @@
+---
+import FaqPage from "../faq.astro";
+import { SUPPORTED_COUNTRIES } from "../../lib/countries";
+
+export const prerender = true;
+
+// getStaticPaths must not reference an outer-scope const — the Cloudflare adapter's
+// prerender step runs it in isolation and doesn't reliably see module-level bindings
+// declared above it, so the filter is inlined fresh here and again below.
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").map((c) => ({
+    params: { country: c.pathPrefix.slice(1) },
+  }));
+}
+
+const OTHER_COUNTRIES = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN");
+const country = OTHER_COUNTRIES.find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+---
+
+<FaqPage country={country} />

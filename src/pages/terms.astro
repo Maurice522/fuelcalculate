@@ -1,0 +1,132 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const title = "Terms & Conditions | Fuel Calculate";
+const description =
+  "The terms for using Fuel Calculate's free fuel cost calculator: what the service is, why every figure is an estimate, and the limits of our liability.";
+const lastUpdated = "21 July 2026";
+---
+
+<Layout title={title} description={description}>
+  <Hero eyebrow="Legal" title="Terms & Conditions." lead={`Last updated ${lastUpdated}.`} />
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-xl px-md pb-5xl sm:px-lg">
+    <p class="text-body-md text-body">
+      By using Fuel Calculate ("the site", "the service"), you agree to these terms.
+      If you don't agree, please don't use the site. We may update these terms from
+      time to time — continued use after a change means you accept the updated
+      version.
+    </p>
+
+    <div>
+      <h2 class="text-display-sm text-ink">What the service is</h2>
+      <p class="mt-sm text-body-md text-body">
+        Fuel Calculate is a free tool for estimating trip fuel cost, comparing fuel
+        types and vehicles, and projecting monthly fuel spend, across India, the
+        United States, the United Kingdom, Canada and Australia. It's provided free
+        of charge, with no account required.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Every figure is an estimate — not financial advice</h2>
+      <p class="mt-sm text-body-md text-body">
+        This is the most important thing to understand before relying on any number
+        this site shows you: <strong class="text-ink">every price, mileage, and cost
+        figure is an estimate for general informational purposes only.</strong> Fuel
+        prices and vehicle mileage vary by location, driving conditions, vehicle
+        condition, and time — actual results will differ from what's shown here.
+        India's figures draw on ARAI-claimed mileage and automatically-refreshed
+        public price sources; the US vehicle list is based on manufacturer/EPA
+        figures; the UK, Canada and Australia vehicle and price data are our own
+        representative estimates, clearly labelled as such, pending real sourcing for
+        those markets. None of this is professional, financial, or automotive advice,
+        and none of it should be the sole basis for a purchase decision, a fuel
+        switch, a budget commitment, or any other decision with real financial
+        consequences — always verify at the pump and against your vehicle's actual
+        documented mileage.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">No warranty, "as is" service</h2>
+      <p class="mt-sm text-body-md text-body">
+        The site is provided "as is" and "as available," without warranties of any
+        kind, express or implied, including accuracy, completeness, reliability, or
+        fitness for a particular purpose. We don't guarantee the service will be
+        uninterrupted, error-free, or available at all times.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Limitation of liability</h2>
+      <p class="mt-sm text-body-md text-body">
+        To the fullest extent permitted by law, Fuel Calculate and whoever operates
+        it won't be liable for any indirect, incidental, or consequential loss (for
+        example, an incorrect fuel budget, a vehicle purchase decision, or a fuel
+        switch you regret) arising from your use of, or inability to use, this site
+        or reliance on any figure it shows.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Acceptable use</h2>
+      <p class="mt-sm text-body-md text-body">
+        Use the site lawfully and don't attempt to disrupt it — no scraping at a rate
+        that degrades the service for others, no attempting to bypass its security or
+        rate limits, and no reverse-engineering the site to misrepresent its data as
+        your own commercial product without permission.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Third-party services</h2>
+      <p class="mt-sm text-body-md text-body">
+        The site relies on third-party services to work — Cloudflare for hosting,
+        ip-api.com for country detection, and Google Maps for the fuel-station
+        finder. Your use of those embedded services is also subject to their own
+        terms. We aren't responsible for their availability, accuracy, or content.
+        See our <a href="/privacy-policy" class="text-link underline">Privacy Policy</a>
+        for how data flows to each of them.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Advertising</h2>
+      <p class="mt-sm text-body-md text-body">
+        We may display third-party advertising (for example, via Google AdSense) on
+        this site in future to help cover its costs. Ads, if shown, are served by
+        third-party networks and their presence doesn't imply our endorsement of the
+        advertiser or its product.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Changes to the service</h2>
+      <p class="mt-sm text-body-md text-body">
+        We may add, change, or remove features, or discontinue the site entirely, at
+        any time without prior notice.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Governing law</h2>
+      <p class="mt-sm text-body-md text-body">
+        These terms are governed by the laws of India, without regard to conflict-of-law
+        principles, regardless of which country's version of the site you use.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Contact</h2>
+      <p class="mt-sm text-body-md text-body">
+        Questions about these terms? Email
+        <a href="mailto:beststoredeal101@gmail.com" class="text-link underline">beststoredeal101@gmail.com</a>
+        or visit the <a href="/contact" class="text-link underline">Contact us</a> page.
+      </p>
+    </div>
+  </section>
+</Layout>

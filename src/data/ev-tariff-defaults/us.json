@@ -1,0 +1,6 @@
+{
+  "note": "Unverified estimate — a single flat US-average residential electricity tariff (USD/kWh), not broken out by state. Always overridable by the user.",
+  "defaultTariffPerKwh": 0.16,
+  "tariffByState": {},
+  "efficiencyPresetsKwhPer100Km": {}
+}

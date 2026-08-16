@@ -4,10 +4,11 @@ import { resolveMileageForFuel } from "../lib/vehicleMileage";
 import {
   getSiteData,
   fetchCityPrices,
-  formatInr,
+  formatCurrency,
   type CityRecord,
   type VehicleRecord,
   type FuelTypeRecord,
+  type ClientCountryConfig,
 } from "./clientSiteData";
 
 const SIDES = ["a", "b"] as const;
@@ -15,10 +16,11 @@ type Side = (typeof SIDES)[number];
 
 const SHARED_FIELD_NAMES = ["city", "distance", "roundtrip"] as const;
 const SIDE_FIELD_NAMES = ["fuel", "price", "vehicle", "mileage"] as const;
-const STORAGE_KEY = "fuelcalculate:comparisonInputs";
+const STORAGE_KEY_PREFIX = "fuelcalculate:comparisonInputs";
 
 /** Two independent fuel/vehicle picks, compared for the same shared city/distance/round-trip. */
 export class FuelComparisonElement extends HTMLElement {
+  private country!: ClientCountryConfig;
   private cities: CityRecord[] = [];
   private vehicles: VehicleRecord[] = [];
   private fuelTypes: FuelTypeRecord[] = [];
@@ -27,6 +29,7 @@ export class FuelComparisonElement extends HTMLElement {
 
   connectedCallback(): void {
     const data = getSiteData();
+    this.country = data.country;
     this.cities = data.cities;
     this.vehicles = data.vehicles;
     this.fuelTypes = data.fuelTypes;
@@ -142,7 +145,7 @@ export class FuelComparisonElement extends HTMLElement {
     const vehicle = this.vehicles.find((v) => v.slug === vehicleSlug);
     if (!vehicle) return;
 
-    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.sideFuel(side));
+    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.sideFuel(side), this.country.code);
     if (!resolution) {
       const fuelLabel = this.fuelTypes.find((f) => f.id === this.sideFuel(side))?.label ?? this.sideFuel(side);
       if (note) note.textContent = `No ${fuelLabel} mileage on file for ${vehicle.name} — enter it manually.`;
@@ -191,8 +194,13 @@ export class FuelComparisonElement extends HTMLElement {
     const meta = this.fuelTypes.find((f) => f.id === fuel);
     const mileageLabel = this.sideOut(side, "mileage-unit-label");
     const priceLabel = this.sideOut(side, "price-unit-label");
-    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? "km/l";
-    if (priceLabel) priceLabel.textContent = fuel === "ev" ? "₹ per kWh" : `₹ per ${meta?.unit ?? "litre"}`;
+    const distanceUnit = this.country.distanceUnit;
+    const volumeUnit = this.country.volumeUnit;
+    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? `${distanceUnit}/${volumeUnit === "gallon" ? "gal" : "l"}`;
+    if (priceLabel) {
+      const symbol = this.country.currency.symbol;
+      priceLabel.textContent = fuel === "ev" ? `${symbol} per kWh` : `${symbol} per ${meta?.unit ?? volumeUnit}`;
+    }
   }
 
   /** Tints a side's cost figures green (cheaper), red (pricier), or neutral (tie/incomplete). */
@@ -220,8 +228,8 @@ export class FuelComparisonElement extends HTMLElement {
       const costOut = this.resultOut(side, "cost");
       const perKmOut = this.resultOut(side, "cost-per-km");
       if (labelOut) labelOut.textContent = label;
-      if (costOut) costOut.textContent = formatInr(result.cost);
-      if (perKmOut) perKmOut.textContent = `${formatInr(result.costPerKm)} / km`;
+      if (costOut) costOut.textContent = formatCurrency(result.cost, this.country);
+      if (perKmOut) perKmOut.textContent = `${formatCurrency(result.costPerKm, this.country)} / ${this.country.distanceUnit}`;
 
       return { side, fuel, label, cost: result.cost };
     });
@@ -257,7 +265,7 @@ export class FuelComparisonElement extends HTMLElement {
     }
     const diff = Math.abs(delta);
     const percent = pricier.cost === 0 ? 0 : (diff / pricier.cost) * 100;
-    deltaOut.textContent = `${cheaper.label} is ${formatInr(diff)} (${percent.toFixed(1)}%) cheaper than ${pricier.label} for this trip.`;
+    deltaOut.textContent = `${cheaper.label} is ${formatCurrency(diff, this.country)} (${percent.toFixed(1)}%) cheaper than ${pricier.label} for this trip.`;
   }
 
   private currentState(): Record<string, string> {
@@ -282,9 +290,13 @@ export class FuelComparisonElement extends HTMLElement {
    * server-rendered `initial` prop already reads back on a fresh visit) so a plain
    * reload — whatever triggers it — never wipes out what was entered.
    */
+  private storageKey(): string {
+    return `${STORAGE_KEY_PREFIX}:${this.country.code}`;
+  }
+
   private persistState(): void {
     const state = this.currentState();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(this.storageKey(), JSON.stringify(state));
 
     const url = new URL(window.location.href);
     for (const name of SHARED_FIELD_NAMES) {
@@ -296,7 +308,7 @@ export class FuelComparisonElement extends HTMLElement {
   }
 
   private restoreState(): void {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(this.storageKey());
     let state: Record<string, string> | null = null;
     if (stored) {
       try {

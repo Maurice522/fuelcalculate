@@ -1,30 +1,56 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import { getCountry, type CountryConfig } from "../lib/countries";
+import fuelTypesIn from "../data/fuel-types/in.json";
+import fuelTypesUs from "../data/fuel-types/us.json";
+import fuelTypesGb from "../data/fuel-types/gb.json";
+import fuelTypesCa from "../data/fuel-types/ca.json";
+import fuelTypesAu from "../data/fuel-types/au.json";
+import type { CountryCode } from "../lib/countries";
 
 export const prerender = true;
+
+interface Props {
+  country?: CountryConfig;
+}
+
+const { country = getCountry("IN") } = Astro.props;
+
+const fuelTypesByCountry: Record<CountryCode, { id: string; label: string }[]> = {
+  IN: fuelTypesIn,
+  US: fuelTypesUs,
+  GB: fuelTypesGb,
+  CA: fuelTypesCa,
+  AU: fuelTypesAu,
+};
+const iceFuelNames = fuelTypesByCountry[country.code]
+  .filter((f) => f.id !== "ev")
+  .map((f) => f.label);
+const symbol = country.currency.symbol;
+const distanceUnit = country.distanceUnit;
 ---
 
 <Layout
-  title="How the math works | Fuel Calculate"
+  title={`How the math works | Fuel Calculate${country.code === "IN" ? "" : ` ${country.name}`}`}
   description="The exact formulas Fuel Calculate uses for trip cost, fuel comparison, and monthly/yearly projections."
 >
   <Hero eyebrow="Transparent by default" title="How the math works." />
 
   <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
     <div>
-      <h2 class="text-display-sm text-ink">Cost per km</h2>
+      <h2 class="text-display-sm text-ink">Cost per {distanceUnit}</h2>
       <p class="mt-sm text-body-md text-body">
-        For petrol, diesel, E20, CNG and LPG, cost per km is just price divided by
+        For {iceFuelNames.join(", ")}, cost per {distanceUnit} is just price divided by
         mileage:
       </p>
-      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerKm = pricePerUnit / mileage</pre>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerUnit = pricePerUnit / mileage</pre>
       <p class="mt-sm text-body-md text-body">
-        For EV, mileage is expressed as efficiency (kWh per 100km) rather than
-        km-per-unit, since that's the standard way EV efficiency is measured — this
-        avoids an inverted-unit mistake:
+        For EV, mileage is expressed as efficiency (kWh per 100{distanceUnit}) rather than
+        {distanceUnit}-per-unit, since that's the standard way EV efficiency is measured —
+        this avoids an inverted-unit mistake:
       </p>
-      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerKm = (tariffPerKwh * efficiencyKwhPer100Km) / 100</pre>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">costPerUnit = (tariffPerKwh * efficiencyKwhPer100{distanceUnit === "mi" ? "Mi" : "Km"}) / 100</pre>
     </div>
 
     <div>
@@ -33,14 +59,14 @@ export const prerender = true;
         Round trip doubles the one-way distance before the cost is applied:
       </p>
       <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">effectiveDistance = roundTrip ? distanceOneWay * 2 : distanceOneWay
-tripCost = costPerKm * effectiveDistance</pre>
+tripCost = costPerUnit * effectiveDistance</pre>
     </div>
 
     <div>
       <h2 class="text-display-sm text-ink">Comparing fuels</h2>
       <p class="mt-sm text-body-md text-body">
         Every fuel you select is costed for the same trip distance. One fuel is the
-        baseline (defaults to Petrol); every other fuel shows its ₹ and % difference
+        baseline (defaults to {iceFuelNames[0] ?? "Petrol"}); every other fuel shows its {symbol} and % difference
         against it — negative means cheaper:
       </p>
       <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">deltaVsBaseline = cost[fuel] - cost[baseline]
@@ -54,7 +80,7 @@ percentDiff = (deltaVsBaseline / cost[baseline]) * 100</pre>
         days-per-month explicitly:
       </p>
       <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">dailyDistance = distancePerTrip * tripsPerDay * (roundTrip ? 2 : 1)
-dailyCost = costPerKm * dailyDistance
+dailyCost = costPerUnit * dailyDistance
 monthlyCost = dailyCost * daysPerMonth
 yearlyCost = monthlyCost * 12</pre>
       <p class="mt-sm text-body-md text-body">

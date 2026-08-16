@@ -1,0 +1,26 @@
+[
+  {
+    "id": "petrol",
+    "label": "Gasoline",
+    "shortLabel": "Gas",
+    "unit": "gallon",
+    "unitLabel": "mpg",
+    "category": "ice"
+  },
+  {
+    "id": "diesel",
+    "label": "Diesel",
+    "shortLabel": "Diesel",
+    "unit": "gallon",
+    "unitLabel": "mpg",
+    "category": "ice"
+  },
+  {
+    "id": "ev",
+    "label": "Electric (EV)",
+    "shortLabel": "EV",
+    "unit": "kWh",
+    "unitLabel": "kWh/100mi",
+    "category": "electric"
+  }
+]

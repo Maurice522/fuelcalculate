@@ -1,0 +1,5315 @@
+{
+  "note": "User-provided 2025 US market car and bike lineup. Petrol/diesel mpg figures and EV MPGe (EPA-style efficiency) are as supplied. EV kWh/100mi is derived from MPGe using the EPA gasoline-gallon-equivalent constant (33.7 kWh/gallon): kWh/100mi = 3370 / MPGe. EV bikes that gave only a mile range with no MPGe or battery capacity were left out rather than guessing a battery size, since loading a range figure into the efficiency slot the cost calculator uses would silently overstate cost. Real-world mileage varies with driving style, load, and traffic — always editable via manual override.",
+  "vehicles": [
+    {
+      "slug": "acura-integra-a-spec",
+      "name": "Acura Integra A-Spec",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-integra-type-s",
+      "name": "Acura Integra Type S",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-mdx-base-fwd",
+      "name": "Acura MDX Base FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-mdx-sh-awd",
+      "name": "Acura MDX SH-AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-mdx-type-s-advance-v6",
+      "name": "Acura MDX Type S Advance V6",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-rdx-a-spec-advance-sport",
+      "name": "Acura RDX A-Spec Advance Sport",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-rdx-base-sh-awd",
+      "name": "Acura RDX Base SH-AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-tlx-technology-fwd",
+      "name": "Acura TLX Technology FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-tlx-type-s-sh-awd",
+      "name": "Acura TLX Type S SH-AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "acura-zdx-a-spec-rwd",
+      "name": "Acura ZDX A-Spec RWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "acura-zdx-type-s-performance",
+      "name": "Acura ZDX Type S Performance",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 38.74,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "alfa-romeo-giulia-ti",
+      "name": "Alfa Romeo Giulia Ti",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "alfa-romeo-stelvio-veloce",
+      "name": "Alfa Romeo Stelvio Veloce",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "alfa-romeo-tonale-phev",
+      "name": "Alfa Romeo Tonale PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a3-40-tfsi-quattro",
+      "name": "Audi A3 40 TFSI Quattro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a4-40-tfsi-quattro",
+      "name": "Audi A4 40 TFSI Quattro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a4-45-tfsi-s-line",
+      "name": "Audi A4 45 TFSI S Line",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a5-sportback-45-tfsi",
+      "name": "Audi A5 Sportback 45 TFSI",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a6-55-tfsi-quattro",
+      "name": "Audi A6 55 TFSI Quattro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a7-55-tfsi-quattro",
+      "name": "Audi A7 55 TFSI Quattro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-a8-l-55-tfsi",
+      "name": "Audi A8 L 55 TFSI",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-e-tron-gt",
+      "name": "Audi e-tron GT",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-e-tron-gt-rs",
+      "name": "Audi e-tron GT RS",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-q3-40-tfsi-quattro",
+      "name": "Audi Q3 40 TFSI Quattro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q3-45-tfsi-s-line-premium",
+      "name": "Audi Q3 45 TFSI S Line Premium",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q4-e-tron",
+      "name": "Audi Q4 e-tron",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 34.74,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-q4-e-tron-50-quattro-sport",
+      "name": "Audi Q4 e-tron 50 Quattro Sport",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 36.24,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-q5-40-tfsi-quattro-utility",
+      "name": "Audi Q5 40 TFSI Quattro Utility",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q5-45-tfsi",
+      "name": "Audi Q5 45 TFSI",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q5-55-tfsi-e-plug-in-hybrid",
+      "name": "Audi Q5 55 TFSI e Plug-In Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q7-45-tfsi-quattro-4-cyl",
+      "name": "Audi Q7 45 TFSI Quattro 4-Cyl",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q7-55-tfsi-v6-premium-plus",
+      "name": "Audi Q7 55 TFSI V6 Premium Plus",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q8-55-tfsi-premium-s-line",
+      "name": "Audi Q8 55 TFSI Premium S Line",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-q8-e-tron",
+      "name": "Audi Q8 e-tron",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 41.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-q8-e-tron-premium-plus-awd",
+      "name": "Audi Q8 e-tron Premium Plus AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 41.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-q8-sportback-e-tron-s-line",
+      "name": "Audi Q8 Sportback e-tron S Line",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 40.12,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "audi-rs-5-sportback",
+      "name": "Audi RS 5 Sportback",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-rs-7-performance",
+      "name": "Audi RS 7 Performance",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-rs-q8-high-performance-utility",
+      "name": "Audi RS Q8 High Performance Utility",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 15,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s3-sedan",
+      "name": "Audi S3 Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s4-sedan-premium",
+      "name": "Audi S4 Sedan Premium",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s5-sportback-premium",
+      "name": "Audi S5 Sportback Premium",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s6-executive",
+      "name": "Audi S6 Executive",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s7-sportback",
+      "name": "Audi S7 Sportback",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-s8-performance-v8",
+      "name": "Audi S8 Performance V8",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-sq5-premium-sport-suv",
+      "name": "Audi SQ5 Premium Sport SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-sq7-performance-luxury-v8",
+      "name": "Audi SQ7 Performance Luxury V8",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "audi-sq8-luxury-edition-v8",
+      "name": "Audi SQ8 Luxury Edition V8",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-230i-coupe",
+      "name": "BMW 230i Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-330e-phev",
+      "name": "BMW 330e PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-330i-sedan",
+      "name": "BMW 330i Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-330i-xdrive-sedan",
+      "name": "BMW 330i xDrive Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-430i-gran-coupe",
+      "name": "BMW 430i Gran Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-530i-xdrive-sedan",
+      "name": "BMW 530i xDrive Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-540i-xdrive-sport",
+      "name": "BMW 540i xDrive Sport",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-550e-xdrive-phev",
+      "name": "BMW 550e xDrive PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-740i-sedan",
+      "name": "BMW 740i Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-760i-xdrive-v8",
+      "name": "BMW 760i xDrive V8",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-840i-gran-coupe",
+      "name": "BMW 840i Gran Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-f750gs",
+      "name": "BMW F750GS",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 56,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-f900r",
+      "name": "BMW F900R",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 56,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-g310gs",
+      "name": "BMW G310GS",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 71,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-g310r",
+      "name": "BMW G310R",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 71,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-i3-rex-range-extender-legacy",
+      "name": "BMW i3 REx Range Extender (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-i4-edrive35",
+      "name": "BMW i4 eDrive35",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.82,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i4-edrive40",
+      "name": "BMW i4 eDrive40",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 30.92,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i4-m50-awd",
+      "name": "BMW i4 M50 AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i5-edrive40-sedan",
+      "name": "BMW i5 eDrive40 Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 32.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i5-m60-xdrive",
+      "name": "BMW i5 M60 xDrive",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.03,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i7-edrive50",
+      "name": "BMW i7 eDrive50",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.44,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i7-m70-xdrive",
+      "name": "BMW i7 M70 xDrive",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 41.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-i7-xdrive60-luxury",
+      "name": "BMW i7 xDrive60 Luxury",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.87,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-ix-m60-high-performance",
+      "name": "BMW iX M60 High-Performance",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 43.77,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-ix-xdrive40-edition",
+      "name": "BMW iX xDrive40 Edition",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 39.19,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-ix-xdrive50",
+      "name": "BMW iX xDrive50",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 39.19,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "bmw-m2-coupe",
+      "name": "BMW M2 Coupe",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m3-competition-xdrive",
+      "name": "BMW M3 Competition xDrive",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m340i-premium-sedan",
+      "name": "BMW M340i Premium Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m4-competition-coupe",
+      "name": "BMW M4 Competition Coupe",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m440i-gran-coupe",
+      "name": "BMW M440i Gran Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m5-hybrid-super-sedan",
+      "name": "BMW M5 Hybrid Super Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-m8-competition-gran-coupe",
+      "name": "BMW M8 Competition Gran Coupe",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-r-ninet",
+      "name": "BMW R nineT",
+      "type": "bike",
+      "segment": "tourer",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-r1250gs",
+      "name": "BMW R1250GS",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 50,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-r18-cruiser",
+      "name": "BMW R18 Cruiser",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-s1000rr",
+      "name": "BMW S1000RR",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x1-xdrive28i-sport-utility",
+      "name": "BMW X1 xDrive28i Sport Utility",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x2-xdrive28i-m-sport-coupe",
+      "name": "BMW X2 xDrive28i M Sport Coupe",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x3-m40i-performance-m-tech",
+      "name": "BMW X3 M40i Performance M Tech",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x3-sdrive30i-core-fwd",
+      "name": "BMW X3 sDrive30i Core FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x4-xdrive30i-coupe-utility",
+      "name": "BMW X4 xDrive30i Coupe Utility",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x5-m-competition-super-suv",
+      "name": "BMW X5 M Competition Super SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 15,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x5-sdrive40i-premium-fwd",
+      "name": "BMW X5 sDrive40i Premium FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x5-xdrive40i",
+      "name": "BMW X5 xDrive40i",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x5-xdrive50e-phev",
+      "name": "BMW X5 xDrive50e PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x6-xdrive40i-fastback-suv",
+      "name": "BMW X6 xDrive40i Fastback SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x7-m60i-high-output-v8",
+      "name": "BMW X7 M60i High Output V8",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-x7-xdrive40i-three-row",
+      "name": "BMW X7 xDrive40i Three-Row",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "bmw-xm-label-red-ultra-phev",
+      "name": "BMW XM Label Red Ultra PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 14,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-enclave",
+      "name": "Buick Enclave",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-encore-gx",
+      "name": "Buick Encore GX",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-encore-gx-sport-touring",
+      "name": "Buick Encore GX Sport Touring",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-envision",
+      "name": "Buick Envision",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-envista",
+      "name": "Buick Envista",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "buick-envista-preferred-compact",
+      "name": "Buick Envista Preferred Compact",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-celestiq-ultra-luxury",
+      "name": "Cadillac Celestiq Ultra-Luxury",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "ev",
+      "mileage": 38.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "cadillac-ct4-premium-luxury",
+      "name": "Cadillac CT4 Premium Luxury",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-ct4-v-blackwing",
+      "name": "Cadillac CT4-V Blackwing",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-ct4-v-series",
+      "name": "Cadillac CT4-V Series",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-ct5-premium-luxury",
+      "name": "Cadillac CT5 Premium Luxury",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-ct5-v-blackwing-v8",
+      "name": "Cadillac CT5-V Blackwing V8",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 15,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-ct5-v-series",
+      "name": "Cadillac CT5-V Series",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-escalade-duramax",
+      "name": "Cadillac Escalade Duramax",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "diesel",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-escalade-ecotec-v8",
+      "name": "Cadillac Escalade EcoTec V8",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 16,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-escalade-iq",
+      "name": "Cadillac Escalade IQ",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "ev",
+      "mileage": 37.03,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "cadillac-lyriq-rwd",
+      "name": "Cadillac LYRIQ RWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.87,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "cadillac-lyriq-sport-awd",
+      "name": "Cadillac LYRIQ Sport AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.87,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "cadillac-xt4",
+      "name": "Cadillac XT4",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-xt5-awd",
+      "name": "Cadillac XT5 AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "cadillac-xt6-awd",
+      "name": "Cadillac XT6 AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-blazer-ev",
+      "name": "Chevrolet Blazer EV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 35.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-blazer-ev-rs-awd",
+      "name": "Chevrolet Blazer EV RS AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 35.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-bolt-euv-premier-legacy",
+      "name": "Chevrolet Bolt EUV Premier (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-bolt-ev-1lt-legacy",
+      "name": "Chevrolet Bolt EV 1LT (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 28.08,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-colorado",
+      "name": "Chevrolet Colorado",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-corvette-e-ray-hybrid",
+      "name": "Chevrolet Corvette E-Ray Hybrid",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-corvette-stingray",
+      "name": "Chevrolet Corvette Stingray",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-equinox-ev",
+      "name": "Chevrolet Equinox EV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 31.2,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-equinox-ev-2lt-fwd",
+      "name": "Chevrolet Equinox EV 2LT FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 31.2,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-equinox-ls-fwd",
+      "name": "Chevrolet Equinox LS FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-equinox-rs-awd",
+      "name": "Chevrolet Equinox RS AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-malibu-rs",
+      "name": "Chevrolet Malibu RS",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-silverado-1500",
+      "name": "Chevrolet Silverado 1500",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-silverado-duramax",
+      "name": "Chevrolet Silverado Duramax",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "diesel",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-silverado-ev",
+      "name": "Chevrolet Silverado EV",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "ev",
+      "mileage": 35.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "chevrolet-tahoe-duramax",
+      "name": "Chevrolet Tahoe Duramax",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "diesel",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-tahoe-ecotec",
+      "name": "Chevrolet Tahoe EcoTec",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-trailblazer-ecotec",
+      "name": "Chevrolet Trailblazer ECOTEC",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-trailblazer-lt-fwd",
+      "name": "Chevrolet Trailblazer LT FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-traverse-lt-fwd",
+      "name": "Chevrolet Traverse LT FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-traverse-z71-off-road",
+      "name": "Chevrolet Traverse Z71 Off-Road",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-trax",
+      "name": "Chevrolet Trax",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-trax-ls-entry",
+      "name": "Chevrolet Trax LS Entry",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chevrolet-volt-premier-legacy",
+      "name": "Chevrolet Volt Premier (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chrysler-300-v6-legacy",
+      "name": "Chrysler 300 V6 (Legacy)",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "chrysler-pacifica-hybrid-phev",
+      "name": "Chrysler Pacifica Hybrid PHEV",
+      "type": "car",
+      "segment": "minivan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-challenger-gt-fwd-legacy",
+      "name": "Dodge Challenger GT FWD (Legacy)",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-charger-daytona-r-t-ev",
+      "name": "Dodge Charger Daytona R/T EV",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "ev",
+      "mileage": 36.24,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "dodge-charger-sxt-v6-legacy",
+      "name": "Dodge Charger SXT V6 (Legacy)",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-durango-gt-plus-fwd",
+      "name": "Dodge Durango GT Plus FWD",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-durango-srt-hellcat-awd",
+      "name": "Dodge Durango SRT Hellcat AWD",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 13,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-durango-v6",
+      "name": "Dodge Durango V6",
+      "type": "car",
+      "segment": "muscle-sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-hornet-gt-awd",
+      "name": "Dodge Hornet GT AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "dodge-hornet-r-t-phev",
+      "name": "Dodge Hornet R/T PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-desertx",
+      "name": "Ducati DesertX",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-diavel-v4",
+      "name": "Ducati Diavel V4",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 37,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-monster-plus",
+      "name": "Ducati Monster Plus",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-multistrada-v2",
+      "name": "Ducati Multistrada V2",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 43,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-panigale-v2",
+      "name": "Ducati Panigale V2",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-panigale-v4",
+      "name": "Ducati Panigale V4",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ducati-scrambler-icon",
+      "name": "Ducati Scrambler Icon",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "electrified-genesis-g80",
+      "name": "Electrified Genesis G80",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 34.74,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "electrified-genesis-gv70",
+      "name": "Electrified Genesis GV70",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.03,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "electrified-genesis-gv70-prestige",
+      "name": "Electrified Genesis GV70 Prestige",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.03,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "fiat-500e",
+      "name": "Fiat 500e",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 29.05,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "fiat-500e-red-edition",
+      "name": "Fiat 500e RED Edition",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 29.05,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "fiat-500x-pop-awd-legacy",
+      "name": "Fiat 500X Pop AWD (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "fisker-ocean-extreme-awd-legacy",
+      "name": "Fisker Ocean Extreme AWD (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 36.63,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-bronco-ecoboost",
+      "name": "Ford Bronco EcoBoost",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-bronco-sport",
+      "name": "Ford Bronco Sport",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-c-max-hybrid-energi-legacy",
+      "name": "Ford C-Max Hybrid Energi (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-e-transit-van",
+      "name": "Ford E-Transit Van",
+      "type": "car",
+      "segment": "van",
+      "fuelType": "ev",
+      "mileage": 49.56,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-escape-active-fwd",
+      "name": "Ford Escape Active FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-escape-hybrid",
+      "name": "Ford Escape Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-escape-phev",
+      "name": "Ford Escape PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-escape-st-line-elite-awd",
+      "name": "Ford Escape ST-Line Elite AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-expedition-ecoboost",
+      "name": "Ford Expedition EcoBoost",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-explorer-ecoboost",
+      "name": "Ford Explorer EcoBoost",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-explorer-st-performance-awd",
+      "name": "Ford Explorer ST Performance AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-explorer-xlt-fwd",
+      "name": "Ford Explorer XLT FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-f-150-ecoboost",
+      "name": "Ford F-150 EcoBoost",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-f-150-lightning",
+      "name": "Ford F-150 Lightning",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "ev",
+      "mileage": 48.14,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-f-150-powerboost-hybrid",
+      "name": "Ford F-150 PowerBoost Hybrid",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-f-250-super-duty",
+      "name": "Ford F-250 Super Duty",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "diesel",
+      "mileage": 15,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-fusion-energi-phev-legacy",
+      "name": "Ford Fusion Energi PHEV (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-maverick-hybrid",
+      "name": "Ford Maverick Hybrid",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 37,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-mustang-ecoboost-coupe",
+      "name": "Ford Mustang EcoBoost Coupe",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-mustang-gt-v8",
+      "name": "Ford Mustang GT V8",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ford-mustang-mach-e-gt-extended",
+      "name": "Ford Mustang Mach-E GT Extended",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "ev",
+      "mileage": 38.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-mustang-mach-e-premium",
+      "name": "Ford Mustang Mach-E Premium",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "ev",
+      "mileage": 34.39,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-mustang-mach-e-select-rwd",
+      "name": "Ford Mustang Mach-E Select RWD",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "ev",
+      "mileage": 32.72,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ford-transit-cargo-van-ecoboost",
+      "name": "Ford Transit Cargo Van EcoBoost",
+      "type": "car",
+      "segment": "van",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-electrified-g80-advanced",
+      "name": "Genesis Electrified G80 Advanced",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 34.74,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "genesis-g70-2-5t-rwd",
+      "name": "Genesis G70 2.5T RWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-g70-3-3t-sport-advanced",
+      "name": "Genesis G70 3.3T Sport Advanced",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-g80-2-5t-awd",
+      "name": "Genesis G80 2.5T AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-g80-3-5t-sport",
+      "name": "Genesis G80 3.5T Sport",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-g80-awd",
+      "name": "Genesis G80 AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-g90-3-5t-e-supercharger",
+      "name": "Genesis G90 3.5T E-Supercharger",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "genesis-gv60-advanced-awd",
+      "name": "Genesis GV60 Advanced AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "genesis-gv60-performance-awd",
+      "name": "Genesis GV60 Performance AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 39.19,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "genesis-gv70-awd",
+      "name": "Genesis GV70 AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-acadia-denali-luxury-v6",
+      "name": "GMC Acadia Denali Luxury V6",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-acadia-elevation-awd",
+      "name": "GMC Acadia Elevation AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-acadia-turbo",
+      "name": "GMC Acadia Turbo",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-canyon",
+      "name": "GMC Canyon",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-sierra-1500",
+      "name": "GMC Sierra 1500",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-sierra-ev",
+      "name": "GMC Sierra EV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "gmc-terrain",
+      "name": "GMC Terrain",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-terrain-at4-awd",
+      "name": "GMC Terrain AT4 AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "gmc-terrain-sle-fwd",
+      "name": "GMC Terrain SLE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-low-rider-s",
+      "name": "Harley-Davidson Low Rider S",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 47,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-nightster",
+      "name": "Harley-Davidson Nightster",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-pan-america-1250",
+      "name": "Harley-Davidson Pan America 1250",
+      "type": "bike",
+      "segment": "tourer",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-road-glide",
+      "name": "Harley-Davidson Road Glide",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 44,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-road-king-special",
+      "name": "Harley-Davidson Road King Special",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-softail-standard",
+      "name": "Harley-Davidson Softail Standard",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 47,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-sportster-s",
+      "name": "Harley-Davidson Sportster S",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 49,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-street-bob-114",
+      "name": "Harley-Davidson Street Bob 114",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 47,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "harley-davidson-street-glide",
+      "name": "Harley-Davidson Street Glide",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 44,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-accord",
+      "name": "Honda Accord",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-accord-hybrid",
+      "name": "Honda Accord Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-africa-twin",
+      "name": "Honda Africa Twin",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cb500x",
+      "name": "Honda CB500X",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 64,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cbr600rr",
+      "name": "Honda CBR600RR",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 44,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-civic-hatchback",
+      "name": "Honda Civic Hatchback",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-civic-hybrid",
+      "name": "Honda Civic Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 49,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-civic-sedan",
+      "name": "Honda Civic Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-civic-type-r",
+      "name": "Honda Civic Type R",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-clarity-plug-in-hybrid-legacy",
+      "name": "Honda Clarity Plug-In Hybrid (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cr-v",
+      "name": "Honda CR-V",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cr-v-ex-l-awd",
+      "name": "Honda CR-V EX-L AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cr-v-hybrid",
+      "name": "Honda CR-V Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-cr-v-lx-fwd",
+      "name": "Honda CR-V LX FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-crf300l",
+      "name": "Honda CRF300L",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 73,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-gold-wing",
+      "name": "Honda Gold Wing",
+      "type": "bike",
+      "segment": "tourer",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-grom",
+      "name": "Honda Grom",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 166,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-hr-v",
+      "name": "Honda HR-V",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-hr-v-sport-awd",
+      "name": "Honda HR-V Sport AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-insight-ex-legacy",
+      "name": "Honda Insight EX (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-nc750x",
+      "name": "Honda NC750X",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 58,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-odyssey",
+      "name": "Honda Odyssey",
+      "type": "car",
+      "segment": "minivan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-pcx-160",
+      "name": "Honda PCX 160",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 100,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-pilot-sport-awd",
+      "name": "Honda Pilot Sport AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-pilot-trailsport-off-road",
+      "name": "Honda Pilot TrailSport Off-Road",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-prologue-ex-rwd",
+      "name": "Honda Prologue EX RWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 34.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "honda-prologue-touring-awd",
+      "name": "Honda Prologue Touring AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 36.63,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "honda-rebel-300",
+      "name": "Honda Rebel 300",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 78,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-rebel-500",
+      "name": "Honda Rebel 500",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 67,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-ridgeline",
+      "name": "Honda Ridgeline",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-ruckus",
+      "name": "Honda Ruckus",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 114,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-shadow-aero",
+      "name": "Honda Shadow Aero",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 56,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "honda-super-cub-c125",
+      "name": "Honda Super Cub C125",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 150,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-elantra",
+      "name": "Hyundai Elantra",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 34,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-elantra-hybrid",
+      "name": "Hyundai Elantra Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 54,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-elantra-n",
+      "name": "Hyundai Elantra N",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-ioniq-5",
+      "name": "Hyundai Ioniq 5",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 29.56,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-5-limited-awd",
+      "name": "Hyundai Ioniq 5 Limited AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 34.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-5-se-standard-range",
+      "name": "Hyundai Ioniq 5 SE Standard Range",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 30.64,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-6-se",
+      "name": "Hyundai Ioniq 6 SE",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 24.07,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-6-se-long-range-rwd",
+      "name": "Hyundai Ioniq 6 SE Long Range RWD",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 24.07,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-6-sel-awd",
+      "name": "Hyundai Ioniq 6 SEL AWD",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 32.72,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-9-se",
+      "name": "Hyundai Ioniq 9 SE",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 36.24,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "hyundai-ioniq-blue-hybrid-legacy",
+      "name": "Hyundai Ioniq Blue Hybrid (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 59,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-kona-n-line-awd",
+      "name": "Hyundai Kona N Line AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-kona-se-fwd",
+      "name": "Hyundai Kona SE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-santa-cruz",
+      "name": "Hyundai Santa Cruz",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-santa-fe-calligraphy-awd",
+      "name": "Hyundai Santa Fe Calligraphy AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-santa-fe-hybrid",
+      "name": "Hyundai Santa Fe Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 34,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-santa-fe-se-fwd",
+      "name": "Hyundai Santa Fe SE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-sonata-hybrid",
+      "name": "Hyundai Sonata Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 47,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-sonata-sel",
+      "name": "Hyundai Sonata SEL",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-tucson-hybrid",
+      "name": "Hyundai Tucson Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-tucson-plug-in-hybrid",
+      "name": "Hyundai Tucson Plug-In Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "hyundai-tucson-se-fwd",
+      "name": "Hyundai Tucson SE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-challenger",
+      "name": "Indian Challenger",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-chief-dark-horse",
+      "name": "Indian Chief Dark Horse",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-chieftain",
+      "name": "Indian Chieftain",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-ftr-1200",
+      "name": "Indian FTR 1200",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 41,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-scout-rogue",
+      "name": "Indian Scout Rogue",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 43,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "indian-scout-sixty",
+      "name": "Indian Scout Sixty",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-q50-luxe-fwd",
+      "name": "Infiniti Q50 Luxe FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-q50-red-sport-400",
+      "name": "Infiniti Q50 Red Sport 400",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-qx50-pure-fwd-vc-turbo",
+      "name": "Infiniti QX50 Pure FWD VC-Turbo",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-qx55-essential-sport-awd",
+      "name": "Infiniti QX55 Essential Sport AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-qx60",
+      "name": "Infiniti QX60",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-qx60-pure-awd-luxe",
+      "name": "Infiniti QX60 Pure AWD Luxe",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "infiniti-qx80-luxury-v8-heavy-duty",
+      "name": "Infiniti QX80 Luxury V8 Heavy Duty",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 15,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jaguar-i-pace-ev400-hse",
+      "name": "Jaguar I-Pace EV400 HSE",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 44.34,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "jeep-cherokee-lux-fwd-legacy",
+      "name": "Jeep Cherokee Lux FWD (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-compass-sport-fwd",
+      "name": "Jeep Compass Sport FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-compass-turbo",
+      "name": "Jeep Compass Turbo",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-gladiator",
+      "name": "Jeep Gladiator",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-grand-cherokee-4xe",
+      "name": "Jeep Grand Cherokee 4xe",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-grand-cherokee-l-v6-fwd",
+      "name": "Jeep Grand Cherokee L V6 FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-grand-cherokee-overland-v8",
+      "name": "Jeep Grand Cherokee Overland V8",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-grand-cherokee-turbo",
+      "name": "Jeep Grand Cherokee Turbo",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-renegade-trailhawk-legacy",
+      "name": "Jeep Renegade Trailhawk (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-wagoneer-hurricane",
+      "name": "Jeep Wagoneer Hurricane",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "jeep-wrangler-4xe",
+      "name": "Jeep Wrangler 4xe",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-klr650",
+      "name": "Kawasaki KLR650",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-ninja-300",
+      "name": "Kawasaki Ninja 300",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-ninja-400",
+      "name": "Kawasaki Ninja 400",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 55,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-ninja-650",
+      "name": "Kawasaki Ninja 650",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-ninja-h2-sx",
+      "name": "Kawasaki Ninja H2 SX",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-ninja-zx-10r",
+      "name": "Kawasaki Ninja ZX-10R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-vulcan-s",
+      "name": "Kawasaki Vulcan S",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-z125-pro",
+      "name": "Kawasaki Z125 Pro",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 100,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-z400",
+      "name": "Kawasaki Z400",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 55,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-z650",
+      "name": "Kawasaki Z650",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kawasaki-z900",
+      "name": "Kawasaki Z900",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-carnival-hybrid",
+      "name": "Kia Carnival Hybrid",
+      "type": "car",
+      "segment": "minivan",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-ev6-gt-performance-awd",
+      "name": "Kia EV6 GT Performance AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 40.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-ev6-light-rwd-short-range",
+      "name": "Kia EV6 Light RWD Short Range",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 28.8,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-ev6-long-range",
+      "name": "Kia EV6 Long Range",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 28.8,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-ev9-gt-line-performance-awd",
+      "name": "Kia EV9 GT-Line Performance AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 42.13,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-ev9-land-awd-extended-range",
+      "name": "Kia EV9 Land AWD Extended Range",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 40.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-ev9-light-long-range",
+      "name": "Kia EV9 Light Long Range",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.87,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-forte-lxs",
+      "name": "Kia Forte LXS",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-k5-gt-2-5t",
+      "name": "Kia K5 GT 2.5T",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-k5-gt-line",
+      "name": "Kia K5 GT-Line",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-niro-ev",
+      "name": "Kia Niro EV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.82,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-niro-hybrid-ex",
+      "name": "Kia Niro Hybrid EX",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 53,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-niro-plug-in-hybrid-ex",
+      "name": "Kia Niro Plug-In Hybrid EX",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-seltos-lx-awd",
+      "name": "Kia Seltos LX AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-seltos-sx-turbo-awd",
+      "name": "Kia Seltos SX Turbo AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-sorento-hybrid",
+      "name": "Kia Sorento Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 37,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-sorento-lx-fwd",
+      "name": "Kia Sorento LX FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-sorento-plug-in-hybrid-sx",
+      "name": "Kia Sorento Plug-In Hybrid SX",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 34,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-soul-ev-luxury-legacy",
+      "name": "Kia Soul EV Luxury (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.56,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "kia-sportage-hybrid",
+      "name": "Kia Sportage Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 43,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-sportage-lx-fwd",
+      "name": "Kia Sportage LX FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-sportage-plug-in-hybrid-x-line",
+      "name": "Kia Sportage Plug-In Hybrid X-Line",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-stinger-gt2-legacy",
+      "name": "Kia Stinger GT2 (Legacy)",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-telluride",
+      "name": "Kia Telluride",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-telluride-ex-awd",
+      "name": "Kia Telluride EX AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "kia-telluride-sx-prestige-x-pro",
+      "name": "Kia Telluride SX Prestige X-Pro",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-1290-super-duke-r",
+      "name": "KTM 1290 Super Duke R",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 41,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-200-duke",
+      "name": "KTM 200 Duke",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 85,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-390-adventure",
+      "name": "KTM 390 Adventure",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 63,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-390-duke",
+      "name": "KTM 390 Duke",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-790-duke",
+      "name": "KTM 790 Duke",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 53,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ktm-890-adventure",
+      "name": "KTM 890 Adventure",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "land-rover-defender-110-p300",
+      "name": "Land Rover Defender 110 P300",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "land-rover-range-rover-p400",
+      "name": "Land Rover Range Rover P400",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "land-rover-range-rover-sport-phev",
+      "name": "Land Rover Range Rover Sport PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-ct-200h-legacy",
+      "name": "Lexus CT 200h (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-es-250-awd",
+      "name": "Lexus ES 250 AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-es-300h-ultra-hybrid",
+      "name": "Lexus ES 300h Ultra Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 44,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-es-350-luxury-v6",
+      "name": "Lexus ES 350 Luxury V6",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-gx-550-overtrail",
+      "name": "Lexus GX 550 Overtrail",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 17,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-is-300-f-fwd",
+      "name": "Lexus IS 300 F FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-is-350-f-sport-awd",
+      "name": "Lexus IS 350 F Sport AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-is-500-f-sport-v8",
+      "name": "Lexus IS 500 F Sport V8",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 20,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-ls-500-twin-turbo",
+      "name": "Lexus LS 500 Twin Turbo",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-ls-500h-awd-hybrid",
+      "name": "Lexus LS 500h AWD Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-nx-250-fwd-base",
+      "name": "Lexus NX 250 FWD Base",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-nx-350-awd-turbo",
+      "name": "Lexus NX 350 AWD Turbo",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-nx-350h-luxury-hybrid",
+      "name": "Lexus NX 350h Luxury Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 39,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-nx-450h-f-sport-phev",
+      "name": "Lexus NX 450h+ F Sport PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-rx-350-premium-fwd",
+      "name": "Lexus RX 350 Premium FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-rx-350h-hybrid",
+      "name": "Lexus RX 350h Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-rx-450h-luxury-phev",
+      "name": "Lexus RX 450h+ Luxury PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-rx-500h-f-sport",
+      "name": "Lexus RX 500h F Sport",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lexus-rz-300e-fwd",
+      "name": "Lexus RZ 300e FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 26.96,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lexus-rz-450e-awd",
+      "name": "Lexus RZ 450e AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lexus-rz-450e-luxury-awd",
+      "name": "Lexus RZ 450e Luxury AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lexus-tx-550h-phev",
+      "name": "Lexus TX 550h+ PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lincoln-aviator-reserve",
+      "name": "Lincoln Aviator Reserve",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lincoln-corsair",
+      "name": "Lincoln Corsair",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lincoln-corsair-grand-touring-phev",
+      "name": "Lincoln Corsair Grand Touring PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lincoln-nautilus-hybrid",
+      "name": "Lincoln Nautilus Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lincoln-navigator-v6-ecoboost",
+      "name": "Lincoln Navigator V6 EcoBoost",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 18,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "lucid-air-grand-touring",
+      "name": "Lucid Air Grand Touring",
+      "type": "car",
+      "segment": "luxury-ev",
+      "fuelType": "ev",
+      "mileage": 25.92,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lucid-air-pure-rwd",
+      "name": "Lucid Air Pure RWD",
+      "type": "car",
+      "segment": "luxury-ev",
+      "fuelType": "ev",
+      "mileage": 24.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lucid-air-sapphire-tri-motor",
+      "name": "Lucid Air Sapphire Tri-Motor",
+      "type": "car",
+      "segment": "luxury-ev",
+      "fuelType": "ev",
+      "mileage": 32.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lucid-air-touring-awd",
+      "name": "Lucid Air Touring AWD",
+      "type": "car",
+      "segment": "luxury-ev",
+      "fuelType": "ev",
+      "mileage": 25.73,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "lucid-gravity-suv",
+      "name": "Lucid Gravity SUV",
+      "type": "car",
+      "segment": "luxury-ev",
+      "fuelType": "ev",
+      "mileage": 29.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "maserati-grecale-folgore-ev",
+      "name": "Maserati Grecale Folgore EV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "maserati-grecale-modena-mini-hybrid",
+      "name": "Maserati Grecale Modena Mini-Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-3-hatchback-premium",
+      "name": "Mazda 3 Hatchback Premium",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-3-sedan-select-sport",
+      "name": "Mazda 3 Sedan Select Sport",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-30-2-5-s-select-sport",
+      "name": "Mazda CX-30 2.5 S Select Sport",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-30-2-5-turbo-premium",
+      "name": "Mazda CX-30 2.5 Turbo Premium",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-5",
+      "name": "Mazda CX-5",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-5-2-5-s-select",
+      "name": "Mazda CX-5 2.5 S Select",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-5-2-5-turbo-signature",
+      "name": "Mazda CX-5 2.5 Turbo Signature",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-50-hybrid",
+      "name": "Mazda CX-50 Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-90-3-3-turbo-select",
+      "name": "Mazda CX-90 3.3 Turbo Select",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-90-phev",
+      "name": "Mazda CX-90 PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-cx-90-s-premium-plus",
+      "name": "Mazda CX-90 S Premium Plus",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mazda-mx-5-miata-club",
+      "name": "Mazda MX-5 Miata Club",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-amg-c43-sedan",
+      "name": "Mercedes-AMG C43 Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-amg-c63-s-e-performance",
+      "name": "Mercedes-AMG C63 S E-Performance",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-amg-cla-45-s",
+      "name": "Mercedes-AMG CLA 45 S",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-amg-e53-hybrid",
+      "name": "Mercedes-AMG E53 Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-amg-eqe-sedan",
+      "name": "Mercedes-AMG EQE Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 46.16,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-amg-eqe-suv-premium",
+      "name": "Mercedes-AMG EQE SUV Premium",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 45.54,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-amg-eqs-sedan",
+      "name": "Mercedes-AMG EQS Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 43.77,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-amg-g63-biturbo-high-end-v8",
+      "name": "Mercedes-AMG G63 BiTurbo High End V8",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 14,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-c300-4matic",
+      "name": "Mercedes-Benz C300 4MATIC",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-c300-sedan-fwd",
+      "name": "Mercedes-Benz C300 Sedan FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-cla-250-coupe",
+      "name": "Mercedes-Benz CLA 250 Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-cle-300-coupe",
+      "name": "Mercedes-Benz CLE 300 Coupe",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-cle-450-4matic",
+      "name": "Mercedes-Benz CLE 450 4MATIC",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-e350",
+      "name": "Mercedes-Benz E350",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-e450-4matic-sedan",
+      "name": "Mercedes-Benz E450 4MATIC Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-eqb-250-fwd-suv",
+      "name": "Mercedes-Benz EQB 250+ FWD SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 34.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqb-350-4matic",
+      "name": "Mercedes-Benz EQB 350 4MATIC",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 38.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqe-350",
+      "name": "Mercedes-Benz EQE 350+",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 35.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqe-350-4matic-suv",
+      "name": "Mercedes-Benz EQE 350 4MATIC SUV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 41.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqe-500-4matic",
+      "name": "Mercedes-Benz EQE 500 4MATIC",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.44,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqe-500-suv-awd",
+      "name": "Mercedes-Benz EQE 500 SUV AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqs-450",
+      "name": "Mercedes-Benz EQS 450+",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqs-4matic-suv-580",
+      "name": "Mercedes-Benz EQS 4MATIC SUV 580",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 42.66,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqs-580-4matic",
+      "name": "Mercedes-Benz EQS 580 4MATIC",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 36.63,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-eqs-suv-450",
+      "name": "Mercedes-Benz EQS SUV 450+",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-esprinter-cargo-van",
+      "name": "Mercedes-Benz eSprinter Cargo Van",
+      "type": "car",
+      "segment": "van",
+      "fuelType": "ev",
+      "mileage": 56.17,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mercedes-benz-g550-professional-g-wagon",
+      "name": "Mercedes-Benz G550 Professional G-Wagon",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 14,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-gla-250-fwd-suv",
+      "name": "Mercedes-Benz GLA 250 FWD SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-glb-250-4matic",
+      "name": "Mercedes-Benz GLB 250 4MATIC",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-glc-300-core-fwd",
+      "name": "Mercedes-Benz GLC 300 Core FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-glc-350e-hybrid-phev",
+      "name": "Mercedes-Benz GLC 350e Hybrid PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-gle-350-4matic-suv",
+      "name": "Mercedes-Benz GLE 350 4MATIC SUV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-gle-450e-plug-in-hybrid",
+      "name": "Mercedes-Benz GLE 450e Plug-In Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-gls-450-luxury-three-row",
+      "name": "Mercedes-Benz GLS 450 Luxury Three-Row",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-s500-4matic-luxury",
+      "name": "Mercedes-Benz S500 4MATIC Luxury",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-s580-4matic-luxury",
+      "name": "Mercedes-Benz S580 4MATIC Luxury",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-s580e-phev",
+      "name": "Mercedes-Benz S580e PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-benz-sprinter-van-diesel",
+      "name": "Mercedes-Benz Sprinter Van Diesel",
+      "type": "car",
+      "segment": "van",
+      "fuelType": "diesel",
+      "mileage": 19,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mercedes-maybach-s680-v12",
+      "name": "Mercedes-Maybach S680 V12",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 14,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mini-cooper-s-countryman-all4",
+      "name": "Mini Cooper S Countryman ALL4",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mini-cooper-se-hardtop",
+      "name": "Mini Cooper SE Hardtop",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 30.64,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mini-cooper-se-iconic",
+      "name": "Mini Cooper SE Iconic",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 30.64,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "mitsubishi-outlander-es-fwd",
+      "name": "Mitsubishi Outlander ES FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mitsubishi-outlander-phev",
+      "name": "Mitsubishi Outlander PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "mitsubishi-outlander-sel-awd",
+      "name": "Mitsubishi Outlander SEL AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-altima-sv-fwd",
+      "name": "Nissan Altima SV FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-ariya-engage-fwd-short",
+      "name": "Nissan Ariya Engage FWD Short",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.37,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "nissan-ariya-evolve-awd-extended",
+      "name": "Nissan Ariya Evolve+ AWD Extended",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 36.63,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "nissan-ariya-venture-fwd",
+      "name": "Nissan Ariya Venture+ FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 32.72,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "nissan-frontier",
+      "name": "Nissan Frontier",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-kicks-sv-fwd",
+      "name": "Nissan Kicks SV FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-leaf-s-40-kwh",
+      "name": "Nissan LEAF S (40 kWh)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 30.36,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "nissan-leaf-sv-plus",
+      "name": "Nissan LEAF SV PLUS",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 30.92,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "nissan-maxima-sv-legacy",
+      "name": "Nissan Maxima SV (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-pathfinder",
+      "name": "Nissan Pathfinder",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-pathfinder-rock-creek-awd",
+      "name": "Nissan Pathfinder Rock Creek AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-pathfinder-s-fwd",
+      "name": "Nissan Pathfinder S FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-rogue",
+      "name": "Nissan Rogue",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-rogue-platinum-awd",
+      "name": "Nissan Rogue Platinum AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-rogue-s-fwd",
+      "name": "Nissan Rogue S FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-sentra",
+      "name": "Nissan Sentra",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 34,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-sentra-sr",
+      "name": "Nissan Sentra SR",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "nissan-versa",
+      "name": "Nissan Versa",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "polestar-2-long-range-dual-motor",
+      "name": "Polestar 2 Long Range Dual Motor",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 31.79,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "polestar-2-long-range-single-motor",
+      "name": "Polestar 2 Long Range Single Motor",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "polestar-3-long-range",
+      "name": "Polestar 3 Long Range",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 38.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "polestar-3-long-range-dual-motor",
+      "name": "Polestar 3 Long Range Dual Motor",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 38.3,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "polestar-4-long-range",
+      "name": "Polestar 4 Long Range",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 36.63,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-cayenne-e-hybrid",
+      "name": "Porsche Cayenne E-Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "porsche-macan-4-electric",
+      "name": "Porsche Macan 4 Electric",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 35.47,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-macan-turbo-electric",
+      "name": "Porsche Macan Turbo Electric",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 37.03,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-taycan-4s",
+      "name": "Porsche Taycan 4S",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.87,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-taycan-base-rwd",
+      "name": "Porsche Taycan Base RWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 37.44,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-taycan-cross-turismo-4",
+      "name": "Porsche Taycan Cross Turismo 4",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 42.13,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "porsche-taycan-turbo-s",
+      "name": "Porsche Taycan Turbo S",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 40.12,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ram-1500-hurricane",
+      "name": "Ram 1500 Hurricane",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "ram-1500-rev",
+      "name": "Ram 1500 REV",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "ev",
+      "mileage": 39.65,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "ram-2500-cummins",
+      "name": "Ram 2500 Cummins",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "diesel",
+      "mileage": 14,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "rivian-r1s-dual-motor",
+      "name": "Rivian R1S Dual-Motor",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 43.21,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "rivian-r1s-quad-motor-max-range",
+      "name": "Rivian R1S Quad-Motor Max Range",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 43.21,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "rivian-r1t-max-pack",
+      "name": "Rivian R1T Max Pack",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 41.1,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "rolls-royce-spectre-super-coupe",
+      "name": "Rolls-Royce Spectre Super Coupe",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 41.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "royal-enfield-classic-350",
+      "name": "Royal Enfield Classic 350",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 82,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "royal-enfield-continental-gt-650",
+      "name": "Royal Enfield Continental GT 650",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 54,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "royal-enfield-himalayan-450",
+      "name": "Royal Enfield Himalayan 450",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "royal-enfield-hunter-350",
+      "name": "Royal Enfield Hunter 350",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 85,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "royal-enfield-meteor-350",
+      "name": "Royal Enfield Meteor 350",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 80,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-ascent",
+      "name": "Subaru Ascent",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-ascent-premium-awd",
+      "name": "Subaru Ascent Premium AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-brz-premium",
+      "name": "Subaru BRZ Premium",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-crosstrek",
+      "name": "Subaru Crosstrek",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-crosstrek-premium-awd",
+      "name": "Subaru Crosstrek Premium AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-crosstrek-wilderness-2-5",
+      "name": "Subaru Crosstrek Wilderness 2.5",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-forester-hybrid",
+      "name": "Subaru Forester Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-forester-premium-awd",
+      "name": "Subaru Forester Premium AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-forester-wilderness",
+      "name": "Subaru Forester Wilderness",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-impreza-rs",
+      "name": "Subaru Impreza RS",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 29,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-legacy-premium",
+      "name": "Subaru Legacy Premium",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-outback",
+      "name": "Subaru Outback",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "subaru-solterra-awd",
+      "name": "Subaru Solterra AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "subaru-solterra-premium-awd-hatch",
+      "name": "Subaru Solterra Premium AWD Hatch",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "subaru-wrx-premium",
+      "name": "Subaru WRX Premium",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 21,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-drz400s",
+      "name": "Suzuki DRZ400S",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 65,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-gsx-8s",
+      "name": "Suzuki GSX-8S",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-gsx-r1000",
+      "name": "Suzuki GSX-R1000",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-gsx-r600",
+      "name": "Suzuki GSX-R600",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 41,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-hayabusa",
+      "name": "Suzuki Hayabusa",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-sv650",
+      "name": "Suzuki SV650",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 53,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-tu250x",
+      "name": "Suzuki TU250X",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 80,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-v-strom-1050",
+      "name": "Suzuki V-Strom 1050",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-v-strom-650",
+      "name": "Suzuki V-Strom 650",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 50,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "suzuki-vanvan-200",
+      "name": "Suzuki VanVan 200",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 80,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "tesla-cybertruck-dual-motor-awd",
+      "name": "Tesla Cybertruck Dual Motor AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 44.34,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-3-long-range",
+      "name": "Tesla Model 3 Long Range",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 25.53,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-3-performance",
+      "name": "Tesla Model 3 Performance",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 27.18,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-3-standard-range-rwd",
+      "name": "Tesla Model 3 Standard Range RWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 24.42,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-s-long-range",
+      "name": "Tesla Model S Long Range",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 28.08,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-s-plaid-tri-motor",
+      "name": "Tesla Model S Plaid Tri-Motor",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 29.05,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-x-long-range",
+      "name": "Tesla Model X Long Range",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-y-long-range",
+      "name": "Tesla Model Y Long Range",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 27.62,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-y-performance",
+      "name": "Tesla Model Y Performance",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 30.36,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "tesla-model-y-standard-range-rwd",
+      "name": "Tesla Model Y Standard Range RWD",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 27.4,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "toyota-4runner-hybrid",
+      "name": "Toyota 4Runner Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-avalon-hybrid-legacy",
+      "name": "Toyota Avalon Hybrid (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 43,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-bz4x-limited-awd",
+      "name": "Toyota bZ4X Limited AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "toyota-bz4x-xle-fwd",
+      "name": "Toyota bZ4X XLE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 28.32,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "toyota-camry-awd-xle",
+      "name": "Toyota Camry AWD XLE",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-camry-fwd-le",
+      "name": "Toyota Camry FWD LE",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 51,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-camry-hybrid",
+      "name": "Toyota Camry Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 51,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-corolla-cross-hybrid",
+      "name": "Toyota Corolla Cross Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 42,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-corolla-cross-l-fwd",
+      "name": "Toyota Corolla Cross L FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 32,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-corolla-hybrid",
+      "name": "Toyota Corolla Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-corolla-sedan",
+      "name": "Toyota Corolla Sedan",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 35,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-crown-max-hybrid",
+      "name": "Toyota Crown Max Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-crown-signia-hybrid",
+      "name": "Toyota Crown Signia Hybrid",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-gr-supra-3-0",
+      "name": "Toyota GR Supra 3.0",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 26,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-gr86-premium",
+      "name": "Toyota GR86 Premium",
+      "type": "car",
+      "segment": "sports-car",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-grand-highlander-hybrid",
+      "name": "Toyota Grand Highlander Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-highlander-le-fwd",
+      "name": "Toyota Highlander LE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-highlander-limited-hybrid",
+      "name": "Toyota Highlander Limited Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-land-cruiser-hybrid",
+      "name": "Toyota Land Cruiser Hybrid",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-prius",
+      "name": "Toyota Prius",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 57,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-prius-le-fwd",
+      "name": "Toyota Prius LE FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 57,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-prius-prime-phev",
+      "name": "Toyota Prius Prime PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-prius-v-wagon-legacy",
+      "name": "Toyota Prius v Wagon (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 41,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-prius-xle-awd",
+      "name": "Toyota Prius XLE AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 54,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-rav4",
+      "name": "Toyota RAV4",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-rav4-hybrid",
+      "name": "Toyota RAV4 Hybrid",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 40,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-rav4-le-fwd",
+      "name": "Toyota RAV4 LE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-rav4-limited-awd",
+      "name": "Toyota RAV4 Limited AWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-rav4-prime-phev",
+      "name": "Toyota RAV4 Prime PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 38,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-sequoia-hybrid",
+      "name": "Toyota Sequoia Hybrid",
+      "type": "car",
+      "segment": "full-size-suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-sienna-hybrid",
+      "name": "Toyota Sienna Hybrid",
+      "type": "car",
+      "segment": "minivan",
+      "fuelType": "petrol",
+      "mileage": 36,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-tacoma-hybrid",
+      "name": "Toyota Tacoma Hybrid",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 24,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "toyota-tundra-hybrid",
+      "name": "Toyota Tundra Hybrid",
+      "type": "car",
+      "segment": "truck",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-bonneville-t100",
+      "name": "Triumph Bonneville T100",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 57,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-bonneville-t120",
+      "name": "Triumph Bonneville T120",
+      "type": "bike",
+      "segment": "retro",
+      "fuelType": "petrol",
+      "mileage": 51,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-rocket-3-r",
+      "name": "Triumph Rocket 3 R",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-street-triple-765",
+      "name": "Triumph Street Triple 765",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 46,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-tiger-900-gt",
+      "name": "Triumph Tiger 900 GT",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 45,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-tiger-sport-660",
+      "name": "Triumph Tiger Sport 660",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 52,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "triumph-trident-660",
+      "name": "Triumph Trident 660",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 54,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "vinfast-vf-8-eco-utility-fwd",
+      "name": "VinFast VF 8 Eco Utility FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 38.74,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "vinfast-vf-9-plus-luxury-awd",
+      "name": "VinFast VF 9 Plus Luxury AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 44.93,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volkswagen-arteon-sel-legacy",
+      "name": "Volkswagen Arteon SEL (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-atlas",
+      "name": "Volkswagen Atlas",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-atlas-cross-sport-sel",
+      "name": "Volkswagen Atlas Cross Sport SEL",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 22,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-atlas-se-fwd",
+      "name": "Volkswagen Atlas SE FWD",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-e-golf-legacy",
+      "name": "Volkswagen e-Golf (Legacy)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 28.32,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volkswagen-golf-gti",
+      "name": "Volkswagen Golf GTI",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-golf-r",
+      "name": "Volkswagen Golf R",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-id-4-pro",
+      "name": "Volkswagen ID.4 Pro",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 31.5,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volkswagen-id-4-pro-s-plus-awd",
+      "name": "Volkswagen ID.4 Pro S Plus AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 34.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volkswagen-id-4-standard-62-kwh",
+      "name": "Volkswagen ID.4 Standard (62 kWh)",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "ev",
+      "mileage": 31.5,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volkswagen-jetta",
+      "name": "Volkswagen Jetta",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 34,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-jetta-gli",
+      "name": "Volkswagen Jetta GLI",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-tiguan-s-fwd",
+      "name": "Volkswagen Tiguan S FWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volkswagen-tiguan-se-r-line-awd",
+      "name": "Volkswagen Tiguan SE R-Line AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-c40-recharge-ultimate-awd",
+      "name": "Volvo C40 Recharge Ultimate AWD",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 34.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volvo-ex30-core-single-motor-extended",
+      "name": "Volvo EX30 Core Single Motor Extended",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 30.09,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volvo-ex30-ultra-twin-motor-performance",
+      "name": "Volvo EX30 Ultra Twin Motor Performance",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 33.04,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volvo-ex90-twin-motor",
+      "name": "Volvo EX90 Twin Motor",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "ev",
+      "mileage": 41.6,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volvo-s60-b5-awd",
+      "name": "Volvo S60 B5 AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 28,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-s60-recharge-phev-t8",
+      "name": "Volvo S60 Recharge PHEV T8",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 31,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-s90-b6-awd",
+      "name": "Volvo S90 B6 AWD",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 25,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-s90-recharge-phev",
+      "name": "Volvo S90 Recharge PHEV",
+      "type": "car",
+      "segment": "sedan",
+      "fuelType": "petrol",
+      "mileage": 30,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-xc40-recharge-plus-awd",
+      "name": "Volvo XC40 Recharge Plus AWD",
+      "type": "car",
+      "segment": "hatchback-or-crossover-ev",
+      "fuelType": "ev",
+      "mileage": 34.39,
+      "mileageUnit": "kWh/100mi"
+    },
+    {
+      "slug": "volvo-xc90-b6",
+      "name": "Volvo XC90 B6",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 23,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "volvo-xc90-recharge-phev",
+      "name": "Volvo XC90 Recharge PHEV",
+      "type": "car",
+      "segment": "suv",
+      "fuelType": "petrol",
+      "mileage": 27,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-bolt-r-spec",
+      "name": "Yamaha Bolt R-Spec",
+      "type": "bike",
+      "segment": "cruiser",
+      "fuelType": "petrol",
+      "mileage": 51,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-mt-03",
+      "name": "Yamaha MT-03",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 56,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-mt-07",
+      "name": "Yamaha MT-07",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 58,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-mt-09",
+      "name": "Yamaha MT-09",
+      "type": "bike",
+      "segment": "naked",
+      "fuelType": "petrol",
+      "mileage": 48,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-t-n-r-700",
+      "name": "Yamaha Ténéré 700",
+      "type": "bike",
+      "segment": "adventure",
+      "fuelType": "petrol",
+      "mileage": 49,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-tw200",
+      "name": "Yamaha TW200",
+      "type": "bike",
+      "segment": "standard",
+      "fuelType": "petrol",
+      "mileage": 78,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-yzf-r1",
+      "name": "Yamaha YZF-R1",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 33,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-yzf-r3",
+      "name": "Yamaha YZF-R3",
+      "type": "bike",
+      "segment": "sport",
+      "fuelType": "petrol",
+      "mileage": 56,
+      "mileageUnit": "mpg"
+    },
+    {
+      "slug": "yamaha-zuma-125",
+      "name": "Yamaha Zuma 125",
+      "type": "bike",
+      "segment": "scooter",
+      "fuelType": "petrol",
+      "mileage": 101,
+      "mileageUnit": "mpg"
+    }
+  ]
+}

@@ -4,16 +4,17 @@ import { resolveMileageForFuel } from "../lib/vehicleMileage";
 import {
   getSiteData,
   fetchCityPrices,
-  formatInr,
+  formatCurrency,
   type CityRecord,
   type VehicleRecord,
   type FuelTypeRecord,
+  type ClientCountryConfig,
 } from "./clientSiteData";
 
 const FIELD_NAMES = ["city", "fuel", "vehicle", "mileage", "price", "distance", "roundtrip"] as const;
 type FieldName = (typeof FIELD_NAMES)[number];
 
-const STORAGE_KEY = "fuelcalculate:lastInputs";
+const STORAGE_KEY_PREFIX = "fuelcalculate:lastInputs";
 
 /**
  * Progressive enhancement: the surrounding <form method="get"> already works without
@@ -22,6 +23,7 @@ const STORAGE_KEY = "fuelcalculate:lastInputs";
  * keeps the URL/localStorage in sync so results stay shareable.
  */
 export class FuelCalculatorElement extends HTMLElement {
+  private country!: ClientCountryConfig;
   private cities: CityRecord[] = [];
   private vehicles: VehicleRecord[] = [];
   private fuelTypes: FuelTypeRecord[] = [];
@@ -30,6 +32,7 @@ export class FuelCalculatorElement extends HTMLElement {
 
   connectedCallback(): void {
     const data = getSiteData();
+    this.country = data.country;
     this.cities = data.cities;
     this.vehicles = data.vehicles;
     this.fuelTypes = data.fuelTypes;
@@ -125,7 +128,7 @@ export class FuelCalculatorElement extends HTMLElement {
     const vehicle = this.vehicles.find((v) => v.slug === vehicleSlug);
     if (!vehicle) return;
 
-    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.currentFuel());
+    const resolution = resolveMileageForFuel(this.vehicles, vehicle, this.currentFuel(), this.country.code);
     if (!resolution) {
       const fuelLabel = this.fuelTypes.find((f) => f.id === this.currentFuel())?.label ?? this.currentFuel();
       if (note) note.textContent = `No ${fuelLabel} mileage on file for ${vehicle.name} — enter it manually.`;
@@ -168,7 +171,7 @@ export class FuelCalculatorElement extends HTMLElement {
       const state = this.cityState(citySlug);
       const tariff = (state && this.evTariffByState[state]) ?? this.evDefaultTariff;
       priceField.value = String(tariff);
-      if (sourceBadge) sourceBadge.textContent = `Indicative tariff for ${state ?? "India"}`;
+      if (sourceBadge) sourceBadge.textContent = `Indicative tariff for ${state ?? this.country.name}`;
       return;
     }
 
@@ -194,9 +197,12 @@ export class FuelCalculatorElement extends HTMLElement {
     const meta = this.fuelTypes.find((f) => f.id === fuel);
     const mileageLabel = this.out("mileage-unit-label");
     const priceLabel = this.out("price-unit-label");
-    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? "km/l";
+    const distanceUnit = this.country.distanceUnit;
+    const volumeUnit = this.country.volumeUnit;
+    if (mileageLabel) mileageLabel.textContent = meta?.unitLabel ?? `${distanceUnit}/${volumeUnit === "gallon" ? "gal" : "l"}`;
     if (priceLabel) {
-      priceLabel.textContent = fuel === "ev" ? "₹ per kWh" : `₹ per ${meta?.unit ?? "litre"}`;
+      const symbol = this.country.currency.symbol;
+      priceLabel.textContent = fuel === "ev" ? `${symbol} per kWh` : `${symbol} per ${meta?.unit ?? volumeUnit}`;
     }
   }
 
@@ -218,10 +224,11 @@ export class FuelCalculatorElement extends HTMLElement {
     const costOut = this.out("cost");
     const perKmOut = this.out("cost-per-km");
     const distanceOut = this.out("distance-used");
+    const distanceUnit = this.country.distanceUnit;
 
-    if (costOut) costOut.textContent = formatInr(result.cost);
-    if (perKmOut) perKmOut.textContent = `${formatInr(result.costPerKm)} / km`;
-    if (distanceOut) distanceOut.textContent = `${roundTrip ? distance * 2 : distance} km`;
+    if (costOut) costOut.textContent = formatCurrency(result.cost, this.country);
+    if (perKmOut) perKmOut.textContent = `${formatCurrency(result.costPerKm, this.country)} / ${distanceUnit}`;
+    if (distanceOut) distanceOut.textContent = `${roundTrip ? distance * 2 : distance} ${distanceUnit}`;
   }
 
   private currentState(): Record<string, string> {
@@ -234,9 +241,13 @@ export class FuelCalculatorElement extends HTMLElement {
     return state;
   }
 
+  private storageKey(): string {
+    return `${STORAGE_KEY_PREFIX}:${this.country.code}`;
+  }
+
   private persistState(): void {
     const state = this.currentState();
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(this.storageKey(), JSON.stringify(state));
 
     const url = new URL(window.location.href);
     for (const [key, value] of Object.entries(state)) {
@@ -254,7 +265,7 @@ export class FuelCalculatorElement extends HTMLElement {
     if (hasQueryParams) {
       source = Object.fromEntries(url.searchParams.entries());
     } else {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(this.storageKey());
       if (stored) {
         try {
           source = JSON.parse(stored);

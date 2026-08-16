@@ -1,0 +1,80 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Hero from "../../../components/Hero.astro";
+import ComparisonTable from "../../../components/ComparisonTable.astro";
+import SiteDataScript from "../../../components/SiteDataScript.astro";
+import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
+import { COMPARE_PAIRS_BY_COUNTRY, type ComparePair } from "../../../data/comparePairs";
+import { COMPARE_PAIR_CONTENT } from "../../../data/comparePairContent";
+
+import fuelTypesUs from "../../../data/fuel-types/us.json";
+import fuelTypesGb from "../../../data/fuel-types/gb.json";
+import fuelTypesCa from "../../../data/fuel-types/ca.json";
+import fuelTypesAu from "../../../data/fuel-types/au.json";
+
+export const prerender = true;
+
+// getStaticPaths must not reference an outer-scope const — the Cloudflare adapter's
+// prerender step runs it in isolation and doesn't reliably see module-level bindings
+// declared above it, so the filter is inlined fresh here and again below.
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").flatMap((c) =>
+    COMPARE_PAIRS_BY_COUNTRY[c.code].map((pair) => ({
+      params: { country: c.pathPrefix.slice(1), pair: pair.slug },
+      props: { pair },
+    })),
+  );
+}
+
+const OTHER_COUNTRIES = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN");
+
+const fuelTypesByCountry: Record<Exclude<CountryCode, "IN">, { id: string; label: string }[]> = {
+  US: fuelTypesUs,
+  GB: fuelTypesGb,
+  CA: fuelTypesCa,
+  AU: fuelTypesAu,
+};
+
+const country = OTHER_COUNTRIES.find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+const fuelTypes = fuelTypesByCountry[country.code as Exclude<CountryCode, "IN">];
+
+const { pair } = Astro.props as { pair: ComparePair };
+const labelFor = (id: string) => fuelTypes.find((f) => f.id === id)?.label ?? id;
+const [a, b] = pair.fuels;
+const title = `${labelFor(a)} vs ${labelFor(b)} running cost`;
+
+const contentKey = `${a}_${b}`;
+const paragraphs = COMPARE_PAIR_CONTENT[contentKey]?.({
+  aLabel: labelFor(a),
+  bLabel: labelFor(b),
+  symbol: country.currency.symbol,
+  distanceUnit: country.distanceUnit,
+}) ?? [];
+---
+
+<Layout
+  title={`${labelFor(a)} vs ${labelFor(b)} Calculator — ${country.name} | Fuel Calculate`}
+  description={`Compare ${labelFor(a)} and ${labelFor(b)} running cost with this free fuel calculator for ${country.name}: cost per ${country.distanceUnit}, trip cost, and the exact ${country.currency.symbol} and % savings.`}
+>
+  <SiteDataScript countryCode={country.code} />
+  <Hero
+    eyebrow="Fuel comparison"
+    title={`${title} in ${country.name}.`}
+    lead={`See exactly how much cheaper (or more expensive) ${labelFor(b)} is than ${labelFor(a)} for your own distance and vehicle — not a generic national average.`}
+  />
+  <section class="mx-auto max-w-[960px] px-md pb-4xl sm:px-lg">
+    <ComparisonTable initial={{ fuels: [...pair.fuels] }} country={country} fuelTypes={fuelTypes} />
+  </section>
+
+  {
+    paragraphs.length > 0 && (
+      <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+        <div class="mx-auto flex max-w-[720px] flex-col gap-md">
+          {paragraphs.map((p) => (
+            <p class="text-body-md text-body">{p}</p>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</Layout>

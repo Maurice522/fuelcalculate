@@ -1,16 +1,66 @@
 ---
 import citiesData from "../data/cities.json";
-import vehiclesData from "../data/vehicles.json";
-import fuelTypesData from "../data/fuel-types.json";
-import evTariffData from "../data/ev-tariff-defaults.json";
+
+import vehiclesIn from "../data/vehicles/in.json";
+import vehiclesUs from "../data/vehicles/us.json";
+import vehiclesGb from "../data/vehicles/gb.json";
+import vehiclesCa from "../data/vehicles/ca.json";
+import vehiclesAu from "../data/vehicles/au.json";
+
+import fuelTypesIn from "../data/fuel-types/in.json";
+import fuelTypesUs from "../data/fuel-types/us.json";
+import fuelTypesGb from "../data/fuel-types/gb.json";
+import fuelTypesCa from "../data/fuel-types/ca.json";
+import fuelTypesAu from "../data/fuel-types/au.json";
+
+import evTariffIn from "../data/ev-tariff-defaults/in.json";
+import evTariffUs from "../data/ev-tariff-defaults/us.json";
+import evTariffGb from "../data/ev-tariff-defaults/gb.json";
+import evTariffCa from "../data/ev-tariff-defaults/ca.json";
+import evTariffAu from "../data/ev-tariff-defaults/au.json";
+
+import { getCountry, type CountryCode } from "../lib/countries";
+
+interface Props {
+  /** Defaults to India — the only country with live per-city prices, so it's the only one that gets `cities`. */
+  countryCode?: CountryCode;
+}
+
+const { countryCode = "IN" } = Astro.props;
+const country = getCountry(countryCode);
+
+const vehiclesByCountry: Record<CountryCode, { vehicles: unknown[] }> = {
+  IN: vehiclesIn,
+  US: vehiclesUs,
+  GB: vehiclesGb,
+  CA: vehiclesCa,
+  AU: vehiclesAu,
+};
+const fuelTypesByCountry: Record<CountryCode, unknown> = {
+  IN: fuelTypesIn,
+  US: fuelTypesUs,
+  GB: fuelTypesGb,
+  CA: fuelTypesCa,
+  AU: fuelTypesAu,
+};
+const evTariffByCountry: Record<CountryCode, unknown> = {
+  IN: evTariffIn,
+  US: evTariffUs,
+  GB: evTariffGb,
+  CA: evTariffCa,
+  AU: evTariffAu,
+};
 
 // Embedded once per page as a JSON island so every calculator/comparison/projection
 // custom element on the page can read it without a client-side fetch round trip.
 const payload = {
-  cities: citiesData.cities,
-  vehicles: vehiclesData.vehicles,
-  fuelTypes: fuelTypesData,
-  evTariffs: evTariffData,
+  country,
+  // Only India has a live per-city price crawler — other countries use a single flat
+  // national-average fallback price instead, so there's no city list to offer them.
+  cities: country.code === "IN" ? citiesData.cities : [],
+  vehicles: vehiclesByCountry[country.code].vehicles,
+  fuelTypes: fuelTypesByCountry[country.code],
+  evTariffs: evTariffByCountry[country.code],
 };
 ---
 

@@ -1,0 +1,30 @@
+---
+import type { CountryConfig } from "../lib/countries";
+
+interface Props {
+  countries: readonly CountryConfig[];
+  current: CountryConfig;
+}
+
+const { countries, current } = Astro.props;
+---
+
+<div class="relative">
+  <select
+    data-country-switcher
+    aria-label="Country"
+    class="h-6 cursor-pointer appearance-none rounded-full border border-hairline bg-canvas py-0 pl-xs pr-md text-caption text-ink"
+  >
+    {
+      countries.map((c) => (
+        <option value={c.code} selected={c.code === current.code}>
+          {c.name}
+        </option>
+      ))
+    }
+  </select>
+</div>
+
+<script>
+  import "../scripts/country-switcher.ts";
+</script>

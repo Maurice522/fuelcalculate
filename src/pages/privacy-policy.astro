@@ -1,0 +1,167 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+
+export const prerender = true;
+
+const title = "Privacy Policy | Fuel Calculate";
+const description =
+  "How Fuel Calculate handles cookies, local storage, IP-based country detection, geolocation for the station finder, and third-party services like Google Maps.";
+const lastUpdated = "21 July 2026";
+
+const sectionClass = "text-body-md text-body";
+---
+
+<Layout title={title} description={description}>
+  <Hero eyebrow="Privacy" title="Privacy Policy." lead={`Last updated ${lastUpdated}.`} />
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-xl px-md pb-5xl sm:px-lg">
+    <p class={sectionClass}>
+      Fuel Calculate ("we", "us", "this site") does not require an account, does not
+      sell personal data, and does not run any advertising or analytics tracking at
+      the time of writing. This policy explains exactly what data does flow through
+      the site — mostly kept on your own device — and the specific third parties
+      involved when you use certain features.
+    </p>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Information stored on your device</h2>
+      <p class="mt-sm text-body-md text-body">
+        The calculator, comparison tool, and theme preference all use your browser's
+        local storage and cookies — never a server-side account:
+      </p>
+      <ul class="mt-sm flex flex-col gap-xs text-body-md text-body">
+        <li>
+          <strong class="text-ink">A "country" cookie</strong> (up to 1 year) remembers
+          which country's version of the calculator you've chosen, so you're not
+          asked or redirected again.
+        </li>
+        <li>
+          <strong class="text-ink">Local storage entries</strong> save your last
+          calculator and comparison inputs (fuel type, price, mileage, distance) per
+          country, and your light/dark theme choice, so the site remembers your setup
+          on your next visit. These stay on your device and are never transmitted to
+          our servers as a stored record.
+        </li>
+        <li>
+          <strong class="text-ink">Page URLs</strong> — the calculator mirrors your
+          inputs into the page's URL (e.g. <code class="text-code">?fuel=petrol&price=105</code>)
+          so you can copy and share a link that reproduces your exact setup. Because
+          this is part of the URL, it's visible to anyone you share the link with and
+          appears in standard web server access logs the same as any URL, including
+          Cloudflare's (our hosting provider — see below).
+        </li>
+      </ul>
+      <p class="mt-sm text-body-md text-body">
+        You can clear all of this at any time through your browser's cookie and site
+        data settings — the site works fine afterward, it just stops remembering your
+        last inputs and preferences.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Country detection (IP address)</h2>
+      <p class="mt-sm text-body-md text-body">
+        On your first visit to the homepage, if you haven't already picked a country
+        (no cookie set yet) and you're not a recognised search-engine crawler, our
+        server sends your IP address to <strong class="text-ink">ip-api.com</strong>,
+        a third-party geolocation service, to determine your approximate country and
+        offer to show you that country's version of the calculator. We don't store
+        this IP address ourselves beyond that one lookup, and it's never linked to
+        any other data we hold about you (we don't hold any). ip-api.com's own
+        handling of that request is governed by their policies at
+        <a href="https://ip-api.com" target="_blank" rel="noopener noreferrer" class="text-link underline">ip-api.com</a>.
+        You can always override the detected country yourself using the switcher in
+        the site's navigation.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Location and the fuel-station finder</h2>
+      <p class="mt-sm text-body-md text-body">
+        The "Find fuel stations near you" feature only requests your device's precise
+        location if you click "Show nearby stations" and your browser prompts you to
+        allow it — it's never requested automatically. If you allow it, your
+        coordinates are used directly by your browser to load a Google Maps embed
+        centred on your location; we don't route this through, or store it on, our
+        own servers. If you decline or your browser doesn't support geolocation, the
+        map falls back to a general view of your selected city or country instead.
+      </p>
+      <p class="mt-sm text-body-md text-body">
+        The Google Maps embed and the "Open in Google Maps" link are Google services,
+        governed by
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-link underline">Google's Privacy Policy</a>.
+        The map only loads once you actively click to show it — it's not embedded on
+        page load.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Hosting and infrastructure</h2>
+      <p class="mt-sm text-body-md text-body">
+        This site runs on Cloudflare's network (Cloudflare Workers, Pages, and KV
+        storage for cached fuel-price data). Cloudflare processes standard request
+        data — IP address, user agent, request URL — to serve the site and for its
+        own security/performance logging, governed by
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" class="text-link underline">Cloudflare's Privacy Policy</a>.
+        We don't operate a separate analytics or tracking service on top of this.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Advertising</h2>
+      <p class="mt-sm text-body-md text-body">
+        Fuel Calculate does not currently display third-party advertising. If we
+        introduce advertising in future (for example, through Google AdSense), that
+        network and its partners may use cookies to serve ads based on your visits to
+        this and other sites. You'll be able to opt out of personalised advertising
+        at any time via
+        <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer" class="text-link underline">Google's Ads Settings</a>
+        or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" class="text-link underline">aboutads.info</a>,
+        and we'll update this policy and, where required (for example for visitors in
+        the UK or EU), request your consent before any such ads are shown.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Children's privacy</h2>
+      <p class="mt-sm text-body-md text-body">
+        This site isn't directed at children and we don't knowingly collect personal
+        data from anyone under 13 (or the relevant minimum age in your country).
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Your rights</h2>
+      <p class="mt-sm text-body-md text-body">
+        Because we don't hold a database of personal information about you, most
+        privacy requests are handled directly through your own browser — clearing
+        cookies and local storage removes everything the site has stored about your
+        visit. If you're in the UK or EU, you have rights under GDPR/UK GDPR
+        (including access, correction, deletion, and objection); if you're a
+        California resident, you have rights under the CCPA/CPRA (including the right
+        to know and delete, and to opt out of any future sale or sharing of personal
+        information — which we do not do). To ask a question about any of this,
+        <a href="/contact" class="text-link underline">contact us</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Changes to this policy</h2>
+      <p class="mt-sm text-body-md text-body">
+        We'll update this page if what the site collects or how it's used changes —
+        for example, if advertising is introduced — and update the "last updated"
+        date above when we do.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Contact</h2>
+      <p class="mt-sm text-body-md text-body">
+        Questions about this policy or your data? Email
+        <a href="mailto:beststoredeal101@gmail.com" class="text-link underline">beststoredeal101@gmail.com</a>
+        or visit the <a href="/contact" class="text-link underline">Contact us</a> page.
+      </p>
+    </div>
+  </section>
+</Layout>

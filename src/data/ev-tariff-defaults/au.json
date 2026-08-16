@@ -1,0 +1,6 @@
+{
+  "note": "Unverified estimate — a single flat Australia-average residential electricity tariff (AUD/kWh), not broken out by state. Always overridable by the user.",
+  "defaultTariffPerKwh": 0.32,
+  "tariffByState": {},
+  "efficiencyPresetsKwhPer100Km": {}
+}
