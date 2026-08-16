@@ -6,6 +6,7 @@ import SiteDataScript from "../../../components/SiteDataScript.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
 import { COMPARE_PAIRS_BY_COUNTRY, type ComparePair } from "../../../data/comparePairs";
 import { COMPARE_PAIR_CONTENT } from "../../../data/comparePairContent";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 
 import fuelTypesUs from "../../../data/fuel-types/us.json";
 import fuelTypesGb from "../../../data/fuel-types/gb.json";
@@ -57,6 +58,13 @@ const paragraphs = COMPARE_PAIR_CONTENT[contentKey]?.({
   description={`Compare ${labelFor(a)} and ${labelFor(b)} running cost with this free fuel calculator for ${country.name}: cost per ${country.distanceUnit}, trip cost, and the exact ${country.currency.symbol} and % savings.`}
 >
   <SiteDataScript countryCode={country.code} />
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${country.pathPrefix}/` },
+      { name: "Compare", href: `${country.pathPrefix}/compare` },
+      { name: `${labelFor(a)} vs ${labelFor(b)}`, href: `${country.pathPrefix}/compare/${pair.slug}` },
+    ]}
+  />
   <Hero
     eyebrow="Fuel comparison"
     title={`${title} in ${country.name}.`}

@@ -1,0 +1,69 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SUPPORTED_COUNTRIES, type CountryCode } from "../../lib/countries";
+
+import citiesUs from "../../data/cities/us.json";
+import citiesGb from "../../data/cities/gb.json";
+import citiesCa from "../../data/cities/ca.json";
+import citiesAu from "../../data/cities/au.json";
+
+export const prerender = true;
+
+const OTHER_COUNTRIES = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN");
+
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").map((c) => ({
+    params: { country: c.pathPrefix.slice(1) },
+  }));
+}
+
+interface CityEntry {
+  slug: string;
+  name: string;
+  region: string;
+}
+
+const citiesByCountry: Record<Exclude<CountryCode, "IN">, CityEntry[]> = {
+  US: citiesUs,
+  GB: citiesGb,
+  CA: citiesCa,
+  AU: citiesAu,
+};
+
+const country = OTHER_COUNTRIES.find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+const cities = citiesByCountry[country.code as Exclude<CountryCode, "IN">];
+---
+
+<Layout
+  title={`Fuel Calculator by City — ${country.name} | Fuel Calculate`}
+  description={`A dedicated fuel calculator for ${cities.length} major ${country.name} cities, with an explanation of why local prices differ from the national average.`}
+>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${country.pathPrefix}/` },
+      { name: "Cities", href: `${country.pathPrefix}/cities` },
+    ]}
+  />
+  <Hero
+    eyebrow="Browse by city"
+    title={`Fuel calculator by city in ${country.name}.`}
+    lead="Each city page explains why local prices can differ from the flat national average this calculator starts with, and lets you plug in your own price."
+  />
+
+  <section class="mx-auto max-w-[720px] px-md pb-5xl sm:px-lg">
+    <div class="flex flex-wrap gap-sm">
+      {
+        cities.map((city) => (
+          <a
+            href={`${country.pathPrefix}/city/${city.slug}`}
+            class="rounded-full border border-hairline px-sm py-xxs text-body-sm text-body hover:border-hairline-strong hover:text-ink"
+          >
+            {city.name}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

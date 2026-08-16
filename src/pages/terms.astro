@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 
 export const prerender = true;
 
@@ -11,6 +12,7 @@ const lastUpdated = "21 July 2026";
 ---
 
 <Layout title={title} description={description}>
+  <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Terms & Conditions", href: "/terms" }]} />
   <Hero eyebrow="Legal" title="Terms & Conditions." lead={`Last updated ${lastUpdated}.`} />
 
   <section class="mx-auto flex max-w-[720px] flex-col gap-xl px-md pb-5xl sm:px-lg">

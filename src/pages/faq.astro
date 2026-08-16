@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { getCountry, type CountryConfig } from "../lib/countries";
 
 export const prerender = true;
@@ -69,6 +70,7 @@ const faqs = faqsFor(country);
   title={`FAQ | Fuel Calculate${country.code === "IN" ? "" : ` ${country.name}`}`}
   description="Answers to common questions about how Fuel Calculate sources prices, mileage, and EV running costs."
 >
+  <Breadcrumbs items={[{ name: "Home", href: `${country.pathPrefix}/` }, { name: "FAQ", href: `${country.pathPrefix}/faq` }]} />
   <Hero eyebrow="FAQ" title="Common questions." />
   <section class="mx-auto max-w-[720px] px-md pb-5xl sm:px-lg">
     <div class="flex flex-col gap-lg">

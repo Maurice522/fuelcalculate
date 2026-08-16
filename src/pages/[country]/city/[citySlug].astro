@@ -6,6 +6,7 @@ import SiteDataScript from "../../../components/SiteDataScript.astro";
 import FindStationsLink from "../../../components/FindStationsLink.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
 import { CITY_CONTENT_BY_COUNTRY } from "../../../data/cityContent";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 
 import fuelTypesUs from "../../../data/fuel-types/us.json";
 import fuelTypesGb from "../../../data/fuel-types/gb.json";
@@ -81,6 +82,14 @@ const paragraphs =
   description={`Free fuel calculator for ${city.name}, ${country.name}: work out your trip fuel cost, compare fuel types, and plan a monthly budget for your car or bike.`}
 >
   <SiteDataScript countryCode={country.code} />
+
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${country.pathPrefix}/` },
+      { name: "Cities", href: `${country.pathPrefix}/cities` },
+      { name: city.name, href: `${country.pathPrefix}/city/${city.slug}` },
+    ]}
+  />
 
   <Hero
     eyebrow={city.region}

@@ -1,0 +1,44 @@
+---
+interface Crumb {
+  name: string;
+  href: string;
+}
+interface Props {
+  /** Full trail including Home — e.g. [{name:"Home",href:"/"},{name:"Compare",href:"/compare"}]. */
+  items: Crumb[];
+}
+const { items } = Astro.props;
+
+const breadcrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((item, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: item.name,
+    item: new URL(item.href, Astro.site).toString(),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="mx-auto max-w-[960px] px-md pt-md sm:px-lg">
+  <ol class="flex flex-wrap items-center gap-xs text-caption text-mute">
+    {
+      items.map((item, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">/</span>}
+          {i === items.length - 1 ? (
+            <li class="text-ink">{item.name}</li>
+          ) : (
+            <li>
+              <a href={item.href} class="hover:text-ink hover:underline">
+                {item.name}
+              </a>
+            </li>
+          )}
+        </>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbData)} />

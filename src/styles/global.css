@@ -1,6 +1,9 @@
 /* Fonts — DESIGN.md's own documented substitutes for the proprietary Geist faces.
-   Must precede @import "tailwindcss" — CSS requires all @import rules to come first. */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap");
+   Loaded via a <link> in Layout.astro's <head> instead of @import here: an @import
+   inside a stylesheet is render-blocking (browser must fetch and parse it before
+   applying any of the rest of this file), which was adding a full serial round-trip
+   to first paint. A <head> <link> lets the browser discover and fetch it in parallel
+   with everything else from the start. */
 @import "tailwindcss";
 
 @theme {

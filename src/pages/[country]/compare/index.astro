@@ -3,6 +3,7 @@ import Layout from "../../../layouts/Layout.astro";
 import Hero from "../../../components/Hero.astro";
 import ComparisonTable from "../../../components/ComparisonTable.astro";
 import SiteDataScript from "../../../components/SiteDataScript.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
 
 import fuelTypesUs from "../../../data/fuel-types/us.json";
@@ -47,6 +48,12 @@ const initial = {
   description={`Free fuel compare tool for ${country.name}: compare petrol, diesel and EV running costs side by side, with the exact ${country.currency.symbol} and % savings.`}
 >
   <SiteDataScript countryCode={country.code} />
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${country.pathPrefix}/` },
+      { name: "Compare", href: `${country.pathPrefix}/compare` },
+    ]}
+  />
   <Hero
     eyebrow="Side-by-side"
     title={`Fuel compare — see which fuel wins in ${country.name}.`}

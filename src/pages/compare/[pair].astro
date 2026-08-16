@@ -7,6 +7,7 @@ import fuelTypesData from "../../data/fuel-types/in.json";
 import { COMPARE_PAIRS_BY_COUNTRY } from "../../data/comparePairs";
 import { COMPARE_PAIR_CONTENT } from "../../data/comparePairContent";
 import { getCountry } from "../../lib/countries";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 
 export const prerender = true;
 
@@ -46,6 +47,13 @@ const paragraphs = COMPARE_PAIR_CONTENT[contentKey]?.({
   }
 >
   <SiteDataScript />
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: "/" },
+      { name: "Compare", href: "/compare" },
+      { name: isPetrolVsE20 ? "Petrol vs E20" : `${labelFor(a)} vs ${labelFor(b)}`, href: `/compare/${pair.slug}` },
+    ]}
+  />
   <Hero
     eyebrow={isPetrolVsE20 ? "E20 fuel calculator" : "Fuel comparison"}
     title={isPetrolVsE20 ? "Compare petrol vs E20 running cost." : `${title}.`}

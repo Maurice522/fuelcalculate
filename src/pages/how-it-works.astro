@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import { getCountry, type CountryConfig } from "../lib/countries";
 import fuelTypesIn from "../data/fuel-types/in.json";
 import fuelTypesUs from "../data/fuel-types/us.json";
@@ -35,6 +36,12 @@ const distanceUnit = country.distanceUnit;
   title={`How the math works | Fuel Calculate${country.code === "IN" ? "" : ` ${country.name}`}`}
   description="The exact formulas Fuel Calculate uses for trip cost, fuel comparison, and monthly/yearly projections."
 >
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${country.pathPrefix}/` },
+      { name: "How it works", href: `${country.pathPrefix}/how-it-works` },
+    ]}
+  />
   <Hero eyebrow="Transparent by default" title="How the math works." />
 
   <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">

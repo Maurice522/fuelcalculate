@@ -5,6 +5,7 @@ import CityPriceTable from "../../components/CityPriceTable.astro";
 import FuelCalculatorForm from "../../components/FuelCalculatorForm.astro";
 import SiteDataScript from "../../components/SiteDataScript.astro";
 import FindStationsLink from "../../components/FindStationsLink.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { resolveCityPrices, findCity } from "../../lib/prices";
 import { env } from "cloudflare:workers";
 
@@ -54,6 +55,13 @@ const priceGaps = resolved
       </section>
     ) : (
       <Fragment>
+        <Breadcrumbs
+          items={[
+            { name: "Home", href: "/" },
+            { name: "Cities", href: "/cities" },
+            { name: city.name, href: `/city/${city.slug}` },
+          ]}
+        />
         <Hero
           eyebrow={city.state}
           title={`Fuel prices in ${city.name}`}
