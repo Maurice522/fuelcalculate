@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const title = "Fuel Calculator Guides & Use Cases | Fuel Calculate";
+const description =
+  "Practical guides for real fuel-cost situations: daily commutes, road trips, fuel-type comparisons, rideshare and delivery driving, fleet tracking, and more.";
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Blog", href: "/blog" }]} />
+  <Hero
+    eyebrow="Guides"
+    title="Fuel calculator guides and use cases."
+    lead="Practical, honest guides for real situations — commuting, road trips, fuel-type decisions, delivery and rideshare driving, and more."
+  />
+
+  <section class="mx-auto max-w-[880px] px-md pb-5xl sm:px-lg">
+    <div class="flex flex-col gap-md">
+      {
+        posts.map((post) => (
+          <a
+            href={`/blog/${post.id}`}
+            class="rounded-lg bg-canvas p-lg shadow-level-2 transition-colors hover:bg-canvas-soft-2"
+          >
+            <p class="text-caption-mono uppercase text-mute">{post.data.category}</p>
+            <h2 class="mt-xs text-display-sm text-ink">{post.data.title}</h2>
+            <p class="mt-sm text-body-sm text-body">{post.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

@@ -339,6 +339,49 @@
   outline-offset: 2px;
 }
 
+/* ---- Blog content — styles the raw semantic HTML a rendered Markdown collection
+   entry produces (h2, p, ul, ol, a, strong), since <Content /> carries no classes of
+   its own. Reuses this system's existing tokens rather than a generic prose plugin. ---- */
+.blog-content h2 {
+  margin-top: var(--spacing-xl);
+  font-family: var(--font-geist);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--color-ink);
+}
+.blog-content h2:first-child {
+  margin-top: 0;
+}
+.blog-content p {
+  margin: 0;
+}
+.blog-content ul,
+.blog-content ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin: 0;
+  padding-left: var(--spacing-lg);
+}
+.blog-content ul {
+  list-style: disc;
+}
+.blog-content ol {
+  list-style: decimal;
+}
+.blog-content a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+.blog-content a:hover {
+  color: var(--color-link-deep);
+}
+.blog-content strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
 html,
 body {
   margin: 0;

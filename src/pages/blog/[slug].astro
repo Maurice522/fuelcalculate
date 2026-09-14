@@ -1,0 +1,49 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection, render } from "astro:content";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const articleStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  author: { "@type": "Organization", name: "Fuel Calculate" },
+};
+---
+
+<Layout
+  title={`${post.data.title} | Fuel Calculate`}
+  description={post.data.description}
+  structuredData={articleStructuredData}
+>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: "/" },
+      { name: "Blog", href: "/blog" },
+      { name: post.data.title, href: `/blog/${post.id}` },
+    ]}
+  />
+  <Hero eyebrow={post.data.category} title={post.data.title} />
+
+  <article class="mx-auto max-w-[720px] px-md pb-5xl sm:px-lg">
+    <div class="blog-content flex flex-col gap-md text-body-md text-body">
+      <Content />
+    </div>
+  </article>
+</Layout>
