@@ -6,6 +6,7 @@ import SiteDataScript from "../../../components/SiteDataScript.astro";
 import FindStationsLink from "../../../components/FindStationsLink.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
 import { CITY_CONTENT_BY_COUNTRY } from "../../../data/cityContent";
+import { getCityFact } from "../../../data/cityFacts";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 
 import fuelTypesUs from "../../../data/fuel-types/us.json";
@@ -69,6 +70,7 @@ const initial = {
   roundtrip: "",
 };
 
+const cityFact = getCityFact(country.code, city.slug);
 const paragraphs =
   CITY_CONTENT_BY_COUNTRY[country.code]?.({
     cityName: city.name,
@@ -108,9 +110,11 @@ const paragraphs =
   </section>
 
   {
-    paragraphs.length > 0 && (
+    (cityFact || paragraphs.length > 0) && (
       <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
         <div class="mx-auto flex max-w-[720px] flex-col gap-md">
+          <h2 class="text-display-sm text-ink">Driving costs in {city.name}</h2>
+          {cityFact && <p class="text-body-md text-body">{cityFact}</p>}
           {paragraphs.map((p) => (
             <p class="text-body-md text-body">{p}</p>
           ))}
