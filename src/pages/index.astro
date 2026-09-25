@@ -6,6 +6,7 @@ import MonthlyProjection from "../components/MonthlyProjection.astro";
 import SiteDataScript from "../components/SiteDataScript.astro";
 import FindStationsLink from "../components/FindStationsLink.astro";
 import { FAQS_BY_COUNTRY } from "../data/faqs";
+import fuelPricesFallbackIn from "../data/fuel-prices-fallback/in.json";
 
 // Unlike every other page in this project, "/" needs to run per-request (not as a
 // static file) so src/middleware.ts's one-time geo-based country redirect can execute —
@@ -22,6 +23,15 @@ const initial = {
   mileage: params.get("mileage") ?? "",
   distance: params.get("distance") ?? "20",
   roundtrip: params.get("roundtrip") ?? "",
+};
+
+// FuelCalculatorForm only applies this when the visitor hasn't already set a real
+// price/mileage — safe to always pass it here.
+const example = {
+  price: fuelPricesFallbackIn.prices.petrol,
+  mileage: 25.75,
+  distance: 20,
+  sourceLabel: `National average petrol price, ${new Date(fuelPricesFallbackIn.lastUpdated).toLocaleDateString("en-IN", { month: "short", year: "numeric" })} — Maruti Swift`,
 };
 
 const title = "Fuel Calculator — Trip Cost, Petrol vs E20, Diesel & EV Calculator | Fuel Calculate";
@@ -71,7 +81,7 @@ const faqStructuredData = {
   />
 
   <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
-    <FuelCalculatorForm initial={initial} />
+    <FuelCalculatorForm initial={initial} example={example} />
   </section>
 
   <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
@@ -207,8 +217,8 @@ const faqStructuredData = {
       </p>
       <div class="mt-xl flex flex-col gap-sm">
         {
-          faqs.map((item) => (
-            <details class="group rounded-lg bg-canvas p-lg shadow-level-2">
+          faqs.map((item, i) => (
+            <details class="group rounded-lg bg-canvas p-lg shadow-level-2" open={i === 0}>
               <summary class="flex cursor-pointer list-none items-center justify-between gap-md text-body-md-strong text-ink [&::-webkit-details-marker]:hidden">
                 {item.q}
                 <svg

@@ -4,10 +4,14 @@ import Hero from "../../../components/Hero.astro";
 import FuelCalculatorForm from "../../../components/FuelCalculatorForm.astro";
 import SiteDataScript from "../../../components/SiteDataScript.astro";
 import FindStationsLink from "../../../components/FindStationsLink.astro";
+import VehicleCostTable from "../../../components/VehicleCostTable.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../../lib/countries";
 import { CITY_CONTENT_BY_COUNTRY } from "../../../data/cityContent";
 import { getCityFact } from "../../../data/cityFacts";
-import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { CITY_DATA_BY_COUNTRY } from "../../../data/realLocalData";
+import { REPRESENTATIVE_VEHICLES } from "../../../data/representativeVehicles";
+import { tripCost } from "../../../lib/calculations";
 
 import fuelTypesUs from "../../../data/fuel-types/us.json";
 import fuelTypesGb from "../../../data/fuel-types/gb.json";
@@ -21,10 +25,6 @@ import citiesAu from "../../../data/cities/au.json";
 
 export const prerender = true;
 
-// These 4 countries have no live per-city price feed (see src/data/fuel-prices-fallback
-// notes) — this list is a fixed, well-known set of major cities used purely to give
-// each a dedicated, genuinely-written page, not a live price source. The calculator
-// still uses the country's flat national-average price, fully editable by the visitor.
 const OTHER_COUNTRIES = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN");
 
 interface CityEntry {
@@ -51,6 +51,7 @@ export function getStaticPaths() {
 
 const country = OTHER_COUNTRIES.find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
 const { city } = Astro.props as { city: CityEntry };
+const countryCode = country.code as Exclude<CountryCode, "IN">;
 
 const fuelTypesByCountry: Record<Exclude<CountryCode, "IN">, { id: string; label: string }[]> = {
   US: fuelTypesUs,
@@ -58,7 +59,7 @@ const fuelTypesByCountry: Record<Exclude<CountryCode, "IN">, { id: string; label
   CA: fuelTypesCa,
   AU: fuelTypesAu,
 };
-const fuelTypes = fuelTypesByCountry[country.code as Exclude<CountryCode, "IN">];
+const fuelTypes = fuelTypesByCountry[countryCode];
 
 const initial = {
   fuel: fuelTypes[0]?.id ?? "petrol",
@@ -77,11 +78,45 @@ const paragraphs =
     region: city.region,
     currencySymbol: country.currency.symbol,
   }) ?? [];
+
+// Real, sourced local data — replaces the flat national-average price this page used
+// to show despite being titled "for {city}". See src/data/realLocalData.ts for sources.
+const localData = CITY_DATA_BY_COUNTRY[countryCode]?.[city.slug];
+const vehicles = REPRESENTATIVE_VEHICLES[countryCode];
+const petrolVehicle = vehicles.find((v) => v.fuelType === "petrol")!;
+
+const example = localData
+  ? {
+      price: localData.price,
+      mileage: petrolVehicle.mileage,
+      distance: localData.route.distance,
+      sourceLabel: `${localData.priceSource}, ${new Date(localData.priceDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`,
+    }
+  : undefined;
+
+const routeCost = localData
+  ? tripCost({
+      fuelId: "petrol",
+      pricePerUnit: localData.price,
+      mileage: petrolVehicle.mileage,
+      distanceOneWay: localData.route.distance,
+      roundTrip: false,
+    })
+  : null;
+
+// Diesel isn't included in the vehicle cost table: this project has a verified local
+// price for the primary (petrol) fuel and for electricity in every one of these
+// cities, but not yet a separately-sourced local diesel price, and diesel commonly
+// differs from petrol by a meaningful margin — showing it priced at the petrol rate
+// would be a real number attached to the wrong fuel, which is worse than not showing
+// it at all.
+const tableVehicles = vehicles.filter((v) => v.fuelType !== "diesel");
+const priceFor = (fuelType: string) => (fuelType === "ev" ? (localData?.electricityPrice ?? 0) : (localData?.price ?? 0));
 ---
 
 <Layout
   title={`Fuel Calculator for ${city.name} — Trip Cost Calculator | Fuel Calculate`}
-  description={`Free fuel calculator for ${city.name}, ${country.name}: work out your trip fuel cost, compare fuel types, and plan a monthly budget for your car or bike.`}
+  description={`Free fuel calculator for ${city.name}, ${country.name}: today's local price, a real worked trip example, and a cost table for popular vehicles.`}
 >
   <SiteDataScript countryCode={country.code} />
 
@@ -96,12 +131,58 @@ const paragraphs =
   <Hero
     eyebrow={city.region}
     title={`Fuel calculator for ${city.name}.`}
-    lead={`Enter your own price and vehicle, and get an exact trip cost for ${city.name} — not a generic national estimate.`}
+    lead={
+      localData
+        ? `Pre-filled with ${city.name}'s local price — edit any field for your own numbers.`
+        : `Enter your own price and vehicle, and get an exact trip cost for ${city.name}.`
+    }
   />
 
   <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
-    <FuelCalculatorForm initial={initial} country={country} fuelTypes={fuelTypes} />
+    <FuelCalculatorForm initial={initial} country={country} fuelTypes={fuelTypes} example={example} />
   </section>
+
+  {
+    localData && routeCost && (
+      <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
+        <div class="mx-auto max-w-[720px]">
+          <h2 class="text-display-sm text-ink">
+            Worked example: {city.name} to {localData.route.destination}
+          </h2>
+          <p class="mt-sm text-body-md text-body">
+            A {localData.route.distance} {country.distanceUnit} drive from {city.name} to{" "}
+            {localData.route.destination}, in a {petrolVehicle.name} ({petrolVehicle.mileage}{" "}
+            {country.volumeUnit === "gallon" ? "mpg" : `${country.distanceUnit}/l`}), at{" "}
+            {country.currency.symbol}
+            {localData.price} per {country.volumeUnit === "gallon" ? "gallon" : "litre"} ({localData.priceSource},{" "}
+            {new Date(localData.priceDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            ), costs about {country.currency.symbol}
+            {routeCost.cost.toLocaleString(country.currency.locale, { maximumFractionDigits: 2 })} one way — {country.currency.symbol}
+            {routeCost.costPerKm.toLocaleString(country.currency.locale, { maximumFractionDigits: 2 })} per {country.distanceUnit} ×{" "}
+            {localData.route.distance} {country.distanceUnit}.
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    localData && (
+      <section class="border-t border-hairline px-md py-4xl sm:px-lg">
+        <div class="mx-auto max-w-[720px]">
+          <VehicleCostTable
+            title={`What popular vehicles cost to run in ${city.name}`}
+            vehicles={tableVehicles}
+            priceFor={priceFor}
+            country={country}
+          />
+          <p class="mt-sm text-caption text-mute">
+            Priced using {localData.priceSource} ({new Date(localData.priceDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}) for petrol and {localData.electricitySource} for EV charging. Vehicle mileage figures are manufacturer/EPA-style ratings — always editable in the calculator above.
+          </p>
+        </div>
+      </section>
+    )
+  }
 
   <section class="border-t border-hairline px-md py-4xl sm:px-lg">
     <div class="mx-auto max-w-[720px]">
@@ -110,11 +191,18 @@ const paragraphs =
   </section>
 
   {
-    (cityFact || paragraphs.length > 0) && (
+    (cityFact || paragraphs.length > 0 || localData?.gasTaxCentsPerGallon) && (
       <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
         <div class="mx-auto flex max-w-[720px] flex-col gap-md">
           <h2 class="text-display-sm text-ink">Driving costs in {city.name}</h2>
           {cityFact && <p class="text-body-md text-body">{cityFact}</p>}
+          {localData?.gasTaxCentsPerGallon && (
+            <p class="text-body-md text-body">
+              Part of that price is tax: {city.region}'s state gas tax is {localData.gasTaxCentsPerGallon}¢ per
+              gallon ({localData.gasTaxSource}), on top of the federal 18.4¢/gallon tax that applies everywhere in
+              the US — which is a real part of why prices differ so much state to state.
+            </p>
+          )}
           {paragraphs.map((p) => (
             <p class="text-body-md text-body">{p}</p>
           ))}

@@ -23,8 +23,11 @@ const articleStructuredData = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.pubDate.toISOString(),
-  author: { "@type": "Organization", name: "Fuel Calculate" },
+  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+  author: { "@type": "Organization", name: post.data.author },
 };
+
+const dateFormat: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };
 ---
 
 <Layout
@@ -40,6 +43,13 @@ const articleStructuredData = {
     ]}
   />
   <Hero eyebrow={post.data.category} title={post.data.title} />
+
+  <div class="mx-auto -mt-lg max-w-[720px] px-md pb-lg sm:px-lg">
+    <p class="text-center text-caption text-mute">
+      By {post.data.author} · Published {post.data.pubDate.toLocaleDateString("en-US", dateFormat)}
+      {post.data.updatedDate && ` · Updated ${post.data.updatedDate.toLocaleDateString("en-US", dateFormat)}`}
+    </p>
+  </div>
 
   <article class="mx-auto max-w-[720px] px-md pb-5xl sm:px-lg">
     <div class="blog-content flex flex-col gap-md text-body-md text-body">

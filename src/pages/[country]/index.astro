@@ -7,6 +7,9 @@ import SiteDataScript from "../../components/SiteDataScript.astro";
 import FindStationsLink from "../../components/FindStationsLink.astro";
 import { SUPPORTED_COUNTRIES, type CountryCode } from "../../lib/countries";
 import { FAQS_BY_COUNTRY } from "../../data/faqs";
+import { NATIONAL_EXAMPLE_BY_COUNTRY } from "../../data/realLocalData";
+import { REPRESENTATIVE_VEHICLES } from "../../data/representativeVehicles";
+import { COUNTRY_DIFFERENTIATION } from "../../data/countryDifferentiation";
 
 import fuelTypesUs from "../../data/fuel-types/us.json";
 import fuelTypesGb from "../../data/fuel-types/gb.json";
@@ -48,6 +51,18 @@ const initial = {
 
 const fuelNamesForEyebrow = fuelTypes.map((f) => f.label).join(" · ");
 
+// FuelCalculatorForm itself only applies this when the visitor hasn't already set a
+// real price/mileage (e.g. from a shared link) — safe to always pass it here.
+const nationalExample = NATIONAL_EXAMPLE_BY_COUNTRY[country.code];
+const petrolVehicle = REPRESENTATIVE_VEHICLES[country.code as Exclude<CountryCode, "IN">].find(
+  (v) => v.fuelType === "petrol",
+)!;
+const example = nationalExample
+  ? { price: nationalExample.price, mileage: petrolVehicle.mileage, distance: 20, sourceLabel: nationalExample.sourceLabel }
+  : undefined;
+
+const differentiationSections = COUNTRY_DIFFERENTIATION[country.code] ?? [];
+
 const faqs = FAQS_BY_COUNTRY[country.code];
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -74,7 +89,7 @@ const faqStructuredData = {
   />
 
   <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
-    <FuelCalculatorForm initial={initial} country={country} fuelTypes={fuelTypes} />
+    <FuelCalculatorForm initial={initial} country={country} fuelTypes={fuelTypes} example={example} />
   </section>
 
   <section class="border-t border-hairline bg-canvas-soft px-md py-4xl sm:px-lg">
@@ -130,6 +145,21 @@ const faqStructuredData = {
     </div>
   </section>
 
+  {
+    differentiationSections.length > 0 && (
+      <section class="border-t border-hairline px-md py-4xl sm:px-lg">
+        <div class="mx-auto flex max-w-[720px] flex-col gap-2xl">
+          {differentiationSections.map((s) => (
+            <div>
+              <h2 class="text-display-sm text-ink">{s.heading}</h2>
+              <p class="mt-sm text-body-md text-body">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
   <section class="border-t border-hairline px-md py-4xl sm:px-lg">
     <div class="mx-auto max-w-[960px]">
       <h2 class="text-center text-display-lg">Fuel calculator FAQs.</h2>
@@ -139,8 +169,8 @@ const faqStructuredData = {
       </p>
       <div class="mt-xl flex flex-col gap-sm">
         {
-          faqs.map((item) => (
-            <details class="group rounded-lg bg-canvas p-lg shadow-level-2">
+          faqs.map((item, i) => (
+            <details class="group rounded-lg bg-canvas p-lg shadow-level-2" open={i === 0}>
               <summary class="flex cursor-pointer list-none items-center justify-between gap-md text-body-md-strong text-ink [&::-webkit-details-marker]:hidden">
                 {item.q}
                 <svg

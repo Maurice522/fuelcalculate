@@ -89,6 +89,16 @@ const priceGaps = resolved
                   mileage: "",
                   vehicle: "",
                 }}
+                example={
+                  resolved!.prices.petrol != null
+                    ? {
+                        price: resolved!.prices.petrol,
+                        mileage: 25.75,
+                        distance: 20,
+                        sourceLabel: `${resolved!.source === "crawler" ? "auto-updated" : resolved!.source} price for ${city.name} — Maruti Swift`,
+                      }
+                    : undefined
+                }
               />
             </div>
           </div>

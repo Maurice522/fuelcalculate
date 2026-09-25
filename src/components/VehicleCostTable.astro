@@ -1,0 +1,63 @@
+---
+import { costPerKm } from "../lib/calculations";
+import type { CountryConfig } from "../lib/countries";
+
+interface VehicleRow {
+  name: string;
+  fuelType: string;
+  mileage: number;
+}
+
+interface Props {
+  title: string;
+  vehicles: VehicleRow[];
+  /** Price for the vehicle's own fuel — for EV rows this must be the electricity price
+   * per kWh, not the petrol/diesel price, so each row needs its own price. */
+  priceFor: (fuelType: string) => number;
+  country: CountryConfig;
+}
+
+const { title, vehicles, priceFor, country } = Astro.props;
+const symbol = country.currency.symbol;
+const unit = country.distanceUnit;
+
+function formatMoney(n: number): string {
+  return n.toLocaleString(country.currency.locale, { maximumFractionDigits: n < 10 ? 2 : 0 });
+}
+---
+
+<div>
+  <h3 class="text-body-md-strong text-ink">{title}</h3>
+  <div class="mt-sm overflow-x-auto rounded-md border border-hairline">
+    <table class="w-full text-left text-body-sm">
+      <thead>
+        <tr class="border-b border-hairline bg-canvas-soft">
+          <th class="px-sm py-xs font-medium text-mute">Vehicle</th>
+          <th class="px-sm py-xs font-medium text-mute">Cost per {unit}</th>
+          <th class="px-sm py-xs font-medium text-mute">Cost per 100 {unit}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          vehicles.map((v) => {
+            const price = priceFor(v.fuelType);
+            const perKm = costPerKm(v.fuelType, price, v.mileage);
+            return (
+              <tr class="border-b border-hairline last:border-0">
+                <td class="px-sm py-xs text-ink">{v.name}</td>
+                <td class="px-sm py-xs text-body">
+                  {symbol}
+                  {formatMoney(perKm)}
+                </td>
+                <td class="px-sm py-xs text-body">
+                  {symbol}
+                  {formatMoney(perKm * 100)}
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

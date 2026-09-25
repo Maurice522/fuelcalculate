@@ -1,14 +1,33 @@
 ---
-import { getCountryFromPathname } from "../lib/countries";
+import { getCountryFromPathname, type CountryCode } from "../lib/countries";
 import { COMPARE_PAIRS_BY_COUNTRY } from "../data/comparePairs";
+
+import fuelTypesIn from "../data/fuel-types/in.json";
+import fuelTypesUs from "../data/fuel-types/us.json";
+import fuelTypesGb from "../data/fuel-types/gb.json";
+import fuelTypesCa from "../data/fuel-types/ca.json";
+import fuelTypesAu from "../data/fuel-types/au.json";
 
 const country = getCountryFromPathname(Astro.url.pathname);
 const prefix = country.pathPrefix;
 const pairs = COMPARE_PAIRS_BY_COUNTRY[country.code].slice(0, 4);
 
+// Real per-country fuel labels (e.g. "Gasoline" not "Petrol" for the US, "Electric
+// (EV)" not a naive-capitalised "Ev") — a plain string.charAt(0).toUpperCase() heuristic
+// doesn't know EV is an abbreviation, which is how "Petrol vs Ev" got onto this footer
+// even though the pages themselves already used the correct labels.
+const fuelTypesByCountry: Record<CountryCode, { id: string; shortLabel: string }[]> = {
+  IN: fuelTypesIn,
+  US: fuelTypesUs,
+  GB: fuelTypesGb,
+  CA: fuelTypesCa,
+  AU: fuelTypesAu,
+};
+const fuelTypes = fuelTypesByCountry[country.code];
+const fuelLabel = (id: string) => fuelTypes.find((f) => f.id === id)?.shortLabel ?? id;
+
 function pairLabel(fuels: [string, string]): string {
-  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
-  return `${cap(fuels[0])} vs ${fuels[1].toUpperCase() === fuels[1] ? fuels[1] : cap(fuels[1])}`;
+  return `${fuelLabel(fuels[0])} vs ${fuelLabel(fuels[1])}`;
 }
 
 const columns = [

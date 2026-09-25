@@ -2,6 +2,7 @@
 import citiesData from "../data/cities.json";
 import fuelTypesIn from "../data/fuel-types/in.json";
 import { getCountry, type CountryConfig } from "../lib/countries";
+import { tripCost } from "../lib/calculations";
 
 // Note: the parent page must include <SiteDataScript /> once — this widget reads
 // from the shared #site-data JSON island rather than embedding its own copy.
@@ -24,6 +25,15 @@ interface Props {
   /** Defaults to India — the only country with live per-city prices/a city picker. */
   country?: CountryConfig;
   fuelTypes?: FuelTypeOption[];
+  /** A real, sourced example (not a guess) pre-filled so the calculator never renders
+   * a bare "$0" on first load — for crawlers/reviewers as much as first-time visitors.
+   * Omitted entirely on pages that don't have one yet, which keeps prior behaviour. */
+  example?: {
+    price: number;
+    mileage: number;
+    distance: number;
+    sourceLabel: string;
+  };
 }
 
 const {
@@ -37,15 +47,38 @@ const {
   },
   country = getCountry("IN"),
   fuelTypes = fuelTypesIn,
+  example,
 } = Astro.props;
 
 const cities = country.code === "IN" ? citiesData.cities : [];
 const volumeLabel = country.volumeUnit === "gallon" ? "gallon" : "litre";
 const mileageUnitLabel = `${country.distanceUnit}/${country.volumeUnit === "gallon" ? "gal" : "l"}`;
 const symbol = country.currency.symbol;
+
+// Only apply the example when the caller hasn't already set a real price/mileage
+// (e.g. a shared link with values in the URL) — an example should never override an
+// actual user input.
+const usingExample = Boolean(example) && !initial.price && !initial.mileage;
+const displayPrice = usingExample ? String(example!.price) : (initial.price ?? "");
+const displayMileage = usingExample ? String(example!.mileage) : (initial.mileage ?? "");
+const displayDistance = usingExample ? String(example!.distance) : (initial.distance ?? "20");
+
+const computed = usingExample
+  ? tripCost({
+      fuelId: initial.fuel ?? fuelTypes[0]?.id ?? "petrol",
+      pricePerUnit: example!.price,
+      mileage: example!.mileage,
+      distanceOneWay: example!.distance,
+      roundTrip: initial.roundtrip === "true" || initial.roundtrip === "1",
+    })
+  : null;
+
+function formatNumber(n: number): string {
+  return n.toLocaleString(country.currency.locale, { maximumFractionDigits: n < 10 ? 2 : 0 });
+}
 ---
 
-<fuel-calculator class="block">
+<fuel-calculator class="block" data-example-source={usingExample ? example!.sourceLabel : undefined}>
   <form method="get" class="grid gap-md rounded-lg bg-canvas p-lg shadow-level-3 sm:grid-cols-2 sm:p-xl">
     <label class="flex flex-col gap-xxs sm:col-span-1">
       <span class="text-body-sm-strong text-ink">Fuel type</span>
@@ -90,10 +123,12 @@ const symbol = country.currency.symbol;
         min="0"
         name="price"
         data-field="price"
-        value={initial.price}
+        value={displayPrice}
         class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
       />
-      <span class="text-caption text-mute" data-out="price-source">Custom price</span>
+      <span class="text-caption text-mute" data-out="price-source">
+        {usingExample ? `Example: ${example!.sourceLabel} — edit for your own price` : "Custom price"}
+      </span>
     </label>
 
     <label class="flex flex-col gap-xxs sm:col-span-1">
@@ -117,7 +152,7 @@ const symbol = country.currency.symbol;
         min="0"
         name="mileage"
         data-field="mileage"
-        value={initial.mileage}
+        value={displayMileage}
         placeholder="Enter your own or pick a vehicle"
         class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
       />
@@ -132,7 +167,7 @@ const symbol = country.currency.symbol;
         min="0"
         name="distance"
         data-field="distance"
-        value={initial.distance}
+        value={displayDistance}
         class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
       />
     </label>
@@ -157,9 +192,22 @@ const symbol = country.currency.symbol;
   </form>
 
   <div class="mt-lg rounded-lg bg-canvas-soft p-lg shadow-level-1">
-    <p class="text-caption text-mute" data-out="distance-used">0 {country.distanceUnit}</p>
-    <p class="mt-xxs text-display-md text-ink" data-out="cost">{symbol}0</p>
-    <p class="text-body-sm text-body" data-out="cost-per-km">{symbol}0 / {country.distanceUnit}</p>
+    <p class="text-caption text-mute" data-out="distance-used">
+      {computed ? `${displayDistance} ${country.distanceUnit}` : `0 ${country.distanceUnit}`}
+    </p>
+    <p class="mt-xxs text-display-md text-ink" data-out="cost">
+      {computed ? `${symbol}${formatNumber(computed.cost)}` : `${symbol}0`}
+    </p>
+    <p class="text-body-sm text-body" data-out="cost-per-km">
+      {computed ? `${symbol}${formatNumber(computed.costPerKm)} / ${country.distanceUnit}` : `${symbol}0 / ${country.distanceUnit}`}
+    </p>
+    {
+      computed && (
+        <p class="mt-sm text-caption text-mute">
+          {symbol}{formatNumber(computed.costPerKm)}/{country.distanceUnit} × {displayDistance} {country.distanceUnit} = {symbol}{formatNumber(computed.cost)}
+        </p>
+      )
+    }
   </div>
 </fuel-calculator>
 

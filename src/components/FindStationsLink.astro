@@ -56,7 +56,7 @@ const { cityName, countryName = "India" } = Astro.props;
     <div class="flex items-center justify-end border-t border-hairline bg-canvas px-sm py-xs">
       <a
         data-stations-map-link
-        href="#"
+        href={`https://www.google.com/maps/search/fuel+stations+near+${encodeURIComponent(cityName ?? countryName)}`}
         target="_blank"
         rel="noopener noreferrer"
         class="text-caption text-link"

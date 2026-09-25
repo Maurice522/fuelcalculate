@@ -2,7 +2,6 @@
 import { getCountryFromPathname, SUPPORTED_COUNTRIES } from "../lib/countries";
 import ThemeToggle from "./ThemeToggle.astro";
 import CountrySwitcher from "./CountrySwitcher.astro";
-import LanguageSwitcher from "./LanguageSwitcher.astro";
 
 const currentPath = Astro.url.pathname;
 const country = getCountryFromPathname(currentPath);
@@ -59,7 +58,6 @@ const companyLinks = [
         ))}
       </nav>
       <div class="flex items-center gap-xs">
-        <LanguageSwitcher />
         <CountrySwitcher countries={SUPPORTED_COUNTRIES} current={country} />
         <ThemeToggle />
         <a
@@ -120,7 +118,6 @@ const companyLinks = [
     </div>
 
     <div class="mt-md flex flex-wrap items-center gap-xs border-t border-hairline pt-md">
-      <LanguageSwitcher />
       <CountrySwitcher countries={SUPPORTED_COUNTRIES} current={country} />
     </div>
 

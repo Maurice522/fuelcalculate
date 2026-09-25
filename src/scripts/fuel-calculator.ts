@@ -161,7 +161,9 @@ export class FuelCalculatorElement extends HTMLElement {
     if (!priceField) return;
 
     if (!citySlug) {
-      if (sourceBadge) sourceBadge.textContent = "Custom price";
+      if (sourceBadge) {
+        sourceBadge.textContent = this.getAttribute("data-example-source") || "Custom price";
+      }
       return;
     }
 

@@ -8,7 +8,9 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     category: z.string(),
+    author: z.string().default("Fuel Calculate Team"),
   }),
 });
 

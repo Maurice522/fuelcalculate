@@ -34,6 +34,9 @@ const description =
             <p class="text-caption-mono uppercase text-mute">{post.data.category}</p>
             <h2 class="mt-xs text-display-sm text-ink">{post.data.title}</h2>
             <p class="mt-sm text-body-sm text-body">{post.data.description}</p>
+            <p class="mt-sm text-caption text-mute">
+              By {post.data.author} · {post.data.pubDate.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+            </p>
           </a>
         ))
       }

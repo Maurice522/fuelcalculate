@@ -30,6 +30,15 @@ const iceFuelNames = fuelTypesByCountry[country.code]
   .map((f) => f.label);
 const symbol = country.currency.symbol;
 const distanceUnit = country.distanceUnit;
+
+const dataSourcesByCountry: Record<CountryCode, string> = {
+  IN: "City fuel prices are refreshed automatically from public sources several times a day. Vehicle mileage figures are ARAI-claimed (official test-cycle) data.",
+  US: "Default example prices are sourced from AAA's daily state gas price averages, state gas tax figures from the Tax Foundation, and electricity rates from EIA-based state data. Vehicle mileage figures use EPA-style ratings.",
+  GB: "Default example prices are sourced from RAC Fuel Watch's daily UK average, and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published.",
+  CA: "Default example prices are sourced from local pump-price averages, and electricity rates from published provincial utility rates. Vehicle mileage figures are manufacturer-published.",
+  AU: "Default example prices are sourced from state-level fuel price trackers, and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published.",
+};
+const lastUpdated = "September 26, 2026";
 ---
 
 <Layout
@@ -94,6 +103,12 @@ yearlyCost = monthlyCost * 12</pre>
         Yearly is derived from the monthly figure (×12), not a separate ×365 daily
         calculation — so the two numbers never quietly disagree with each other.
       </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Where our data comes from</h2>
+      <p class="mt-sm text-body-md text-body">{dataSourcesByCountry[country.code]}</p>
+      <p class="mt-sm text-caption text-mute">Data sources last checked {lastUpdated}. Always editable — enter your own price and mileage for an exact result.</p>
     </div>
   </section>
 </Layout>
