@@ -1,0 +1,119 @@
+---
+import type { CountryConfig, CountryCode } from "../lib/countries";
+import { medianMileage } from "../lib/benchmarks";
+import { evSavings } from "../lib/evSavings";
+import { NATIONAL_EXAMPLE_BY_COUNTRY } from "../data/realLocalData";
+
+import vehiclesIn from "../data/vehicles/in.json";
+import vehiclesUs from "../data/vehicles/us.json";
+import vehiclesGb from "../data/vehicles/gb.json";
+import vehiclesCa from "../data/vehicles/ca.json";
+import vehiclesAu from "../data/vehicles/au.json";
+import evTariffIn from "../data/ev-tariff-defaults/in.json";
+import evTariffUs from "../data/ev-tariff-defaults/us.json";
+import evTariffGb from "../data/ev-tariff-defaults/gb.json";
+import evTariffCa from "../data/ev-tariff-defaults/ca.json";
+import evTariffAu from "../data/ev-tariff-defaults/au.json";
+import fuelPricesFallbackIn from "../data/fuel-prices-fallback/in.json";
+
+interface Props {
+  country: CountryConfig;
+}
+const { country } = Astro.props;
+
+const vehiclesByCountry: Record<CountryCode, { vehicles: { type: string; fuelType: string; mileage: number }[] }> = {
+  IN: vehiclesIn,
+  US: vehiclesUs,
+  GB: vehiclesGb,
+  CA: vehiclesCa,
+  AU: vehiclesAu,
+};
+const tariffByCountry: Record<CountryCode, { defaultTariffPerKwh: number }> = {
+  IN: evTariffIn,
+  US: evTariffUs,
+  GB: evTariffGb,
+  CA: evTariffCa,
+  AU: evTariffAu,
+};
+
+const vehicles = vehiclesByCountry[country.code].vehicles;
+const gasMileage = medianMileage(vehicles, "petrol", "car") ?? 0;
+const evEfficiency = medianMileage(vehicles, "ev", "car") ?? 0;
+const tariff = tariffByCountry[country.code].defaultTariffPerKwh;
+const gasPrice =
+  country.code === "IN" ? fuelPricesFallbackIn.prices.petrol : (NATIONAL_EXAMPLE_BY_COUNTRY[country.code]?.price ?? 0);
+const gasSource =
+  country.code === "IN" ? "National average petrol price" : (NATIONAL_EXAMPLE_BY_COUNTRY[country.code]?.sourceLabel ?? "");
+
+const u = country.distanceUnit;
+const gasLabel = country.code === "US" || country.code === "CA" ? "gasoline" : "petrol";
+// A round starting figure, not a statistic — the page says so and the field is editable.
+const defaultAnnual = country.code === "US" ? 12000 : 15000;
+
+const initial = { annualDistance: defaultAnnual, gasPrice, gasMileage, tariff, evEfficiency, premium: 0 };
+const r = evSavings(initial);
+
+const fmt0 = (v: number) =>
+  new Intl.NumberFormat(country.currency.locale, { style: "currency", currency: country.currency.code, maximumFractionDigits: 0 }).format(v);
+
+const volume = country.volumeUnit === "gallon" ? "gallon" : "litre";
+const mileageUnit = `${u}/${country.volumeUnit === "gallon" ? "gal" : "l"}`;
+const inputClass = "h-12 w-full rounded-sm border border-hairline bg-canvas px-sm text-[16px] text-ink";
+
+const fields = [
+  { name: "annualDistance", label: `Distance per year (${u})`, value: defaultAnnual, step: "100", hint: "A round starting figure — use your own odometer reading if you know it." },
+  { name: "gasPrice", label: `${gasLabel[0].toUpperCase()}${gasLabel.slice(1)} price (${country.currency.symbol} per ${volume})`, value: gasPrice, step: "0.01", hint: gasSource },
+  { name: "gasMileage", label: `${gasLabel[0].toUpperCase()}${gasLabel.slice(1)} car mileage (${mileageUnit})`, value: gasMileage, step: "0.1", hint: "Median petrol car in our vehicle list — replace with yours." },
+  { name: "tariff", label: `Electricity price (${country.currency.symbol} per kWh)`, value: tariff, step: "0.01", hint: "A typical residential rate (estimate) — use your own bill's rate." },
+  { name: "evEfficiency", label: `EV efficiency (kWh per 100 ${u})`, value: evEfficiency, step: "0.1", hint: "Median EV in our vehicle list — replace with yours." },
+  { name: "premium", label: `Extra price of the EV (${country.currency.symbol}, optional)`, value: "", step: "100", hint: "How much more the EV costs than the equivalent car — enables the break-even figure." },
+];
+---
+
+<ev-savings-calculator
+  class="block"
+  data-locale={country.currency.locale}
+  data-currency={country.currency.code}
+  data-unit={u}
+>
+  <form class="grid gap-md rounded-lg bg-canvas p-lg shadow-level-3 sm:grid-cols-2 sm:p-xl" onsubmit="return false">
+    {
+      fields.map((f) => (
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">{f.label}</span>
+          <input type="number" inputmode="decimal" step={f.step} min="0" data-field={f.name} value={String(f.value)} class={inputClass} />
+          <span class="text-caption text-mute">{f.hint}</span>
+        </label>
+      ))
+    }
+  </form>
+
+  <div class="mt-lg min-h-[260px] rounded-lg bg-canvas-soft p-lg shadow-level-1">
+    <p class="text-caption text-mute">Running-cost saving per year</p>
+    <p class="mt-xxs text-display-md text-ink" data-out="annualSaving" aria-live="polite">{fmt0(r.annualSaving)}</p>
+    <p class="mt-sm min-h-[3.5rem] rounded-sm bg-canvas p-sm text-body-sm text-ink" data-out="verdict">
+      {
+        r.ok
+          ? r.annualSaving >= 0
+            ? `Driving ${defaultAnnual.toLocaleString(country.currency.locale)} ${u} a year costs about ${fmt0(r.annualGas)} in ${gasLabel} versus about ${fmt0(r.annualEv)} in electricity — roughly ${fmt0(r.annualSaving)} a year (${fmt0(r.monthlySaving)} a month) less in an EV.`
+            : `At these numbers the EV costs about ${fmt0(-r.annualSaving)} a year more to run.`
+          : "Fill in every field to see your saving."
+      }
+    </p>
+    <dl class="mt-md grid grid-cols-2 gap-sm text-body-sm">
+      <div><dt class="text-caption text-mute">{gasLabel[0].toUpperCase()}{gasLabel.slice(1)} per year</dt><dd class="text-ink" data-out="annualGas">{fmt0(r.annualGas)}</dd></div>
+      <div><dt class="text-caption text-mute">Electricity per year</dt><dd class="text-ink" data-out="annualEv">{fmt0(r.annualEv)}</dd></div>
+      <div><dt class="text-caption text-mute">Saving per month</dt><dd class="text-ink" data-out="monthlySaving">{fmt0(r.monthlySaving)}</dd></div>
+      <div><dt class="text-caption text-mute">Saving over 5 years</dt><dd class="text-ink" data-out="fiveYearSaving">{fmt0(r.fiveYearSaving)}</dd></div>
+    </dl>
+    <p class="mt-md text-body-sm text-ink" data-out="breakEven">Enter the EV's extra price above to see how long it takes to pay for itself.</p>
+    <button type="button" data-action="share" class="mt-md inline-flex h-11 items-center rounded-sm border border-hairline bg-canvas px-md text-button-md text-ink">
+      Copy share link
+    </button>
+    <p class="mt-xs text-caption text-mute" data-out="action-note" aria-live="polite"></p>
+  </div>
+</ev-savings-calculator>
+
+<script>
+  import "../scripts/ev-savings.ts";
+</script>

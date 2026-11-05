@@ -19,7 +19,15 @@ import evTariffGb from "../data/ev-tariff-defaults/gb.json";
 import evTariffCa from "../data/ev-tariff-defaults/ca.json";
 import evTariffAu from "../data/ev-tariff-defaults/au.json";
 
+import citiesUs from "../data/cities/us.json";
+import citiesGb from "../data/cities/gb.json";
+import citiesCa from "../data/cities/ca.json";
+import citiesAu from "../data/cities/au.json";
+import fuelPricesFallbackIn from "../data/fuel-prices-fallback/in.json";
+
 import { getCountry, type CountryCode } from "../lib/countries";
+import { CITY_DATA_BY_COUNTRY, NATIONAL_EXAMPLE_BY_COUNTRY } from "../data/realLocalData";
+import { CITY_COORDINATES } from "../data/cityCoordinates";
 
 interface Props {
   /** Defaults to India — the only country with live per-city prices, so it's the only one that gets `cities`. */
@@ -51,6 +59,46 @@ const evTariffByCountry: Record<CountryCode, unknown> = {
   AU: evTariffAu,
 };
 
+const cityListByCountry: Record<string, { slug: string; name: string; region: string }[]> = {
+  US: citiesUs,
+  GB: citiesGb,
+  CA: citiesCa,
+  AU: citiesAu,
+};
+
+// Sourced, dated local prices for the non-India cities, so "Use my location" can find
+// the nearest one in the visitor's own browser (India uses cities.json's live prices).
+const localPrices =
+  country.code === "IN"
+    ? []
+    : (cityListByCountry[country.code] ?? []).flatMap((c) => {
+        const data = CITY_DATA_BY_COUNTRY[country.code]?.[c.slug];
+        const coords = CITY_COORDINATES[country.code]?.[c.slug];
+        if (!data || !coords) return [];
+        return [
+          {
+            slug: c.slug,
+            name: c.name,
+            region: c.region,
+            lat: coords.lat,
+            lng: coords.lng,
+            price: data.price,
+            priceSource: data.priceSource,
+            priceDate: data.priceDate,
+            electricityPrice: data.electricityPrice,
+            electricitySource: data.electricitySource,
+          },
+        ];
+      });
+
+const national = NATIONAL_EXAMPLE_BY_COUNTRY[country.code];
+const nationalGas =
+  country.code === "IN"
+    ? { price: fuelPricesFallbackIn.prices.petrol, label: "National average petrol price" }
+    : national
+      ? { price: national.price, label: national.sourceLabel }
+      : null;
+
 // Embedded once per page as a JSON island so every calculator/comparison/projection
 // custom element on the page can read it without a client-side fetch round trip.
 const payload = {
@@ -61,6 +109,8 @@ const payload = {
   vehicles: vehiclesByCountry[country.code].vehicles,
   fuelTypes: fuelTypesByCountry[country.code],
   evTariffs: evTariffByCountry[country.code],
+  localPrices,
+  nationalGas,
 };
 ---
 

@@ -3,6 +3,7 @@ import citiesData from "../data/cities.json";
 import fuelTypesIn from "../data/fuel-types/in.json";
 import { getCountry, type CountryConfig } from "../lib/countries";
 import { tripCost } from "../lib/calculations";
+import { CONDITIONS } from "../lib/benchmarks";
 
 // Note: the parent page must include <SiteDataScript /> once — this widget reads
 // from the shared #site-data JSON island rather than embedding its own copy.
@@ -33,6 +34,9 @@ interface Props {
     mileage: number;
     distance: number;
     sourceLabel: string;
+    /** Local electricity price per kWh, when the page knows one (city pages). */
+    electricityPrice?: number;
+    electricityLabel?: string;
   };
 }
 
@@ -76,10 +80,41 @@ const computed = usingExample
 function formatNumber(n: number): string {
   return n.toLocaleString(country.currency.locale, { maximumFractionDigits: n < 10 ? 2 : 0 });
 }
+
+// 16px text is what stops iOS Safari zooming the page when an input is focused, and
+// h-12 (48px) clears the usual minimum comfortable touch-target size.
+const inputClass =
+  "h-12 w-full rounded-sm border border-hairline bg-canvas px-sm text-[16px] text-ink";
 ---
 
-<fuel-calculator class="block" data-example-source={usingExample ? example!.sourceLabel : undefined}>
+<fuel-calculator
+  class="block"
+  data-example-source={usingExample ? example!.sourceLabel : undefined}
+  data-gas-price={example ? String(example.price) : undefined}
+  data-gas-label={example?.sourceLabel}
+  data-ev-price={example?.electricityPrice !== undefined ? String(example.electricityPrice) : undefined}
+  data-ev-label={example?.electricityLabel}
+>
   <form method="get" class="grid gap-md rounded-lg bg-canvas p-lg shadow-level-3 sm:grid-cols-2 sm:p-xl">
+    <div class="sm:col-span-2" data-out="welcome-back" hidden>
+      <p class="rounded-sm bg-canvas-soft px-sm py-xs text-caption text-body">
+        <span data-out="welcome-text"></span>
+        <button type="button" data-action="reset" class="ml-xs underline">Start over</button>
+      </p>
+    </div>
+
+    <label class="flex flex-col gap-xxs sm:col-span-2">
+      <span class="text-body-sm-strong text-ink">
+        Your vehicle <span class="font-normal text-mute">(search make and model — fills in mileage and fuel type)</span>
+      </span>
+      <searchable-select>
+        <select name="vehicle" data-field="vehicle">
+          <option value="">Manual entry</option>
+        </select>
+      </searchable-select>
+      <span class="text-caption text-mute" data-out="vehicle-note"></span>
+    </label>
+
     <label class="flex flex-col gap-xxs sm:col-span-1">
       <span class="text-body-sm-strong text-ink">Fuel type</span>
       <searchable-select>
@@ -113,34 +148,38 @@ function formatNumber(n: number): string {
       )
     }
 
-    <label class="flex flex-col gap-xxs sm:col-span-1">
-      <span class="text-body-sm-strong text-ink">
-        Price (<span data-out="price-unit-label">{symbol} per {volumeLabel}</span>)
-      </span>
-      <input
-        type="number"
-        step="0.01"
-        min="0"
-        name="price"
-        data-field="price"
-        value={displayPrice}
-        class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
-      />
+    <div class="flex flex-col gap-xxs sm:col-span-1">
+      <label class="flex flex-col gap-xxs">
+        <span class="text-body-sm-strong text-ink">
+          Price (<span data-out="price-unit-label">{symbol} per {volumeLabel}</span>)
+        </span>
+        <input
+          type="number"
+          inputmode="decimal"
+          step="0.01"
+          min="0"
+          name="price"
+          data-field="price"
+          value={displayPrice}
+          class={inputClass}
+        />
+      </label>
       <span class="text-caption text-mute" data-out="price-source">
         {usingExample ? `Example: ${example!.sourceLabel} — edit for your own price` : "Custom price"}
       </span>
-    </label>
-
-    <label class="flex flex-col gap-xxs sm:col-span-1">
-      <span class="text-body-sm-strong text-ink">
-        Vehicle <span class="font-normal text-mute">(optional — pick one to auto-fill mileage)</span>
-      </span>
-      <searchable-select>
-        <select name="vehicle" data-field="vehicle">
-          <option value="">Manual entry</option>
-        </select>
-      </searchable-select>
-    </label>
+      <button
+        type="button"
+        data-action="locate"
+        class="inline-flex min-h-11 items-center gap-xs self-start text-body-sm text-link underline"
+      >
+        <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke-linecap="round"></path>
+        </svg>
+        Use my location for the local price
+      </button>
+      <span class="text-caption text-mute" data-out="locate-note" aria-live="polite"></span>
+    </div>
 
     <label class="flex flex-col gap-xxs sm:col-span-1">
       <span class="text-body-sm-strong text-ink">
@@ -148,13 +187,14 @@ function formatNumber(n: number): string {
       </span>
       <input
         type="number"
+        inputmode="decimal"
         step="0.01"
         min="0"
         name="mileage"
         data-field="mileage"
         value={displayMileage}
         placeholder="Enter your own or pick a vehicle"
-        class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
+        class={inputClass}
       />
       <span class="text-caption text-mute" data-out="mileage-note"></span>
     </label>
@@ -163,16 +203,17 @@ function formatNumber(n: number): string {
       <span class="text-body-sm-strong text-ink">Distance — one way ({country.distanceUnit})</span>
       <input
         type="number"
+        inputmode="decimal"
         step="1"
         min="0"
         name="distance"
         data-field="distance"
         value={displayDistance}
-        class="h-10 rounded-sm border border-hairline bg-canvas px-sm text-body-sm text-ink"
+        class={inputClass}
       />
     </label>
 
-    <label class="flex items-center gap-xs sm:col-span-2">
+    <label class="flex min-h-12 items-center gap-xs sm:col-span-1">
       <input
         type="checkbox"
         name="roundtrip"
@@ -183,6 +224,40 @@ function formatNumber(n: number): string {
       <span class="text-body-sm text-ink">Round trip</span>
     </label>
 
+    <details class="group rounded-sm border border-hairline sm:col-span-2" data-out="extras">
+      <summary class="flex min-h-12 cursor-pointer list-none items-center justify-between gap-md px-sm text-body-sm-strong text-ink [&::-webkit-details-marker]:hidden">
+        Add tolls, parking, passengers or weather
+        <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mute transition-transform duration-200 group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </summary>
+      <div class="grid gap-md border-t border-hairline p-sm sm:grid-cols-2">
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Tolls, whole trip ({symbol})</span>
+          <input type="number" inputmode="decimal" step="0.01" min="0" name="tolls" data-field="tolls" placeholder="0" class={inputClass} />
+        </label>
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Parking, whole trip ({symbol})</span>
+          <input type="number" inputmode="decimal" step="0.01" min="0" name="parking" data-field="parking" placeholder="0" class={inputClass} />
+        </label>
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">People sharing the cost</span>
+          <input type="number" inputmode="numeric" step="1" min="1" name="people" data-field="people" placeholder="1" class={inputClass} />
+        </label>
+        <label class="flex flex-col gap-xxs">
+          <span class="text-body-sm-strong text-ink">Conditions</span>
+          <select name="conditions" data-field="conditions" class={inputClass}>
+            <option value="normal">{CONDITIONS.normal.label}</option>
+            <option value="cold">{CONDITIONS.cold.label}</option>
+          </select>
+        </label>
+        <p class="text-caption text-mute sm:col-span-2">
+          Cold-weather figures are mid-range values from <a href="https://fueleconomy.gov/feg/coldweather.shtml" class="underline" rel="noopener">fueleconomy.gov</a>.
+          Real losses vary with temperature, trip length and heater use.
+        </p>
+      </div>
+    </details>
+
     <button
       type="submit"
       class="h-12 rounded-sm bg-ink text-button-lg text-on-primary sm:col-span-2"
@@ -191,23 +266,66 @@ function formatNumber(n: number): string {
     </button>
   </form>
 
-  <div class="mt-lg rounded-lg bg-canvas-soft p-lg shadow-level-1">
+  <div class="mt-lg min-h-[220px] rounded-lg bg-canvas-soft p-lg shadow-level-1" data-out="result-card">
     <p class="text-caption text-mute" data-out="distance-used">
       {computed ? `${displayDistance} ${country.distanceUnit}` : `0 ${country.distanceUnit}`}
     </p>
-    <p class="mt-xxs text-display-md text-ink" data-out="cost">
+    <p class="mt-xxs text-display-md text-ink" data-out="cost" aria-live="polite">
       {computed ? `${symbol}${formatNumber(computed.cost)}` : `${symbol}0`}
     </p>
+    <p class="text-body-sm text-body" data-out="breakdown"></p>
+    <p class="text-body-sm text-body" data-out="per-person"></p>
     <p class="text-body-sm text-body" data-out="cost-per-km">
       {computed ? `${symbol}${formatNumber(computed.costPerKm)} / ${country.distanceUnit}` : `${symbol}0 / ${country.distanceUnit}`}
     </p>
+
+    <p class="mt-md min-h-[3.5rem] rounded-sm bg-canvas p-sm text-body-sm text-ink" data-out="verdict">
+      {
+        computed
+          ? `This trip costs about ${symbol}${formatNumber(computed.cost)} in fuel.`
+          : "Enter a price and mileage (or pick a vehicle) to see your trip cost."
+      }
+    </p>
+
     {
       computed && (
-        <p class="mt-sm text-caption text-mute">
+        <p class="mt-sm text-caption text-mute" data-out="formula">
           {symbol}{formatNumber(computed.costPerKm)}/{country.distanceUnit} × {displayDistance} {country.distanceUnit} = {symbol}{formatNumber(computed.cost)}
         </p>
       )
     }
+
+    <div class="mt-md flex flex-wrap gap-sm">
+      <button type="button" data-action="share" class="inline-flex h-11 items-center rounded-sm border border-hairline bg-canvas px-md text-button-md text-ink">
+        Copy share link
+      </button>
+      <button type="button" data-action="save" class="inline-flex h-11 items-center rounded-sm border border-hairline bg-canvas px-md text-button-md text-ink">
+        Save this trip
+      </button>
+    </div>
+    <p class="mt-xs text-caption text-mute" data-out="action-note" aria-live="polite"></p>
+
+    <div data-out="save-form" hidden class="mt-sm flex flex-wrap items-center gap-sm">
+      <input type="text" maxlength="40" data-field-save-name placeholder="Name this trip, e.g. Work commute" class={inputClass + " sm:max-w-[320px]"} />
+      <button type="button" data-action="save-confirm" class="h-11 rounded-sm bg-ink px-md text-button-md text-on-primary">Save</button>
+    </div>
+
+    <div data-out="saved-wrap" hidden class="mt-lg border-t border-hairline pt-md">
+      <h3 class="text-body-sm-strong text-ink">Your saved trips</h3>
+      <p class="text-caption text-mute">Stored only in this browser — nothing is sent to us.</p>
+      <ul class="mt-sm flex flex-col gap-xs" data-out="saved-list"></ul>
+    </div>
+  </div>
+
+  <div
+    data-out="sticky-bar"
+    hidden
+    class="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-md border-t border-hairline bg-canvas px-md py-sm shadow-level-3 sm:hidden"
+  >
+    <p class="text-body-sm text-ink">Trip cost <strong data-out="sticky-cost"></strong></p>
+    <button type="button" data-action="jump-to-result" class="h-11 rounded-sm bg-ink px-md text-button-md text-on-primary">
+      See result
+    </button>
   </div>
 </fuel-calculator>
 

@@ -2,6 +2,8 @@ export interface CityRecord {
   slug: string;
   name: string;
   state: string;
+  lat?: number;
+  lng?: number;
   prices: Record<string, number | null>;
 }
 
@@ -47,7 +49,23 @@ export interface ClientCountryConfig {
   volumeUnit: "litre" | "gallon";
 }
 
+/** A non-India city with a sourced, dated local price (see src/data/realLocalData.ts). */
+export interface LocalPriceRecord {
+  slug: string;
+  name: string;
+  region: string;
+  lat: number;
+  lng: number;
+  price: number;
+  priceSource: string;
+  priceDate: string;
+  electricityPrice: number;
+  electricitySource: string;
+}
+
 export interface SiteData {
+  localPrices: LocalPriceRecord[];
+  nationalGas: { price: number; label: string } | null;
   country: ClientCountryConfig;
   cities: CityRecord[];
   vehicles: VehicleRecord[];

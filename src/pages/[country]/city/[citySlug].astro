@@ -91,6 +91,8 @@ const example = localData
       mileage: petrolVehicle.mileage,
       distance: localData.route.distance,
       sourceLabel: `${localData.priceSource}, ${new Date(localData.priceDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`,
+      electricityPrice: localData.electricityPrice,
+      electricityLabel: `${city.name} residential electricity, ${localData.electricitySource}`,
     }
   : undefined;
 

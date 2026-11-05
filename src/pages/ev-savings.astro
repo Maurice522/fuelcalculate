@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import EvSavingsCalculator from "../components/EvSavingsCalculator.astro";
+import { getCountry, type CountryConfig } from "../lib/countries";
+
+export const prerender = true;
+
+interface Props {
+  country?: CountryConfig;
+}
+
+const { country = getCountry("IN") } = Astro.props;
+const prefix = country.pathPrefix;
+const gas = country.code === "US" || country.code === "CA" ? "gas" : "petrol";
+const unit = country.distanceUnit;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: `EV vs ${gas} savings calculator${country.code === "IN" ? "" : ` — ${country.name}`}`,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any (web-based)",
+  offers: { "@type": "Offer", price: "0", priceCurrency: country.currency.code },
+};
+---
+
+<Layout
+  title={`EV vs ${gas[0].toUpperCase()}${gas.slice(1)} Savings Calculator${country.code === "IN" ? "" : ` — ${country.name}`} | Fuel Calculate`}
+  description={`How much would you save a year by switching from a ${gas} car to an EV? Enter your own distance, ${gas} price and electricity rate to get your yearly saving and break-even point.`}
+  structuredData={structuredData}
+>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${prefix}/` },
+      { name: "EV savings", href: `${prefix}/ev-savings` },
+    ]}
+  />
+  <Hero
+    eyebrow="Switching to electric"
+    title={`Would an EV actually save you money?`}
+    lead={`Enter how far you drive, what you pay for ${gas} and electricity, and how much extra the EV costs. You get your yearly running-cost saving and how long the EV takes to pay for itself.`}
+  />
+
+  <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
+    <EvSavingsCalculator country={country} />
+  </section>
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
+    <div>
+      <h2 class="text-display-sm text-ink">How the saving is calculated</h2>
+      <p class="mt-sm text-body-md text-body">
+        Each car's running cost per {unit} comes from the same formulas used across this site,
+        and the difference is scaled up to a year of driving:
+      </p>
+      <pre class="mt-sm overflow-x-auto rounded-md bg-ink p-md text-code text-on-primary">{`${gas} cost per ${unit} = ${gas} price / mileage
+EV cost per ${unit}  = (electricity price * kWh per 100${unit}) / 100
+yearly saving       = (${gas} cost - EV cost) * distance per year
+break-even          = extra price of the EV / yearly saving`}</pre>
+      <p class="mt-sm text-body-md text-body">
+        See <a href={`${prefix}/how-it-works`} class="text-link underline">how the math works</a> for the
+        full derivation, or put two specific vehicles side by side in the
+        <a href={`${prefix}/compare`} class="text-link underline">fuel comparison tool</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">What this deliberately leaves out</h2>
+      <p class="mt-sm text-body-md text-body">
+        The calculator compares running costs only. A real decision also depends on things that
+        vary too much to guess for you: servicing and tyre costs, insurance, depreciation and
+        resale value, any purchase incentives or road-tax differences in your area, the cost of
+        installing a home charger, and battery ageing. Public fast chargers also usually cost more per
+        kWh than home electricity, so if you'll rely on them, enter a higher electricity price to match.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Getting your own numbers</h2>
+      <ul class="mt-sm list-disc pl-lg text-body-md text-body">
+        <li>Electricity price: divide your bill's total cost by the kWh used, or read the per-kWh rate on it.</li>
+        <li>{gas[0].toUpperCase()}{gas.slice(1)} price: use what you actually paid at your last fill-up, or tap "Use my location" on the main calculator.</li>
+        <li>Mileage and EV efficiency: your car's trip computer, averaged over a few tanks or charges, is more honest than a brochure figure.</li>
+        <li>Distance per year: the difference between two odometer readings a year apart.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Where the starting numbers come from</h2>
+      <p class="mt-sm text-body-md text-body">
+        The prefilled {gas} price is the dated national average shown under that field. The
+        {gas} mileage and EV efficiency are the median of the cars of that type in this site's own
+        vehicle list, and the electricity rate is a typical residential estimate. None of them is
+        your number — they exist so the page shows a worked example before you type anything. Replace
+        each one with your own.
+      </p>
+    </div>
+  </section>
+</Layout>
