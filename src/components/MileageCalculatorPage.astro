@@ -1,0 +1,151 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "./Hero.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import MileageCalculator from "./MileageCalculator.astro";
+import type { CountryConfig } from "../lib/countries";
+import { mileageFromTrip } from "../lib/units";
+
+interface Props {
+  country: CountryConfig;
+}
+const { country } = Astro.props;
+const prefix = country.pathPrefix;
+const code = country.code;
+
+const copy = {
+  IN: {
+    title: "Petrol Mileage Calculator — Car & Bike Average in km/l | Fuel Calculate",
+    h1: "Petrol average calculator: find your car or bike's real mileage.",
+    description: "Free petrol mileage calculator for cars and bikes. Enter the distance you drove and the litres you filled to get your real average in km/l, L/100km and mpg.",
+  },
+  US: {
+    title: "Gas Mileage Calculator — Find Your Real MPG | Fuel Calculate",
+    h1: "Gas mileage calculator: find your car's real mpg.",
+    description: "Free gas mileage calculator. Enter the miles you drove and the gallons you filled to get your real mpg, plus L/100km and km/l, and your cost per mile.",
+  },
+  GB: {
+    title: "Fuel Consumption Calculator UK — mpg, km/l & L/100km | Fuel Calculate",
+    h1: "Fuel consumption calculator: your real mpg, in miles and litres.",
+    description: "Free UK fuel consumption calculator. Enter the miles you drove and the litres you put in to get your real mpg (UK), plus L/100km, km/l and cost per mile.",
+  },
+  CA: {
+    title: "Fuel Consumption Calculator — L/100km, km/l & mpg | Fuel Calculate Canada",
+    h1: "Fuel consumption calculator: your real L/100km.",
+    description: "Free fuel consumption calculator for Canada. Enter the kilometres you drove and the litres you filled to get your real L/100km, plus mpg and cost per km.",
+  },
+  AU: {
+    title: "Fuel Consumption Calculator — L/100km, km/l & mpg | Fuel Calculate Australia",
+    h1: "Fuel consumption calculator: your real L/100km.",
+    description: "Free fuel consumption calculator for Australia. Enter the kilometres you drove and the litres you filled to get your real L/100km, plus mpg and cost per km.",
+  },
+}[code];
+
+// Worked examples are computed here, not typed, so the numbers on the page can't drift.
+const ex = {
+  IN: mileageFromTrip(300, "km", 20, "litre")!,
+  US: mileageFromTrip(300, "mi", 10, "usGallon")!,
+  GB: mileageFromTrip(300, "mi", 28, "litre")!,
+  CA: mileageFromTrip(500, "km", 40, "litre")!,
+  AU: mileageFromTrip(500, "km", 40, "litre")!,
+}[code];
+const exText = {
+  IN: "300 km on 20 litres",
+  US: "300 miles on 10 US gallons",
+  GB: "300 miles on 28 litres",
+  CA: "500 km on 40 litres",
+  AU: "500 km on 40 litres",
+}[code];
+const f1 = (n: number) => n.toFixed(1);
+const mpgUs30 = mileageFromTrip(300, "mi", 10, "usGallon")!;
+const miles = code === "US" || code === "GB";
+const nextSlug = miles ? "cost-per-mile-calculator" : "cost-per-km-calculator";
+
+const faqs = [
+  {
+    q: "How do I calculate my car's mileage (fuel efficiency)?",
+    a: `Divide the distance you drove by the fuel you used. For the most reliable figure, fill the tank completely, note the odometer, drive as normal, then fill up again and note how much fuel it took — that's the fuel used over the distance. For example, ${exText} is ${f1(ex.kmPerLitre)} km/l, ${f1(ex.litresPer100Km)} L/100km, ${f1(ex.mpgUs)} mpg (US) or ${f1(ex.mpgUk)} mpg (UK). Do this over a few tanks and average the results, since a single fill-up can be off by a litre or so.`,
+  },
+  {
+    q: "What's the difference between km/l, L/100km, mpg (US) and mpg (UK)?",
+    a: `They measure the same thing in different units. km/l and mpg are distance per fuel, so higher is better; L/100km is fuel per distance, so lower is better. A US gallon is 3.785 litres and a UK (imperial) gallon is 4.546 litres, which is why the same car shows a bigger mpg in the UK: 30 mpg (US) is about ${f1(mpgUs30.mpgUk)} mpg (UK), or ${f1(mpgUs30.litresPer100Km)} L/100km.`,
+  },
+  {
+    q: "Why is my real mileage lower than the manufacturer's figure?",
+    a: "Official figures come from standardised tests. Real driving adds stop-start traffic, short trips with a cold engine, cold weather, air conditioning, extra load, low tyre pressure and a heavier right foot. That is why this calculator uses your own measured distance and fuel rather than a brochure number — and why the trip cost calculator lets you edit the mileage it uses.",
+  },
+  {
+    q: "How do I turn my mileage into a running cost?",
+    a: `Enter what the fuel cost in the optional field above and you get your cost per kilometre and per mile straight away. To price a whole journey, use the ${miles ? "cost per mile" : "cost per km"} calculator, or send your mileage to the trip cost calculator with the button above.`,
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: `Fuel consumption calculator${code === "IN" ? "" : ` — ${country.name}`}`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any (web-based)",
+    offers: { "@type": "Offer", price: "0", priceCurrency: country.currency.code },
+  },
+];
+---
+
+<Layout title={copy.title} description={copy.description} structuredData={structuredData}>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${prefix}/` },
+      { name: "Mileage calculator", href: `${prefix}/mileage-calculator` },
+    ]}
+  />
+  <Hero eyebrow="Fuel efficiency" title={copy.h1} lead="Enter the distance you drove and the fuel it used. You get your real efficiency in every common unit at once — no converting by hand." />
+
+  <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
+    <MileageCalculator country={country} />
+  </section>
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
+    <div>
+      <h2 class="text-display-sm text-ink">How to measure your real mileage</h2>
+      <ol class="mt-sm list-decimal pl-lg text-body-md text-body">
+        <li>Fill the tank to the first click of the pump and note your odometer reading.</li>
+        <li>Drive as you normally would until the tank is at least half empty.</li>
+        <li>Fill to the first click again at the same pump if you can. Note the odometer and exactly how much fuel went in.</li>
+        <li>Enter the distance between the two readings and the fuel added above.</li>
+      </ol>
+      <p class="mt-sm text-body-md text-body">
+        Repeat over a few tanks and average them — one fill-up can be skewed by how the pump
+        clicked off. Your trip computer is handy for a quick look, but a fill-to-fill figure is
+        based on what you actually bought.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Frequently asked questions</h2>
+      <div class="mt-md flex flex-col gap-sm">
+        {
+          faqs.map((item, i) => (
+            <details class="group rounded-lg bg-canvas p-lg shadow-level-2" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-md text-body-md-strong text-ink [&::-webkit-details-marker]:hidden">
+                {item.q}
+              </summary>
+              <p class="mt-sm text-body-sm text-body">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="text-body-md text-body">
+      Next: <a href={`${prefix}/${nextSlug}`} class="text-link underline">work out your cost per {miles ? "mile" : "km"}</a>,
+      <a href={`${prefix}/`} class="text-link underline">price a trip</a>, or see
+      <a href={`${prefix}/ev-savings`} class="text-link underline">how much an EV could save you</a>.
+    </p>
+  </section>
+</Layout>

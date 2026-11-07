@@ -1,0 +1,18 @@
+---
+import MileageCalculatorPage from "../../components/MileageCalculatorPage.astro";
+import { SUPPORTED_COUNTRIES } from "../../lib/countries";
+
+export const prerender = true;
+
+// getStaticPaths must not reference an outer-scope const — the Cloudflare adapter's
+// prerender step runs it in isolation, so the filter is inlined fresh here and below.
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").map((c) => ({
+    params: { country: c.pathPrefix.slice(1) },
+  }));
+}
+
+const country = SUPPORTED_COUNTRIES.filter((c) => c.code !== "IN").find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+---
+
+<MileageCalculatorPage country={country} />

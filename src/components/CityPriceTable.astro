@@ -52,7 +52,7 @@ const pricesByFuelId = prices as unknown as Record<string, number | null>;
             const price = pricesByFuelId[f.id];
             return (
               <tr class="border-t border-hairline">
-                <td class="p-sm text-body-sm-strong text-ink">{f.label}</td>
+                <td class="p-sm text-body-sm-strong text-ink">{f.label}{(f.id === "xp95" || f.id === "xp100") && <span class="ml-xs text-caption font-normal text-mute">(estimate: petrol + typical premium)</span>}</td>
                 <td class="p-sm text-body-sm text-body">
                   {price != null ? `${currencySymbol}${price.toFixed(2)} / ${f.unit}` : "Not available"}
                 </td>

@@ -1,0 +1,8 @@
+---
+import MileageCalculatorPage from "../components/MileageCalculatorPage.astro";
+import { getCountry } from "../lib/countries";
+
+export const prerender = true;
+---
+
+<MileageCalculatorPage country={getCountry("IN")} />

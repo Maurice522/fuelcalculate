@@ -10,7 +10,7 @@ export interface Faq {
  * or CNG outside India, no LPG for US/CA), and uses that country's real currency/unit
  * terminology (mpg/gallon for the US, km/l/litre elsewhere) rather than converting India's
  * figures. */
-export const FAQS_BY_COUNTRY: Record<CountryCode, Faq[]> = {
+const BASE_FAQS: Record<CountryCode, Faq[]> = {
   IN: [
     {
       q: "How much fuel will my car use?",
@@ -277,4 +277,92 @@ export const FAQS_BY_COUNTRY: Record<CountryCode, Faq[]> = {
       a: "Pick your make and model from the vehicle list and this fuel calculator fills in a representative mileage figure automatically. If your exact trim isn't listed, enter your own mileage (check your owner's manual or trip computer) and every calculation still works the same way.",
     },
   ],
+};
+
+/** Questions people actually type into search for fuel-cost tools, answered with
+ * worked examples (the arithmetic is shown so it can be checked) and pointing at the
+ * dedicated calculators for each. Appended after the core questions above. */
+const SEARCH_FAQS: Record<CountryCode, Faq[]> = {
+  IN: [
+    {
+      q: "How do I calculate my petrol average (mileage) for a car or bike?",
+      a: "Divide the distance you drove by the litres you filled. Fill the tank, note the odometer, drive, then refill and note how many litres it took: 300 km on 20 litres is 15 km/l, and a bike that covers 180 km on 3 litres gives 60 km/l. The mileage calculator at /mileage-calculator does this for you and also shows L/100km and mpg.",
+    },
+    {
+      q: "What is the cost per km of my car or bike?",
+      a: "Cost per km is the fuel price divided by your mileage. At 15 km/l with petrol at ₹100 a litre, each km costs about ₹6.67. Enter your own mileage and price in the cost per km calculator at /cost-per-km-calculator to get your figure and the cost of any journey.",
+    },
+    {
+      q: "What is the running cost of a CNG car versus a petrol car?",
+      a: "Work out each fuel's cost per km separately: CNG is price per kg divided by km per kg, petrol is price per litre divided by km per litre. Whichever number is lower is cheaper to run. The petrol vs CNG comparison page (/compare/petrol-vs-cng) lets you enter your own prices and mileage for both and shows the exact rupee and percentage difference.",
+    },
+    {
+      q: "What is E20 petrol, and where can I check the E20 price in my city?",
+      a: "E20 is petrol blended with up to 20% ethanol. Pump prices differ from city to city because state taxes differ, so check the page for your city (for example /city/mumbai or /city/hyderabad) for an indicative price, and always confirm at the pump before you fill up.",
+    },
+  ],
+  US: [
+    {
+      q: "How do I calculate my gas mileage (mpg)?",
+      a: "Divide the miles you drove by the gallons you put in. Fill the tank, note the odometer, drive, then fill up again and note how many gallons it took: 300 miles on 10 gallons is 30 mpg. The gas mileage calculator at /us/mileage-calculator does this for you and also converts to L/100km and km/l.",
+    },
+    {
+      q: "How much will a road trip cost in gas?",
+      a: "Divide the trip distance by your car's mpg to get gallons, then multiply by the price per gallon. An 800-mile round trip at 30 mpg with gas at $4.49 uses about 26.7 gallons and costs about $120. Tick Round trip in the calculator above, and open the tolls, parking and passengers section to add those costs and split the total between people.",
+    },
+    {
+      q: "How much can I save on gas with a more fuel-efficient car?",
+      a: "Compare the yearly gas bill for each car. Driving 12,000 miles a year with gas at $4.49 costs about $2,155 at 25 mpg and about $1,539 at 35 mpg, a saving of roughly $616 a year. The EV savings calculator at /us/ev-savings shows the same comparison against an electric car, including how long the extra purchase price takes to pay back.",
+    },
+    {
+      q: "What is my gas cost per mile?",
+      a: "Cost per mile is the price of a gallon divided by your mpg. At 30 mpg with gas at $4.00 a gallon, each mile costs about 13 cents. Enter your own numbers in the cost per mile calculator at /us/cost-per-mile-calculator to see your figure and the gas cost of any trip.",
+    },
+  ],
+  GB: [
+    {
+      q: "How much does petrol cost per mile in the UK?",
+      a: "Multiply the price per litre by 4.546 (litres in a UK gallon) and divide by your mpg. At 170p a litre and 45 mpg that is 170 × 4.546 ÷ 45, about 17p per mile. The petrol cost per mile calculator at /gb/cost-per-mile-calculator takes mpg and pence per litre directly and works out the fuel cost of any journey.",
+    },
+    {
+      q: "How do I convert mpg to litres per 100km?",
+      a: "For UK (imperial) mpg, divide 282.5 by the mpg figure: 45 mpg is about 6.3 L/100km. For US mpg, divide 235.2 by the mpg. The fuel consumption calculator at /gb/mileage-calculator converts between mpg (UK), mpg (US), km/l and L/100km in one go.",
+    },
+    {
+      q: "Is this a free alternative to the RAC fuel cost calculator?",
+      a: "Fuel Calculate is independent and isn't affiliated with the RAC. It does the same core job — enter your distance, your car's fuel consumption and the fuel price to get the journey cost — and adds EV and diesel comparisons, a monthly budget projection, and a cost per mile calculator that works in mpg and pence per litre.",
+    },
+    {
+      q: "How do I work out the fuel I need for a journey in miles?",
+      a: "Divide the miles by your mpg to get gallons, then multiply by 4.546 for litres. A 200-mile journey at 45 mpg needs 200 ÷ 45 = 4.44 UK gallons, about 20.2 litres. Multiply by the pump price per litre for the fuel cost.",
+    },
+  ],
+  CA: [
+    {
+      q: "How do I convert L/100km to mpg or km/l?",
+      a: "For km/l, divide 100 by the L/100km figure: 8 L/100km is 12.5 km/l. For US mpg divide 235.2 by L/100km (about 29.4 mpg), and for imperial mpg divide 282.5 (about 35.3 mpg). The fuel consumption calculator at /ca/mileage-calculator converts between them all.",
+    },
+    {
+      q: "How much does it cost per km to drive?",
+      a: "Cost per km is litres used per km times the price per litre. A car using 8 L/100km (0.08 L per km) with fuel at $1.80 a litre costs about 14 cents per km. Enter your own numbers in the cost per km calculator at /ca/cost-per-km-calculator to see your figure and the cost of any journey.",
+    },
+  ],
+  AU: [
+    {
+      q: "How do I convert L/100km to mpg or km/l?",
+      a: "For km/l, divide 100 by the L/100km figure: 8 L/100km is 12.5 km/l. For US mpg divide 235.2 by L/100km (about 29.4 mpg), and for imperial mpg divide 282.5 (about 35.3 mpg). The fuel consumption calculator at /au/mileage-calculator converts between them all.",
+    },
+    {
+      q: "How much does petrol cost per km in Australia?",
+      a: "Cost per km is litres used per km times the price per litre. A car using 8 L/100km (0.08 L per km) with fuel at $2.00 a litre costs about 16 cents per km. The petrol calculator at /au/cost-per-km-calculator works out your own figure and the cost of any trip.",
+    },
+  ],
+};
+
+export const FAQS_BY_COUNTRY: Record<CountryCode, Faq[]> = {
+  IN: [...BASE_FAQS.IN, ...SEARCH_FAQS.IN],
+  US: [...BASE_FAQS.US, ...SEARCH_FAQS.US],
+  GB: [...BASE_FAQS.GB, ...SEARCH_FAQS.GB],
+  CA: [...BASE_FAQS.CA, ...SEARCH_FAQS.CA],
+  AU: [...BASE_FAQS.AU, ...SEARCH_FAQS.AU],
 };

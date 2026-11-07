@@ -1,0 +1,87 @@
+---
+import type { CountryConfig } from "../lib/countries";
+import { UNIT_DEFAULTS } from "../data/unitDefaults";
+import {
+  DISTANCE_LABELS,
+  MILEAGE_LABELS,
+  VOLUME_LABELS,
+  fromKmPerLitre,
+  mileageFromTrip,
+  type DistanceUnit,
+  type VolumeUnit,
+} from "../lib/units";
+
+interface Props {
+  country: CountryConfig;
+}
+const { country } = Astro.props;
+const d = UNIT_DEFAULTS[country.code];
+
+// A round worked example in each country's own units — the page says it's an example.
+const example: Record<string, { distance: number; fuel: number }> = {
+  IN: { distance: 300, fuel: 20 },
+  US: { distance: 300, fuel: 10 },
+  GB: { distance: 300, fuel: 28 },
+  CA: { distance: 500, fuel: 40 },
+  AU: { distance: 500, fuel: 40 },
+};
+const start = example[country.code];
+const r = mileageFromTrip(start.distance, d.distance, start.fuel, d.volume)!;
+
+const tripMileage = fromKmPerLitre(r.kmPerLitre, d.tripCalculatorMileage);
+const tripLink = `${country.pathPrefix}/?fuel=petrol&mileage=${(Math.round(tripMileage * 10) / 10).toString()}`;
+
+const inputClass = "h-12 w-full rounded-sm border border-hairline bg-canvas px-sm text-[16px] text-ink";
+const distanceUnits = Object.keys(DISTANCE_LABELS) as DistanceUnit[];
+const volumeUnits = Object.keys(VOLUME_LABELS) as VolumeUnit[];
+const f1 = (n: number) => n.toFixed(1);
+const symbol = country.currency.symbol;
+---
+
+<mileage-calculator class="block" data-symbol={symbol} data-locale={country.currency.locale} data-prefix={country.pathPrefix} data-trip-unit={d.tripCalculatorMileage}>
+  <form class="grid gap-md rounded-lg bg-canvas p-lg shadow-level-3 sm:grid-cols-2 sm:p-xl" onsubmit="return false">
+    <label class="flex flex-col gap-xxs">
+      <span class="text-body-sm-strong text-ink">Distance you drove</span>
+      <div class="flex gap-xs">
+        <input type="number" inputmode="decimal" min="0" step="any" data-field="distance" value={String(start.distance)} class={inputClass} />
+        <select data-field="distanceUnit" class={inputClass + " max-w-[140px]"} aria-label="Distance unit">
+          {distanceUnits.map((u) => <option value={u} selected={u === d.distance}>{DISTANCE_LABELS[u]}</option>)}
+        </select>
+      </div>
+    </label>
+    <label class="flex flex-col gap-xxs">
+      <span class="text-body-sm-strong text-ink">Fuel it used (from fill to fill)</span>
+      <div class="flex gap-xs">
+        <input type="number" inputmode="decimal" min="0" step="any" data-field="fuel" value={String(start.fuel)} class={inputClass} />
+        <select data-field="fuelUnit" class={inputClass + " max-w-[160px]"} aria-label="Fuel unit">
+          {volumeUnits.map((u) => <option value={u} selected={u === d.volume}>{VOLUME_LABELS[u]}</option>)}
+        </select>
+      </div>
+    </label>
+    <label class="flex flex-col gap-xxs sm:col-span-2">
+      <span class="text-body-sm-strong text-ink">What that fuel cost ({symbol}, optional)</span>
+      <input type="number" inputmode="decimal" min="0" step="0.01" data-field="cost" placeholder="Add to see your cost per distance" class={inputClass + " sm:max-w-[320px]"} />
+    </label>
+  </form>
+
+  <div class="mt-lg min-h-[240px] rounded-lg bg-canvas-soft p-lg shadow-level-1">
+    <p class="text-caption text-mute">Your fuel efficiency</p>
+    <p class="mt-xxs text-display-md text-ink" data-out="headline" aria-live="polite">
+      {f1(fromKmPerLitre(r.kmPerLitre, d.mileage))} {MILEAGE_LABELS[d.mileage]}
+    </p>
+    <dl class="mt-md grid grid-cols-2 gap-sm text-body-sm sm:grid-cols-4">
+      <div><dt class="text-caption text-mute">km/l</dt><dd class="text-ink" data-out="kmpl">{f1(r.kmPerLitre)}</dd></div>
+      <div><dt class="text-caption text-mute">L/100km</dt><dd class="text-ink" data-out="l100km">{f1(r.litresPer100Km)}</dd></div>
+      <div><dt class="text-caption text-mute">mpg (US)</dt><dd class="text-ink" data-out="mpgUs">{f1(r.mpgUs)}</dd></div>
+      <div><dt class="text-caption text-mute">mpg (UK)</dt><dd class="text-ink" data-out="mpgUk">{f1(r.mpgUk)}</dd></div>
+    </dl>
+    <p class="mt-md text-body-sm text-ink" data-out="costLine"></p>
+    <a href={tripLink} data-out="tripLink" class="mt-md inline-flex min-h-11 items-center rounded-sm bg-ink px-md text-button-md text-on-primary">
+      Use this mileage in the trip cost calculator
+    </a>
+  </div>
+</mileage-calculator>
+
+<script>
+  import "../scripts/unit-tools.ts";
+</script>

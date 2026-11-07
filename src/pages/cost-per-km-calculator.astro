@@ -1,0 +1,8 @@
+---
+import CostPerDistancePage from "../components/CostPerDistancePage.astro";
+import { getCountry } from "../lib/countries";
+
+export const prerender = true;
+---
+
+<CostPerDistancePage country={getCountry("IN")} />

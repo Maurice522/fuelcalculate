@@ -63,6 +63,31 @@ const example = nationalExample
 
 const differentiationSections = COUNTRY_DIFFERENTIATION[country.code] ?? [];
 
+// Titles/descriptions use the words people in each market actually search with
+// (gas calculator in the US, petrol cost per mile in the UK, ...), not one template.
+const seoByCountry: Record<string, { title: string; description: string }> = {
+  US: {
+    title: "Gas Calculator — Trip Cost, Road Trip Gas & MPG | Fuel Calculate",
+    description: "Free gas calculator: work out the gas cost of any trip or road trip from your car's mpg and local gas prices, split it between passengers, and see how much you'd save with a more efficient car or an EV.",
+  },
+  GB: {
+    title: "Fuel Calculator UK — Petrol Cost per Mile & Journey Cost | Fuel Calculate",
+    description: "Free UK fuel calculator: work out the petrol or diesel cost of any journey, your cost per mile, and how much an EV or a more efficient car would save you.",
+  },
+  CA: {
+    title: "Fuel Cost Calculator Canada — Trip & Gas Cost | Fuel Calculate",
+    description: "Free fuel cost calculator for Canada: work out the gas cost of any trip from your L/100km and the pump price, and compare gasoline, diesel and EV running costs.",
+  },
+  AU: {
+    title: "Petrol Calculator Australia — Fuel Cost for Any Trip | Fuel Calculate",
+    description: "Free petrol calculator for Australia: work out the fuel cost of any trip from your L/100km and the price per litre, and compare unleaded, diesel, LPG and EV running costs.",
+  },
+};
+const seo = seoByCountry[country.code] ?? {
+  title: `Fuel Calculator — ${country.name} Trip Cost Calculator | Fuel Calculate`,
+  description: `Free fuel calculator for ${country.name}: work out trip and monthly fuel cost.`,
+};
+
 const faqs = FAQS_BY_COUNTRY[country.code];
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -76,8 +101,8 @@ const faqStructuredData = {
 ---
 
 <Layout
-  title={`Fuel Calculator — ${country.name} Trip Cost Calculator | Fuel Calculate`}
-  description={`Free fuel calculator for ${country.name}: work out trip and monthly fuel cost for your car or bike (${fuelNamesForEyebrow}), and compare fuel prices to see how much you'd save.`}
+  title={seo.title}
+  description={seo.description}
   structuredData={faqStructuredData}
 >
   <SiteDataScript countryCode={country.code} />

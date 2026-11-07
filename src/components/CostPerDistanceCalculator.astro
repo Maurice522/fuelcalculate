@@ -1,0 +1,139 @@
+---
+import type { CountryConfig, CountryCode } from "../lib/countries";
+import { medianMileage } from "../lib/benchmarks";
+import { UNIT_DEFAULTS } from "../data/unitDefaults";
+import { NATIONAL_EXAMPLE_BY_COUNTRY } from "../data/realLocalData";
+import fuelPricesFallbackIn from "../data/fuel-prices-fallback/in.json";
+import vehiclesIn from "../data/vehicles/in.json";
+import vehiclesUs from "../data/vehicles/us.json";
+import vehiclesGb from "../data/vehicles/gb.json";
+import vehiclesCa from "../data/vehicles/ca.json";
+import vehiclesAu from "../data/vehicles/au.json";
+import {
+  DISTANCE_LABELS,
+  MILEAGE_LABELS,
+  PRICE_LABELS,
+  costPerDistance,
+  fromKmPerLitre,
+  fromPricePerLitre,
+  tidy,
+  toKmPerLitre,
+  type DistanceUnit,
+  type MileageUnit,
+  type PriceUnit,
+} from "../lib/units";
+
+interface Props {
+  country: CountryConfig;
+}
+const { country } = Astro.props;
+const d = UNIT_DEFAULTS[country.code];
+
+const vehicles: Record<CountryCode, { vehicles: { type: string; fuelType: string; mileage: number }[] }> = {
+  IN: vehiclesIn,
+  US: vehiclesUs,
+  GB: vehiclesGb,
+  CA: vehiclesCa,
+  AU: vehiclesAu,
+};
+
+// The vehicle lists store mileage in the country's *data* unit: mpg in the US, km/l
+// everywhere else. Convert the median into the unit people there actually use.
+const dataUnit: MileageUnit = country.code === "US" ? "mpgUs" : "kmpl";
+const medianInDataUnit = medianMileage(vehicles[country.code].vehicles, "petrol", "car") ?? 0;
+const defaultMileage = tidy(fromKmPerLitre(toKmPerLitre(medianInDataUnit, dataUnit), d.mileage));
+
+// The price is stored in the data's own unit too: per gallon (US) or per litre.
+const nationalPrice =
+  country.code === "IN" ? fuelPricesFallbackIn.prices.petrol : (NATIONAL_EXAMPLE_BY_COUNTRY[country.code]?.price ?? 0);
+const priceUnitInData: PriceUnit = country.code === "US" ? "perUsGallon" : "perLitre";
+const pricePerLitre = priceUnitInData === "perUsGallon" ? nationalPrice / 3.785411784 : nationalPrice;
+const defaultPrice = tidy(fromPricePerLitre(pricePerLitre, d.price));
+const priceSource =
+  country.code === "IN" ? "National average petrol price" : (NATIONAL_EXAMPLE_BY_COUNTRY[country.code]?.sourceLabel ?? "");
+
+const defaultDistance = 100;
+const r = costPerDistance({
+  mileage: defaultMileage,
+  mileageUnit: d.mileage,
+  price: defaultPrice,
+  priceUnit: d.price,
+  distance: defaultDistance,
+  distanceUnit: d.distance,
+});
+
+const mileageUnits = Object.keys(MILEAGE_LABELS) as MileageUnit[];
+const priceUnits = (Object.keys(PRICE_LABELS) as PriceUnit[]).filter((u) => u !== "pencePerLitre" || country.code === "GB");
+const distanceUnits = Object.keys(DISTANCE_LABELS) as DistanceUnit[];
+const symbol = country.currency.symbol;
+const inputClass = "h-12 w-full rounded-sm border border-hairline bg-canvas px-sm text-[16px] text-ink";
+const unitWord = d.distance === "mi" ? "mile" : "km";
+
+// In the UK, pence per mile is how people talk about it.
+function money(v: number): string {
+  if (country.code === "GB" && v < 1) return `${(v * 100).toFixed(1)}p`;
+  return new Intl.NumberFormat(country.currency.locale, { style: "currency", currency: country.currency.code, maximumFractionDigits: 2 }).format(v);
+}
+const primary = d.distance === "mi" ? r.perMile : r.perKm;
+const secondaryLabel = d.distance === "mi" ? "km" : "mile";
+const secondary = d.distance === "mi" ? r.perKm : r.perMile;
+---
+
+<cost-per-distance-calculator
+  class="block"
+  data-symbol={symbol}
+  data-locale={country.currency.locale}
+  data-currency={country.currency.code}
+  data-gb={country.code === "GB" ? "1" : undefined}
+  data-primary={d.distance}
+>
+  <form class="grid gap-md rounded-lg bg-canvas p-lg shadow-level-3 sm:grid-cols-2 sm:p-xl" onsubmit="return false">
+    <label class="flex flex-col gap-xxs">
+      <span class="text-body-sm-strong text-ink">Your car's mileage</span>
+      <div class="flex gap-xs">
+        <input type="number" inputmode="decimal" min="0" step="any" data-field="mileage" value={String(defaultMileage)} class={inputClass} />
+        <select data-field="mileageUnit" class={inputClass + " max-w-[150px]"} aria-label="Mileage unit">
+          {mileageUnits.map((u) => <option value={u} selected={u === d.mileage}>{MILEAGE_LABELS[u]}</option>)}
+        </select>
+      </div>
+      <span class="text-caption text-mute">Median petrol car in our vehicle list — replace with yours.</span>
+    </label>
+    <label class="flex flex-col gap-xxs">
+      <span class="text-body-sm-strong text-ink">Fuel price</span>
+      <div class="flex gap-xs">
+        <input type="number" inputmode="decimal" min="0" step="any" data-field="price" value={String(defaultPrice)} class={inputClass} />
+        <select data-field="priceUnit" class={inputClass + " max-w-[170px]"} aria-label="Price unit">
+          {priceUnits.map((u) => <option value={u} selected={u === d.price}>{PRICE_LABELS[u]}</option>)}
+        </select>
+      </div>
+      <span class="text-caption text-mute">{priceSource}. Use what you paid at your last fill-up.</span>
+    </label>
+    <label class="flex flex-col gap-xxs sm:col-span-2">
+      <span class="text-body-sm-strong text-ink">Journey length</span>
+      <div class="flex gap-xs sm:max-w-[420px]">
+        <input type="number" inputmode="decimal" min="0" step="any" data-field="distance" value={String(defaultDistance)} class={inputClass} />
+        <select data-field="distanceUnit" class={inputClass + " max-w-[140px]"} aria-label="Distance unit">
+          {distanceUnits.map((u) => <option value={u} selected={u === d.distance}>{DISTANCE_LABELS[u]}</option>)}
+        </select>
+      </div>
+    </label>
+  </form>
+
+  <div class="mt-lg min-h-[260px] rounded-lg bg-canvas-soft p-lg shadow-level-1">
+    <p class="text-caption text-mute">Fuel cost per {unitWord}</p>
+    <p class="mt-xxs text-display-md text-ink" data-out="primary" aria-live="polite">{money(primary)}</p>
+    <p class="text-body-sm text-body" data-out="secondary">{money(secondary)} per {secondaryLabel}</p>
+    <dl class="mt-md grid grid-cols-2 gap-sm text-body-sm sm:grid-cols-3">
+      <div><dt class="text-caption text-mute" data-out="journeyLabel">Cost of the journey</dt><dd class="text-ink" data-out="journey">{money(r.journeyCost)}</dd></div>
+      <div><dt class="text-caption text-mute">Fuel needed (litres)</dt><dd class="text-ink" data-out="litres">{r.litres.toFixed(1)} L</dd></div>
+      <div><dt class="text-caption text-mute">Fuel needed (gallons)</dt><dd class="text-ink" data-out="gallons">{(country.code === "GB" ? r.ukGallons : r.usGallons).toFixed(1)} {country.code === "GB" ? "UK gal" : "US gal"}</dd></div>
+    </dl>
+    <p class="mt-md rounded-sm bg-canvas p-sm text-body-sm text-ink" data-out="verdict">
+      Fuel only: no servicing, insurance, tax or depreciation.
+    </p>
+  </div>
+</cost-per-distance-calculator>
+
+<script>
+  import "../scripts/unit-tools.ts";
+</script>

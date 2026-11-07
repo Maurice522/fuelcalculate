@@ -1,0 +1,17 @@
+---
+import CostPerDistancePage from "../../components/CostPerDistancePage.astro";
+import { SUPPORTED_COUNTRIES } from "../../lib/countries";
+
+export const prerender = true;
+
+// Miles-based markets only (US, UK) — the others use cost-per-km-calculator.
+export function getStaticPaths() {
+  return SUPPORTED_COUNTRIES.filter((c) => c.code === "US" || c.code === "GB").map((c) => ({
+    params: { country: c.pathPrefix.slice(1) },
+  }));
+}
+
+const country = SUPPORTED_COUNTRIES.filter((c) => c.code === "US" || c.code === "GB").find((c) => c.pathPrefix === `/${Astro.params.country}`)!;
+---
+
+<CostPerDistancePage country={country} />

@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "./Hero.astro";
+import Breadcrumbs from "./Breadcrumbs.astro";
+import CostPerDistanceCalculator from "./CostPerDistanceCalculator.astro";
+import type { CountryConfig } from "../lib/countries";
+import { costPerDistance, type CostPerDistanceInput } from "../lib/units";
+
+interface Props {
+  country: CountryConfig;
+}
+const { country } = Astro.props;
+const prefix = country.pathPrefix;
+const code = country.code;
+const miles = code === "US" || code === "GB";
+const slug = miles ? "cost-per-mile-calculator" : "cost-per-km-calculator";
+const sym = country.currency.symbol;
+
+const copy = {
+  IN: {
+    title: "Petrol Cost Per Km Calculator — Car & Bike Running Cost | Fuel Calculate",
+    h1: "Petrol calculator: what does each km cost you?",
+    description: "Free petrol cost per km calculator for cars and bikes. Enter your mileage and the petrol price to get your cost per km, the cost of a journey and the litres needed.",
+  },
+  US: {
+    title: "Gas Cost Per Mile Calculator — Gas Mileage Cost | Fuel Calculate",
+    h1: "Gas calculator: what does each mile cost you?",
+    description: "Free gas cost per mile calculator. Enter your mpg and the price of gas to get your cost per mile, the gas cost of any trip and the gallons you'll use.",
+  },
+  GB: {
+    title: "Petrol Cost Per Mile Calculator UK — Fuel Cost Calculator | Fuel Calculate",
+    h1: "Petrol calculator UK: what does each mile cost you?",
+    description: "Free UK petrol cost per mile calculator. Enter your mpg and the pump price in pence per litre to get your cost per mile, the fuel cost of any journey and the litres needed.",
+  },
+  CA: {
+    title: "Fuel Cost Per Km Calculator — Gas Cost Calculator Canada | Fuel Calculate",
+    h1: "Fuel cost calculator: what does each km cost you?",
+    description: "Free fuel cost per km calculator for Canada. Enter your L/100km and the price per litre to get your cost per km, the cost of a journey and the litres needed.",
+  },
+  AU: {
+    title: "Petrol Calculator Australia — Fuel Cost Per Km | Fuel Calculate",
+    h1: "Petrol calculator Australia: what does each km cost you?",
+    description: "Free petrol calculator for Australia. Enter your L/100km and the price per litre to get your cost per km, the cost of a trip and the litres needed.",
+  },
+}[code];
+
+// Worked examples are computed from the same maths the calculator runs.
+const examples: Record<string, CostPerDistanceInput & { txt: string }> = {
+  IN: { mileage: 15, mileageUnit: "kmpl", price: 100, priceUnit: "perLitre", distance: 100, distanceUnit: "km", txt: "15 km/l with petrol at ₹100 a litre" },
+  US: { mileage: 30, mileageUnit: "mpgUs", price: 4, priceUnit: "perUsGallon", distance: 100, distanceUnit: "mi", txt: "30 mpg with gas at $4.00 a gallon" },
+  GB: { mileage: 45, mileageUnit: "mpgUk", price: 170, priceUnit: "pencePerLitre", distance: 100, distanceUnit: "mi", txt: "45 mpg with petrol at 170p a litre" },
+  CA: { mileage: 8, mileageUnit: "l100km", price: 1.8, priceUnit: "perLitre", distance: 100, distanceUnit: "km", txt: "8 L/100km with fuel at $1.80 a litre" },
+  AU: { mileage: 8, mileageUnit: "l100km", price: 2, priceUnit: "perLitre", distance: 100, distanceUnit: "km", txt: "8 L/100km with fuel at $2.00 a litre" },
+};
+const example = examples[code];
+const r = costPerDistance(example);
+const exCost = miles ? r.perMile : r.perKm;
+const exFmt = code === "GB" ? `${(exCost * 100).toFixed(1)}p` : `${sym}${exCost.toFixed(2)}`;
+const exJourney = `${sym}${r.journeyCost.toFixed(2)}`;
+const unitWord = miles ? "mile" : "km";
+const unitsPhrase =
+  code === "GB" ? "mpg and pence per litre" : code === "US" ? "mpg and dollars per gallon" : code === "IN" ? "km/l and rupees per litre" : "L/100km and dollars per litre";
+
+const faqs = [
+  {
+    q: `How do I calculate the fuel cost per ${unitWord}?`,
+    a: `Convert your mileage and fuel price to a common basis (km per litre and price per litre), then divide the price by the mileage. The calculator does the conversions for you. Example: ${example.txt} costs about ${exFmt} per ${unitWord}, so a ${example.distance} ${unitWord} journey is about ${exJourney} in fuel.`,
+  },
+  {
+    q: "How much fuel will my journey use?",
+    a: `Divide the journey distance by your mileage, in matching units. The calculator shows the result in litres and in ${code === "GB" ? "UK" : "US"} gallons: for the example above, a ${example.distance} ${unitWord} journey needs about ${r.litres.toFixed(1)} litres.`,
+  },
+  {
+    q: "How do I convert a price per gallon to a price per litre?",
+    a: "Divide by the number of litres in the gallon: 3.785 for a US gallon, 4.546 for a UK (imperial) gallon. Switching the price unit in the calculator converts the number for you.",
+  },
+  {
+    q: "Is cost per distance the full cost of running a car?",
+    a: "No — it is fuel only. Servicing, tyres, insurance, road tax or registration, parking and depreciation all come on top, and they often add up to more than the fuel. Use this figure to compare journeys, fuels or cars on running cost, not as your total motoring budget.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: `Fuel cost per ${unitWord} calculator${code === "IN" ? "" : ` — ${country.name}`}`,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: "Any (web-based)",
+    offers: { "@type": "Offer", price: "0", priceCurrency: country.currency.code },
+  },
+];
+---
+
+<Layout title={copy.title} description={copy.description} structuredData={structuredData}>
+  <Breadcrumbs
+    items={[
+      { name: "Home", href: `${prefix}/` },
+      { name: `Cost per ${unitWord}`, href: `${prefix}/${slug}` },
+    ]}
+  />
+  <Hero eyebrow="Running cost" title={copy.h1} lead={`Pick the units you think in — ${unitsPhrase} — and get your cost per ${unitWord}, the cost of a journey and the fuel it needs.`} />
+
+  <section class="mx-auto max-w-[720px] px-md pb-4xl sm:px-lg">
+    <CostPerDistanceCalculator country={country} />
+  </section>
+
+  <section class="mx-auto flex max-w-[720px] flex-col gap-2xl px-md pb-5xl sm:px-lg">
+    <div>
+      <h2 class="text-display-sm text-ink">The maths, with a worked example</h2>
+      <p class="mt-sm text-body-md text-body">
+        Everything is converted to kilometres, litres and km per litre, divided, and converted back
+        into your units. Worked example: {example.txt}. That is {exFmt} per {unitWord}, so {example.distance} {unitWord}
+        costs about {exJourney} and uses about {r.litres.toFixed(1)} litres. The same formulas drive the
+        <a href={`${prefix}/how-it-works`} class="text-link underline">trip cost calculator</a>.
+      </p>
+    </div>
+
+    <div>
+      <h2 class="text-display-sm text-ink">Frequently asked questions</h2>
+      <div class="mt-md flex flex-col gap-sm">
+        {
+          faqs.map((item, i) => (
+            <details class="group rounded-lg bg-canvas p-lg shadow-level-2" open={i === 0}>
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-md text-body-md-strong text-ink [&::-webkit-details-marker]:hidden">
+                {item.q}
+              </summary>
+              <p class="mt-sm text-body-sm text-body">{item.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="text-body-md text-body">
+      Don't know your mileage? <a href={`${prefix}/mileage-calculator`} class="text-link underline">Measure it from your last tank</a>.
+      Planning a trip? <a href={`${prefix}/`} class="text-link underline">Price it with the trip cost calculator</a>, or
+      <a href={`${prefix}/ev-savings`} class="text-link underline">see what an EV would save</a>.
+    </p>
+  </section>
+</Layout>

@@ -37,6 +37,11 @@ const columns = [
       { href: `${prefix}/`, label: "Trip cost calculator" },
       { href: `${prefix}/compare`, label: "Compare fuels" },
       { href: `${prefix}/ev-savings`, label: "EV vs gas savings" },
+      { href: `${prefix}/mileage-calculator`, label: country.code === "US" ? "Gas mileage calculator" : "Mileage calculator" },
+      {
+        href: `${prefix}/${country.code === "US" || country.code === "GB" ? "cost-per-mile-calculator" : "cost-per-km-calculator"}`,
+        label: country.code === "US" || country.code === "GB" ? "Cost per mile calculator" : "Cost per km calculator",
+      },
     ],
   },
   {
