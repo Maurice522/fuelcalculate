@@ -97,6 +97,22 @@ const cityPriceCache = new Map<string, Promise<CityPriceApiResponse>>();
 export function fetchCityPrices(citySlug: string): Promise<CityPriceApiResponse> {
   let pending = cityPriceCache.get(citySlug);
   if (!pending) {
+    // City pages embed the prices they already resolved server-side — use those and skip
+    // a round trip to the Worker (and a KV read) for the page's own city.
+    const seeded = document.getElementById("city-prices")?.textContent;
+    if (seeded) {
+      try {
+        const parsed = JSON.parse(seeded) as CityPriceApiResponse;
+        if (parsed.citySlug === citySlug) {
+          pending = Promise.resolve(parsed);
+          cityPriceCache.set(citySlug, pending);
+        }
+      } catch {
+        /* fall through to the network */
+      }
+    }
+  }
+  if (!pending) {
     pending = fetch(`/api/prices/${citySlug}`).then((r) => r.json());
     cityPriceCache.set(citySlug, pending);
   }

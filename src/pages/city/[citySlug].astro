@@ -42,6 +42,7 @@ const priceGaps = resolved
   description={city ? `Petrol, diesel, CNG and E20 petrol price in ${city.name}, plus a free fuel calculator pre-filled with ${city.name}'s prices to work out your trip cost.` : undefined}
 >
   <SiteDataScript />
+  {resolved && <script type="application/json" id="city-prices" is:inline set:html={JSON.stringify(resolved)} />}
   {
     !city || !resolved ? (
       <section class="mx-auto max-w-[640px] px-md py-5xl text-center sm:px-lg">

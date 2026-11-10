@@ -17,53 +17,17 @@ const COUNTRY_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 const BOT_USER_AGENT_PATTERN =
   /bot|crawl|spider|slurp|facebookexternalhit|whatsapp|telegrambot|preview|lighthouse|pagespeed|pingdom|uptimerobot|ahrefs|semrush|mj12bot/i;
 
-interface IpApiResponse {
-  status: "success" | "fail";
-  message?: string;
-  country?: string;
-  countryCode?: string;
-  query?: string;
-}
-
 /**
- * Looks up a country from an IP via ip-api.com's free JSON endpoint
- * (https://ip-api.com/docs/api:json — no key required, HTTP only on the free tier,
- * which is fine here since this is a server-to-server fetch from the Worker, not a
- * browser request, so there's no mixed-content restriction). Returns null on any
- * failure (request error, rate limit, timeout, unsupported country) so callers can
- * fall back to not redirecting at all rather than guessing.
- *
- * When `ip` is omitted, ip-api.com geolocates whoever is actually making this HTTP
- * call instead. In production `ip` is always passed (the real visitor's address via
- * `CF-Connecting-IP`) — omitting it there would wrongly geolocate Cloudflare's own
- * network. But `CF-Connecting-IP` only exists on Cloudflare's real edge, never on a
- * plain local `astro dev` request, so in local dev this path is what makes the
- * redirect testable from an actual browser at all: it ends up geolocating the dev
- * machine's own connection, which is a real, meaningful IP.
+ * The visitor's country as determined by Cloudflare's edge — free, instant, no external
+ * call and no rate limit (this replaced a third-party IP lookup that was capped at about
+ * 45 requests a minute). `request.cf.country` and the `CF-IPCountry` header carry the
+ * same ISO code; either may be absent (local `astro dev`, or an unknown/Tor visitor),
+ * in which case we simply don't redirect rather than guess.
  */
-async function lookupCountryByIp(ip: string | null): Promise<CountryConfig | null> {
-  const endpoint = ip
-    ? `http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,query`
-    : `http://ip-api.com/json?fields=status,message,country,countryCode,query`;
-  console.log(
-    `[geo] IP for lookup: ${ip ?? "(none — no CF-Connecting-IP header; asking ip-api.com to detect this server's own connection instead, for local-dev testing)"}`,
-  );
-  try {
-    const response = await fetch(endpoint, { signal: AbortSignal.timeout(5000) });
-    if (!response.ok) {
-      console.log(`[geo] ip-api.com HTTP error: ${response.status} ${response.statusText}`);
-      return null;
-    }
-    const data = (await response.json()) as IpApiResponse;
-    console.log(`[geo] ip-api.com response: ${JSON.stringify(data)}`);
-    if (data.status !== "success" || !data.countryCode) return null;
-    const match = SUPPORTED_COUNTRIES.find((c) => c.code === data.countryCode);
-    console.log(`[geo] resolved supported country: ${match?.code ?? "(none — not one of the 5 supported)"}`);
-    return match ?? null;
-  } catch (err) {
-    console.log(`[geo] ip-api.com fetch failed: ${err instanceof Error ? err.message : String(err)}`);
-    return null;
-  }
+function countryFromCloudflare(request: Request): CountryConfig | null {
+  const cf = (request as Request & { cf?: { country?: string } }).cf;
+  const code = (cf?.country ?? request.headers.get("CF-IPCountry") ?? "").toUpperCase();
+  return SUPPORTED_COUNTRIES.find((c) => c.code === code) ?? null;
 }
 
 export const onRequest = defineMiddleware(async (context, next) => {
@@ -98,8 +62,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const isBot = BOT_USER_AGENT_PATTERN.test(userAgent);
 
     if (!isBot) {
-      const clientIp = request.headers.get("CF-Connecting-IP");
-      const geoCountry = await lookupCountryByIp(clientIp);
+      const geoCountry = countryFromCloudflare(request);
 
       if (geoCountry && geoCountry.code !== "IN") {
         cookies.set(COUNTRY_COOKIE, geoCountry.code.toLowerCase(), {
