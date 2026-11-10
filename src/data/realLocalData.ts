@@ -25,9 +25,9 @@ export interface CityLocalData {
 
 export const US_CITY_DATA: Record<string, CityLocalData> = {
   "new-york": {
-    price: 4.49,
+    price: 4.2312,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Boston", distance: 215 },
     electricityPrice: 0.2993,
     electricitySource: "EIA-based state average, May 2026",
@@ -35,9 +35,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   "los-angeles": {
-    price: 6.29,
+    price: 5.7108,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "San Diego", distance: 120 },
     electricityPrice: 0.3474,
     electricitySource: "EIA-based state average, June 2026",
@@ -45,9 +45,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   chicago: {
-    price: 4.83,
+    price: 4.4339,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Milwaukee", distance: 92 },
     electricityPrice: 0.1989,
     electricitySource: "EIA-based state average, June 2026",
@@ -55,9 +55,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   houston: {
-    price: 3.95,
+    price: 3.4498,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Austin", distance: 165 },
     electricityPrice: 0.1594,
     electricitySource: "EIA-based state average",
@@ -65,9 +65,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   phoenix: {
-    price: 4.82,
+    price: 4.2302,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Tucson", distance: 116 },
     electricityPrice: 0.155,
     electricitySource: "EIA-based state average",
@@ -75,9 +75,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   philadelphia: {
-    price: 4.55,
+    price: 4.3374,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "New York City", distance: 97 },
     electricityPrice: 0.215,
     electricitySource: "EIA-based state average",
@@ -85,9 +85,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   seattle: {
-    price: 5.55,
+    price: 4.9834,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Portland", distance: 175 },
     electricityPrice: 0.144,
     electricitySource: "EIA-based state average",
@@ -95,9 +95,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   denver: {
-    price: 4.28,
+    price: 3.8257,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Colorado Springs", distance: 70 },
     electricityPrice: 0.1713,
     electricitySource: "EIA-based state average, June 2026",
@@ -105,9 +105,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   atlanta: {
-    price: 4.17,
+    price: 3.4552,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "Savannah", distance: 249 },
     electricityPrice: 0.1636,
     electricitySource: "EIA-based state average, June 2026",
@@ -115,9 +115,9 @@ export const US_CITY_DATA: Record<string, CityLocalData> = {
     gasTaxSource: "Tax Foundation, July 2026",
   },
   boston: {
-    price: 4.4,
+    price: 4.0658,
     priceSource: "AAA state average",
-    priceDate: "2026-09-25",
+    priceDate: "2026-11-10",
     route: { destination: "New York City", distance: 215 },
     electricityPrice: 0.294,
     electricitySource: "EIA-based state average",
@@ -385,7 +385,7 @@ export const CITY_DATA_BY_COUNTRY: Record<string, Record<string, CityLocalData>>
 /** Real national averages (not a per-city figure) — used on each country's homepage,
  * which isn't tied to one city, so a national number is the honest choice there. */
 export const NATIONAL_EXAMPLE_BY_COUNTRY: Record<string, { price: number; sourceLabel: string }> = {
-  US: { price: 4.49, sourceLabel: "AAA national average, Sep 25, 2026" },
+  US: { price: 3.9788, sourceLabel: "AAA national average, Nov 10, 2026" },
   GB: { price: 1.736, sourceLabel: "RAC Fuel Watch, UK average, Sep 24, 2026" },
   CA: { price: 1.87, sourceLabel: "National average, Sep 2026" },
   AU: { price: 2.399, sourceLabel: "National average, Sep 25, 2026" },
