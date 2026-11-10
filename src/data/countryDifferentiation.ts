@@ -34,7 +34,7 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Fuel prices are sourced from RAC Fuel Watch's daily UK average, and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Fuel prices are the UK government's weekly average pump price (DESNZ weekly road fuel prices), and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
     },
   ],
   CA: [
@@ -48,7 +48,7 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Gas prices are sourced from local pump-price averages checked in September 2026, and electricity rates from published provincial utility rates (Hydro-Québec, BC Hydro, Alberta's Regulated Rate Option, and others). Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Gas prices are Natural Resources Canada's daily average retail prices for regular gasoline (checked in November 2026), and electricity rates from published provincial utility rates (Hydro-Québec, BC Hydro, Alberta's Regulated Rate Option, and others). Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
     },
   ],
   AU: [
@@ -62,7 +62,7 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Fuel prices are sourced from state-level fuel price trackers checked in September 2026, and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Fuel prices are the Australian Institute of Petroleum's weekly average retail unleaded prices by city (checked in November 2026), and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
     },
   ],
 };

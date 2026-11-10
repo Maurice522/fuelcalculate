@@ -10,7 +10,10 @@ declare global {
 }
 
 const COUNTRY_COOKIE = "country";
-const COUNTRY_COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+// Auto-detected country expires after a day so people who travel (or switch VPNs) get
+// re-detected; a country the visitor picks themselves in the header switcher is kept far
+// longer (see scripts/country-switcher.ts).
+const COUNTRY_COOKIE_MAX_AGE = 60 * 60 * 24; // 1 day
 
 // Search engine / social-preview crawlers must always see India's canonical, unprefixed
 // content at "/" — redirecting them would be textbook cloaking and confuse indexing.

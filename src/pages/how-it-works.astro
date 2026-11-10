@@ -34,11 +34,11 @@ const distanceUnit = country.distanceUnit;
 const dataSourcesByCountry: Record<CountryCode, string> = {
   IN: "City fuel prices are refreshed automatically from public sources several times a day. Vehicle mileage figures are ARAI-claimed (official test-cycle) data.",
   US: "Default example prices are sourced from AAA's daily state gas price averages, state gas tax figures from the Tax Foundation, and electricity rates from EIA-based state data. Vehicle mileage figures use EPA-style ratings.",
-  GB: "Default example prices are sourced from RAC Fuel Watch's daily UK average, and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published.",
-  CA: "Default example prices are sourced from local pump-price averages, and electricity rates from published provincial utility rates. Vehicle mileage figures are manufacturer-published.",
-  AU: "Default example prices are sourced from state-level fuel price trackers, and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published.",
+  GB: "Default example prices are the UK government's weekly average pump price (DESNZ weekly road fuel prices), and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published.",
+  CA: "Default example prices are Natural Resources Canada's daily average retail prices for regular gasoline, and electricity rates from published provincial utility rates. Vehicle mileage figures are manufacturer-published.",
+  AU: "Default example prices are the Australian Institute of Petroleum's weekly average retail unleaded prices by city, and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published.",
 };
-const lastUpdated = "September 26, 2026";
+const lastUpdated = "November 10, 2026";
 ---
 
 <Layout
