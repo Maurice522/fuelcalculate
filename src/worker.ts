@@ -30,9 +30,32 @@ async function withEdgeCache(
   return cacheable;
 }
 
+const CANONICAL_HOST = "fuelcalculate.com";
+
+/** One canonical origin: https + no "www". Applies to requests that reach the Worker
+ * (the homepage, city pages, the APIs); static pages are covered by the Cloudflare
+ * "Always Use HTTPS" setting and a www -> apex Redirect Rule. Other hosts (localhost,
+ * *.workers.dev previews) are left alone. */
+function canonicalRedirect(url: URL): Response | null {
+  const onSite = url.hostname === CANONICAL_HOST || url.hostname === `www.${CANONICAL_HOST}`;
+  if (!onSite || (url.hostname === CANONICAL_HOST && url.protocol === "https:")) return null;
+  return Response.redirect(`https://${CANONICAL_HOST}${url.pathname}${url.search}`, 301);
+}
+
+/** Astro sends HTML as a bare "text/html"; declare the charset in the header too. */
+function withHtmlCharset(response: Response): Response {
+  const type = response.headers.get("content-type") ?? "";
+  if (!/^text\/html\s*$/i.test(type)) return response;
+  const fixed = new Response(response.body, response);
+  fixed.headers.set("content-type", "text/html; charset=utf-8");
+  return fixed;
+}
+
 export default {
   async fetch(request, env, ctx) {
-    return withEdgeCache(request, ctx, () => handle(request, env, ctx));
+    const redirect = canonicalRedirect(new URL(request.url));
+    if (redirect) return redirect;
+    return withHtmlCharset(await withEdgeCache(request, ctx, () => handle(request, env, ctx)));
   },
   async scheduled(_event, env, ctx) {
     ctx.waitUntil(
