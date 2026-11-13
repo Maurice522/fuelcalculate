@@ -25,6 +25,8 @@ const articleStructuredData = {
   datePublished: post.data.pubDate.toISOString(),
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   author: { "@type": "Organization", name: post.data.author },
+  publisher: { "@type": "Organization", "@id": new URL("/#organization", Astro.site).toString(), name: "Fuel Calculate" },
+  mainEntityOfPage: new URL(`/blog/${post.id}/`, Astro.site).toString(),
 };
 
 const dateFormat: Intl.DateTimeFormatOptions = { month: "long", day: "numeric", year: "numeric" };

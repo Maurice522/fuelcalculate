@@ -90,6 +90,9 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: `Fuel cost per ${unitWord} calculator${code === "IN" ? "" : ` — ${country.name}`}`,
+    url: new URL(`${prefix}/${slug}/`, Astro.site).toString(),
+    description: copy.description,
+    inLanguage: country.currency.locale,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any (web-based)",
     offers: { "@type": "Offer", price: "0", priceCurrency: country.currency.code },
@@ -116,7 +119,9 @@ const structuredData = [
       <p class="mt-sm text-body-md text-body">
         Everything is converted to kilometres, litres and km per litre, divided, and converted back
         into your units. Worked example: {example.txt}. That is {exFmt} per {unitWord}, so {example.distance} {unitWord}
-        costs about {exJourney} and uses about {r.litres.toFixed(1)} litres. The same formulas drive the
+        costs about {exJourney} and uses about {r.litres.toFixed(1)} litres. (The calculator above starts
+        from the median car in our vehicle list and the latest national average price, so its first
+        result differs from this round-number example.) The same formulas drive the
         <a href={`${prefix}/how-it-works`} class="text-link underline">trip cost calculator</a>.
       </p>
     </div>

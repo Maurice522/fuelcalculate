@@ -1,0 +1,17 @@
+# Fuel Calculate
+
+> Free fuel-cost calculators for India, the United States, the United Kingdom, Canada and Australia. Trip cost, cost per mile/km, mileage (mpg, km/l, L/100km), fuel and EV comparisons, and EV savings. Every price is a dated figure from a named public source; every input is editable.
+
+## Calculators
+- [Trip cost calculator (India)](https://fuelcalculate.com/): trip and monthly fuel cost for cars and bikes
+- [Gas calculator (US)](https://fuelcalculate.com/us/)
+- [Fuel calculator (UK)](https://fuelcalculate.com/gb/)
+- [Fuel cost calculator (Canada)](https://fuelcalculate.com/ca/)
+- [Petrol calculator (Australia)](https://fuelcalculate.com/au/)
+- [Mileage calculator](https://fuelcalculate.com/mileage-calculator/): real km/l, L/100km, mpg (US) and mpg (UK) from distance and fuel used
+- [EV vs petrol savings](https://fuelcalculate.com/ev-savings/): yearly running-cost saving and break-even
+
+## Method and sources
+- [How the math works](https://fuelcalculate.com/how-it-works/)
+- [About](https://fuelcalculate.com/about/)
+- [FAQ](https://fuelcalculate.com/faq/)
