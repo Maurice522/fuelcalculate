@@ -14,6 +14,18 @@ const cities = JSON.parse(
   readFileSync(fileURLToPath(new URL('./src/data/cities.json', import.meta.url)), 'utf-8')
 );
 
+/** @type {Record<string, string>} slug -> ISO date, from each post's frontmatter. */
+const blogDates = {};
+const blogDir = fileURLToPath(new URL('./src/content/blog/', import.meta.url));
+for (const file of readdirSync(blogDir)) {
+  if (!file.endsWith('.md')) continue;
+  const front = readFileSync(join(blogDir, file), 'utf-8');
+  const updated = front.match(/^updatedDate:\s*(\S+)/m);
+  const published = front.match(/^pubDate:\s*(\S+)/m);
+  const raw = (updated ?? published)?.[1]?.replace(/['"]/g, '');
+  if (raw) blogDates[file.replace(/\.md$/, '')] = new Date(raw).toISOString();
+}
+
 // City pages render on-demand (live price lookups), so the sitemap integration
 // can't discover them by crawling prerendered output like it does every other
 // route — list them explicitly instead.
@@ -68,7 +80,16 @@ const htmlCharsetHeaders = {
       const headersPath = join(root, '_headers');
       const existing = existsSync(headersPath) ? readFileSync(headersPath, 'utf-8').trimEnd() + '\n\n' : '';
       const block = rules.map((r) => `${r}\n  Content-Type: text/html; charset=utf-8`).join('\n');
-      writeFileSync(headersPath, existing + block + '\n');
+      // Same hardening headers the Worker adds to the pages it serves (HSTS is left to
+      // the Cloudflare dashboard). geolocation stays allowed for "Use my location".
+      const security = [
+        '/*',
+        '  X-Content-Type-Options: nosniff',
+        '  X-Frame-Options: SAMEORIGIN',
+        '  Referrer-Policy: strict-origin-when-cross-origin',
+        '  Permissions-Policy: geolocation=(self), camera=(), microphone=(), payment=()',
+      ].join('\n');
+      writeFileSync(headersPath, existing + security + '\n\n' + block + '\n');
     },
   },
 };
@@ -85,7 +106,16 @@ export default defineConfig({
 
   integrations: [
     sitemap({
-      filter: (page) => !page.endsWith('/404/'),
+      // Non-India city pages are noindex (templated, see their layout), so they
+      // don't belong in the sitemap either.
+      filter: (page) => !page.endsWith('/404/') && !/\/(us|gb|ca|au)\/city\//.test(page),
+      // Only blog posts get a lastmod, from their own frontmatter dates — a build-time
+      // date on every page would say "changed today" about pages that didn't.
+      serialize: (item) => {
+        const match = item.url.match(/\/blog\/([^/]+)\/$/);
+        const date = match && blogDates[match[1]];
+        return date ? { ...item, lastmod: date } : item;
+      },
       customPages: cityPages,
     }),
     htmlCharsetHeaders,

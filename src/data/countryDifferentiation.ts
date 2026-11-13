@@ -3,6 +3,8 @@ import type { CountryCode } from "../lib/countries";
 export interface CountrySection {
   heading: string;
   body: string;
+  /** Primary sources for the figures in `body`, rendered as links under it. */
+  sources?: { label: string; url: string }[];
 }
 
 /** Real, country-specific content — not the same three paragraphs with the currency
@@ -21,6 +23,11 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     {
       heading: "Where these numbers come from",
       body: "Gas prices are sourced from AAA's daily state averages, gas tax rates from the Tax Foundation, and electricity rates from EIA-based state data — all real, dated figures, not estimates. Vehicle mileage figures use EPA-style ratings. Every number is fully editable if your own price or mileage differs.",
+      sources: [
+        { label: "AAA state gas price averages", url: "https://gasprices.aaa.com/state-gas-price-averages/" },
+        { label: "Tax Foundation: state gas tax rates", url: "https://taxfoundation.org/data/all/state/gas-taxes-state/" },
+        { label: "EIA: average residential electricity prices by state", url: "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a" },
+      ],
     },
   ],
   GB: [
@@ -34,7 +41,11 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Fuel prices are the UK government's weekly average pump price (DESNZ weekly road fuel prices), and electricity rates from Ofgem's published price cap. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Fuel prices are the UK government's weekly average pump price (DESNZ weekly road fuel prices), and electricity rates from Ofgem's published price cap. The vehicle list for this market is a set of representative estimates for common models, not manufacturer data — pick your car for a quick start, then enter your own car's documented mileage for accuracy. Every number is fully editable if your own price or mileage differs.",
+      sources: [
+        { label: "UK government weekly road fuel prices (DESNZ)", url: "https://www.gov.uk/government/statistics/weekly-road-fuel-prices" },
+        { label: "Ofgem energy price cap", url: "https://www.ofgem.gov.uk/energy-price-cap" },
+      ],
     },
   ],
   CA: [
@@ -48,7 +59,10 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Gas prices are Natural Resources Canada's daily average retail prices for regular gasoline (checked in November 2026), and electricity rates from published provincial utility rates (Hydro-Québec, BC Hydro, Alberta's Regulated Rate Option, and others). Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Gas prices are Natural Resources Canada's daily average retail prices for regular gasoline (checked in November 2026), and electricity rates from published provincial utility rates (Hydro-Québec, BC Hydro, Alberta's Regulated Rate Option, and others). The vehicle list for this market is a set of representative estimates for common models, not manufacturer data — pick your car for a quick start, then enter your own car's documented mileage for accuracy. Every number is fully editable if your own price or mileage differs.",
+      sources: [
+        { label: "Natural Resources Canada: transportation fuel prices", url: "https://natural-resources.canada.ca/domestic-international-markets/transportation-fuel-prices/" },
+      ],
     },
   ],
   AU: [
@@ -62,7 +76,10 @@ export const COUNTRY_DIFFERENTIATION: Partial<Record<CountryCode, CountrySection
     },
     {
       heading: "Where these numbers come from",
-      body: "Fuel prices are the Australian Institute of Petroleum's weekly average retail unleaded prices by city (checked in November 2026), and electricity rates from published state utility/regulator data. Vehicle mileage figures are manufacturer-published. Every number is fully editable if your own price or mileage differs.",
+      body: "Fuel prices are the Australian Institute of Petroleum's weekly average retail unleaded prices by city (checked in November 2026), and electricity rates from published state utility/regulator data. The vehicle list for this market is a set of representative estimates for common models, not manufacturer data — pick your car for a quick start, then enter your own car's documented mileage for accuracy. Every number is fully editable if your own price or mileage differs.",
+      sources: [
+        { label: "Australian Institute of Petroleum: pump prices", url: "https://aip.com.au/pricing/pump-prices/" },
+      ],
     },
   ],
 };

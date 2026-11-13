@@ -178,6 +178,17 @@ const faqStructuredData = {
             <div>
               <h2 class="text-display-sm text-ink">{s.heading}</h2>
               <p class="mt-sm text-body-md text-body">{s.body}</p>
+              {s.sources && (
+                <p class="mt-xs text-caption text-mute">
+                  Sources:{" "}
+                  {s.sources.map((src, i) => (
+                    <Fragment>
+                      {i > 0 && " · "}
+                      <a href={src.url} class="underline" rel="noopener">{src.label}</a>
+                    </Fragment>
+                  ))}
+                </p>
+              )}
             </div>
           ))}
         </div>

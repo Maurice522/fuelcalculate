@@ -15,6 +15,11 @@ interface Props {
    * array (e.g. a WebApplication schema alongside a separate FAQPage schema) or a
    * single object. */
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  /** Keeps the page out of search indexes (and drops its canonical) — used for the 404
+   * page and for pages that are useful to visitors but too templated to index. */
+  noindex?: boolean;
+  /** With `noindex`, still emit the canonical link (e.g. thin city pages keep theirs). */
+  keepCanonical?: boolean;
 }
 
 const {
@@ -23,12 +28,20 @@ const {
   ogImage = "/web-app-manifest-512x512.png",
   ogType = "website",
   structuredData,
+  noindex = false,
+  keepCanonical = false,
 } = Astro.props;
 
 // Canonical excludes query strings — a calculator prefilled via ?fuel=petrol&price=105
 // is the same page/content as the bare URL, just pre-filled, so query variants
 // shouldn't be treated as distinct pages for indexing.
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Always the trailing-slash form (every prerendered page lives at /path/, and the
+// on-demand city pages answer on both) so there is exactly one canonical per page.
+const canonicalPath =
+  Astro.url.pathname.endsWith("/") || /.[a-z0-9]+$/i.test(Astro.url.pathname)
+    ? Astro.url.pathname
+    : `${Astro.url.pathname}/`;
+const canonicalURL = new URL(canonicalPath, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
 
 // Google's logo rich result / Knowledge Panel / Search Console "Logos" report all key
@@ -38,6 +51,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
 const organizationStructuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": new URL("/#organization", Astro.site).toString(),
   name: "Fuel Calculate",
   url: Astro.site?.toString(),
   logo: new URL("/web-app-manifest-512x512.png", Astro.site).toString(),
@@ -65,7 +79,13 @@ const isSharedRoute =
   restPath === "/faq" ||
   restPath === "/faq/" ||
   restPath === "/how-it-works" ||
-  restPath === "/how-it-works/";
+  restPath === "/how-it-works/" ||
+  restPath === "/cities" ||
+  restPath === "/cities/" ||
+  restPath === "/ev-savings" ||
+  restPath === "/ev-savings/" ||
+  restPath === "/mileage-calculator" ||
+  restPath === "/mileage-calculator/";
 const comparePairMatch = restPath.match(/^\/compare\/([a-z0-9-]+)\/?$/);
 
 type HreflangAlternate = { countryCode: CountryCode; hreflang: string; url: string };
@@ -81,10 +101,14 @@ const hreflangAlternates: HreflangAlternate[] =
       }))
     : [];
 const xDefaultUrl = hreflangAlternates.find((a) => a.countryCode === "IN")?.url;
+
+// Regional locale for <html lang> and og:locale (India serves en-IN, not en-US).
+const htmlLang = currentCountry.currency.locale;
+const ogLocale = htmlLang.replace("-", "_");
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -124,8 +148,8 @@ const xDefaultUrl = hreflangAlternates.find((a) => a.countryCode === "IN")?.url;
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content={noindex ? "noindex, follow" : "index, follow"} />
+    {(!noindex || keepCanonical) && <link rel="canonical" href={canonicalURL} />}
 
     {
       hreflangAlternates.map((alt) => (
@@ -142,7 +166,7 @@ const xDefaultUrl = hreflangAlternates.find((a) => a.countryCode === "IN")?.url;
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:alt" content="Fuel Calculate — fuel cost calculator" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />

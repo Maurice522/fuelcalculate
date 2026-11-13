@@ -119,6 +119,8 @@ const priceFor = (fuelType: string) => (fuelType === "ev" ? (localData?.electric
 <Layout
   title={`Fuel Calculator for ${city.name} — Trip Cost Calculator | Fuel Calculate`}
   description={`Free fuel calculator for ${city.name}, ${country.name}: today's local price, a real worked trip example, and a cost table for popular vehicles.`}
+  noindex
+  keepCanonical
 >
   <SiteDataScript countryCode={country.code} />
 

@@ -53,11 +53,15 @@ function faqsFor(country: CountryConfig) {
   return [
     {
       q: `Where do ${country.name} fuel prices come from?`,
-      a: `We don't run a live price feed for ${country.name} yet — the price field starts pre-filled with an indicative national-average estimate, which you should always double-check and overwrite with your local pump price for an accurate result.`,
+      a: `We don't run a live price feed for ${country.name}. The price field starts pre-filled with a dated figure from a named public source — ${
+        { US: "AAA's state averages", GB: "the UK government's weekly road fuel prices", CA: "Natural Resources Canada's daily averages", AU: "the Australian Institute of Petroleum's weekly city averages" }[country.code as "US" | "GB" | "CA" | "AU"] ?? "a public source"
+      } — and the country page links each source. It is a snapshot, so always overwrite it with the price you actually paid for an accurate result.`,
     },
     {
       q: `Are the ${country.name} vehicle mileage figures verified?`,
-      a: `Not yet — unlike our India lineup (sourced from ARAI test-cycle data), the ${country.name} vehicle list is a representative estimate we've put together to cover common models. Treat every figure as a starting point, not a spec-sheet guarantee, and edit it if you know your vehicle's real mileage.`,
+      a: country.code === "US"
+        ? `The US list uses EPA-style fuel-economy ratings (and MPGe for EVs), the same kind of figure on a car's window sticker. Real-world mileage varies with driving style, weather and load, so edit any figure if you know your vehicle's real mileage.`
+        : `Not yet — unlike our India lineup (sourced from ARAI test-cycle data), the ${country.name} vehicle list is a representative estimate we've put together to cover common models. Treat every figure as a starting point, not a spec-sheet guarantee, and edit it if you know your vehicle's real mileage.`,
     },
     ...shared,
   ];

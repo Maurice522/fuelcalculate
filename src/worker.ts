@@ -51,11 +51,37 @@ function withHtmlCharset(response: Response): Response {
   return fixed;
 }
 
+/** Baseline hardening headers (HSTS is deliberately left to the Cloudflare dashboard,
+ * where it can be switched on once HTTPS-only is confirmed). geolocation stays allowed
+ * for our own pages because the calculator's "Use my location" button needs it. */
+const SECURITY_HEADERS: Record<string, string> = {
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "SAMEORIGIN",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "geolocation=(self), camera=(), microphone=(), payment=()",
+};
+
+function withSecurityHeaders(response: Response): Response {
+  if (response.status >= 300 && response.status < 400) return response; // redirects carry no body
+  const hardened = new Response(response.body, response);
+  for (const [name, value] of Object.entries(SECURITY_HEADERS)) hardened.headers.set(name, value);
+  return hardened;
+}
+
+/** /city/mumbai and /city/mumbai/ both answered 200 with different canonicals; keep one. */
+function citySlashRedirect(url: URL): Response | null {
+  if (!/^\/city\/[a-z0-9-]+$/.test(url.pathname)) return null;
+  return Response.redirect(`${url.origin}${url.pathname}/${url.search}`, 301);
+}
+
 export default {
   async fetch(request, env, ctx) {
-    const redirect = canonicalRedirect(new URL(request.url));
+    const url = new URL(request.url);
+    const redirect = canonicalRedirect(url) ?? (request.method === "GET" ? citySlashRedirect(url) : null);
     if (redirect) return redirect;
-    return withHtmlCharset(await withEdgeCache(request, ctx, () => handle(request, env, ctx)));
+    return withSecurityHeaders(
+      withHtmlCharset(await withEdgeCache(request, ctx, () => handle(request, env, ctx))),
+    );
   },
   async scheduled(_event, env, ctx) {
     ctx.waitUntil(
